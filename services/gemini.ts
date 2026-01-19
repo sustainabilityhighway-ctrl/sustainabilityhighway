@@ -19,7 +19,11 @@ export class GeminiService {
   private ai: GoogleGenAI;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY || '';
+    if (!apiKey) {
+      console.warn("Gemini API Key is missing. AI features will not work.");
+    }
+    this.ai = new GoogleGenAI({ apiKey });
   }
 
   async chat(message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[] = []) {
