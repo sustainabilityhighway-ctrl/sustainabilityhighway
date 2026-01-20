@@ -1,48 +1,78 @@
-
 import React from 'react';
 import { ICONS } from '../constants';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Cinematic Background */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://picsum.photos/id/230/1920/1080?grayscale&blur=2" 
-          className="w-full h-full object-cover opacity-30" 
-          alt="Sustainability Highway"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#041612] via-transparent to-[#041612]"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#041612] via-transparent to-[#041612]"></div>
-      </div>
+    <section className="relative pt-32 pb-20 px-6 min-h-[90vh] flex items-center bg-[#041612]">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      <div className="relative z-10 max-w-5xl px-6 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#4CAF50]/30 bg-[#4CAF50]/10 text-[#4CAF50] text-xs font-bold uppercase tracking-widest mb-8 animate-bounce">
-          {ICONS.Globe} Leading the Global Green Revolution
+        {/* Left: Headlines */}
+        <div className="relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A059]/20 border border-[#C5A059]/30 text-[#C5A059] text-xs font-bold uppercase tracking-widest mb-8">
+            {ICONS.Globe} Featured Story
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[0.95] tracking-tight text-white">
+            THE RISE OF <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4CAF50] to-[#81C784]">
+              VERTICAL ECOLOGY
+            </span>
+          </h1>
+
+          <p className="text-xl text-white/60 mb-10 leading-relaxed font-light max-w-lg">
+            How The Line's zero-gravity urbanism is collecting global accolades and redefining sustainable living standards for the next century.
+          </p>
+
+          <div className="flex flex-wrap gap-4">
+            <a href="#projects" className="px-8 py-4 bg-[#4CAF50] text-[#041612] font-black rounded-xl hover:bg-[#43a047] transition-all transform hover:-translate-y-1">
+              READ FULL ARTICLE
+            </a>
+            <a href="/insights" className="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all flex items-center gap-2">
+              BROWSE ALL NEWS {ICONS.ChevronRight}
+            </a>
+          </div>
+
+          <div className="mt-16 flex items-center gap-8 text-white/40 text-xs font-bold uppercase tracking-widest">
+            <span>• Vision 2030</span>
+            <span>• Mostadam Gold</span>
+            <span>• Future Tech</span>
+          </div>
         </div>
-        
-        <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-[0.95]">
-          BUILDING THE <br />
-          <span className="gold-text italic">FUTURE</span> OF KSA
-        </h1>
-        
-        <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 font-medium leading-relaxed">
-          The ultimate knowledge portal for Vision 2030 construction standards, Mostadam certification, and the path to a sustainable desert future.
-        </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#hub" className="w-full sm:w-auto px-8 py-4 bg-[#4CAF50] hover:bg-[#43a047] rounded-2xl font-black text-black text-lg transition-all transform hover:-translate-y-1">
-            EXPLORE KNOWLEDGE HUB
-          </a>
-          <a href="#projects" className="w-full sm:w-auto px-8 py-4 glass hover:bg-white/10 rounded-2xl font-black text-white text-lg transition-all">
-            VIEW MEGA PROJECTS
-          </a>
-        </div>
-      </div>
+        {/* Right: Feature Card */}
+        <div className="relative group">
+          <div className="absolute inset-0 bg-[#4CAF50] rounded-[2rem] rotate-3 opacity-20 blur-xl group-hover:rotate-6 transition-all duration-700"></div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-pulse">
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-1.5 bg-white/40 rounded-full"></div>
+          <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?auto=format&fit=crop&w=1920&q=80"
+              alt="Vertical Ecology"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#041612] via-transparent to-transparent opacity-80"></div>
+
+            <div className="absolute bottom-8 left-8 right-8">
+              <span className="bg-white/10 backdrop-blur-md px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-white border border-white/10 mb-4 inline-block">
+                Architectural Digest
+              </span>
+              <p className="text-white/80 text-sm font-medium line-clamp-2">
+                "Saudi Arabia's approach to vertical stratification in urban planning sets a new precedent for desert sustainability."
+              </p>
+            </div>
+          </div>
+
+          {/* Floater */}
+          <div className="absolute -bottom-6 -right-6 glass p-6 rounded-2xl border border-white/10 shadow-xl hidden md:block animate-pulse">
+            <div className="flex items-center gap-4">
+              <div className="p-3 bg-[#C5A059] rounded-xl text-black">
+                {ICONS.Leaf}
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase text-white/50">Carbon Offset</p>
+                <p className="text-xl font-black text-white">98%</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

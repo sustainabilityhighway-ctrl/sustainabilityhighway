@@ -1,13 +1,25 @@
-import { supabase } from './services/supabaseClient';
+import { createClient } from '@supabase/supabase-js';
+import fs from 'fs';
+
+const SUPABASE_URL = 'https://xohrvqoftgiugocrhfnr.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhvaHJ2cW9mdGdpdWdvY3JoZm5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3NDgxNTgsImV4cCI6MjA4NDMyNDE1OH0.BilKFzk-ySSbtWuWGrXJ0cMPQ3FwcR-s40V3P0Vd9iA';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function generateSitemap() {
+    console.log('Generating sitemap...');
     const baseUrl = 'https://sustainabilityhighway.com';
 
     // Fetch all published blogs
-    const { data: blogs } = await supabase
+    const { data: blogs, error } = await supabase
         .from('blogs')
         .select('slug, created_at')
         .eq('is_published', true);
+
+    if (error) {
+        console.error('Error fetching blogs:', error);
+        return;
+    }
 
     const staticPages = [
         { url: '/', priority: '1.0', changefreq: 'weekly' },
@@ -33,13 +45,8 @@ ${allPages.map(page => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-    console.log(sitemap);
-    return sitemap;
+    fs.writeFileSync('./public/sitemap.xml', sitemap);
+    console.log('✅ Sitemap generated successfully to ./public/sitemap.xml');
 }
 
-// Run this script: node generate-sitemap.js
-generateSitemap().then(sitemap => {
-    const fs = require('fs');
-    fs.writeFileSync('./public/sitemap.xml', sitemap);
-    console.log('✅ Sitemap generated successfully!');
-}).catch(console.error);
+generateSitemap().catch(console.error);

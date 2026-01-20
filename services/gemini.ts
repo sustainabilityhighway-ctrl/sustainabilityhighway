@@ -26,21 +26,49 @@ export class GeminiService {
     this.ai = new GoogleGenAI({ apiKey });
   }
 
-  async chat(message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[] = []) {
+  async chat(message: string, history: any[] = []) {
     try {
       const response = await this.ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-1.5-flash',
         contents: [...history, { role: 'user', parts: [{ text: message }] }],
         config: {
           systemInstruction: SYSTEM_INSTRUCTION,
           temperature: 0.7,
         },
       });
-
-      return response.text || "I'm sorry, I couldn't process that request.";
+      // Handle response safely
+      const responseAny = response as any;
+      const text = responseAny.text;
+      if (typeof text === 'function') {
+        return text();
+      }
+      return typeof text === 'string' ? text : "No response";
     } catch (error) {
       console.error("Gemini Error:", error);
-      return "There was an error communicating with the Knowledge Hub. Please try again later.";
+      return "Error connecting to AI.";
+    }
+  }
+
+  async generateBlogPost(topic: string) {
+    const prompt = `Act as an expert journalist for "Sustainability Highway". Write a complete, SEO-optimized blog post about: "${topic}".
+    Context: Saudi Vision 2030, Green Building standards (Mostadam, LEED), and eco-infrastructure.
+    
+    Return a STRICT VALID JSON object with no markdown formatting:
+    {
+      "title": "A compelling, news-style title",
+      "slug": "kebab-case-slug",
+      "meta_title": "SEO Title (max 60 chars)",
+      "meta_description": "SEO Description (max 150 chars)",
+      "content": "Rich HTML content with <h2>, <h3>, <p>, <ul> tags. Write at least 600 words."
+    }`;
+
+    try {
+      const result = await this.chat(prompt, []); // No history
+      const jsonStr = result.replace(/```json/g, '').replace(/```/g, '').trim();
+      return JSON.parse(jsonStr);
+    } catch (e) {
+      console.error("Gemini Parse Error:", e);
+      return null;
     }
   }
 }

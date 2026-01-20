@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import VisionProjects from './components/VisionProjects';
-import KnowledgeHub from './components/KnowledgeHub';
 import SustainabilityStats from './components/SustainabilityStats';
 import AdminDashboard from './components/AdminDashboard';
 import Login from './components/Login';
@@ -80,7 +79,7 @@ const App: React.FC = () => {
           {/* Subtle transition divider */}
           <div className="h-24 bg-gradient-to-b from-[#041612] to-[#0B2B24]"></div>
 
-          <KnowledgeHub />
+
 
           <VisionProjects />
 
@@ -135,7 +134,7 @@ const App: React.FC = () => {
 
           <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-6">
             <p className="text-white/20 text-xs font-bold uppercase tracking-widest">
-              © 2024 SUSTAINABILITY HIGHWAY. ALL RIGHTS RESERVED.
+              © 2026 SUSTAINABILITY HIGHWAY. ALL RIGHTS RESERVED.
             </p>
             <div className="flex gap-8 text-white/20 text-xs font-bold uppercase tracking-widest">
               <a href="#" className="hover:text-white">Privacy</a>

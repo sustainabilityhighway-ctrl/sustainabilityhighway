@@ -25,12 +25,19 @@ interface FAQ {
     answer: string;
 }
 
+import { gemini } from '../services/gemini';
+
 export default function AdminDashboard() {
     const [blogs, setBlogs] = useState<Blog[]>([]);
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState<number | null>(null);
     const [editingBlog, setEditingBlog] = useState<Blog | null>(null);
     const [faqs, setFaqs] = useState<FAQ[]>([]);
+
+    // AI Import State
+    const [showImport, setShowImport] = useState(false);
+    const [importTopic, setImportTopic] = useState('');
+    const [isGenerating, setIsGenerating] = useState(false);
 
     useEffect(() => {
         fetchBlogs();
@@ -51,6 +58,8 @@ export default function AdminDashboard() {
         setLoading(false);
     }
 
+    // ... existing uploadImage, saveContent, togglePublish functions ...
+
     async function togglePublish(id: number, currentStatus: boolean) {
         const { error } = await supabase
             .from('blogs')
@@ -65,10 +74,7 @@ export default function AdminDashboard() {
     }
 
     function generateSlug(title: string): string {
-        return title
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '');
+        return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
     }
 
     function generateSchema(blog: Blog, faqs: FAQ[]) {
@@ -115,14 +121,6 @@ export default function AdminDashboard() {
         // Validation
         if (!editingBlog.slug) {
             alert('Please enter a slug');
-            return;
-        }
-        if (editingBlog.meta_title && editingBlog.meta_title.length > 60) {
-            alert('Meta Title should be max 60 characters');
-            return;
-        }
-        if (editingBlog.meta_description && editingBlog.meta_description.length > 155) {
-            alert('Meta Description should be max 155 characters');
             return;
         }
 
@@ -212,11 +210,53 @@ export default function AdminDashboard() {
         window.location.reload();
     }
 
+    async function handleAIImport() {
+        if (!importTopic.trim()) return;
+        setIsGenerating(true);
+
+        const generated = await gemini.generateBlogPost(importTopic);
+
+        if (generated) {
+            const { error } = await supabase.from('blogs').insert({
+                title: generated.title,
+                slug: generated.slug,
+                meta_title: generated.meta_title,
+                meta_description: generated.meta_description,
+                content: generated.content,
+                is_published: false,
+                template_id: 'standard',
+                source_url: 'AI Generated',
+                link: generated.slug // Just filling required field
+            });
+
+            if (error) {
+                alert('Error saving generated blog: ' + error.message);
+            } else {
+                alert('✨ Article generated and saved as Draft! You can now add an image.');
+                setShowImport(false);
+                setImportTopic('');
+                fetchBlogs();
+            }
+        } else {
+            alert('Failed to generate article. Please try again.');
+        }
+
+        setIsGenerating(false);
+    }
+
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
             <div className="bg-[#041612] text-white py-4 px-8 flex justify-between items-center">
-                <h1 className="text-2xl font-bold">Content Management System</h1>
+                <div className="flex items-center gap-4">
+                    <h1 className="text-2xl font-bold">Content & Imports</h1>
+                    <button
+                        onClick={() => setShowImport(true)}
+                        className="bg-[#4CAF50] hover:bg-[#43a047] px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 text-[#041612]"
+                    >
+                        ✨ Import Article (AI)
+                    </button>
+                </div>
                 <button
                     onClick={handleLogout}
                     className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-sm"
@@ -232,7 +272,41 @@ export default function AdminDashboard() {
                     </div>
                 </div>
 
-                {/* EDITOR MODAL */}
+                {/* IMPORT MODAL */}
+                {showImport && (
+                    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[60] p-4">
+                        <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6">
+                            <h3 className="text-xl font-bold mb-4">Import Article via AI</h3>
+                            <p className="text-sm text-gray-600 mb-4">Enter a topic (e.g., "The Line Construction Updates") and our AI will write a complete blog post for you.</p>
+
+                            <input
+                                type="text"
+                                value={importTopic}
+                                onChange={(e) => setImportTopic(e.target.value)}
+                                placeholder="Topic or Title..."
+                                className="w-full p-3 border border-gray-300 rounded-lg mb-6 outline-none focus:ring-2 focus:ring-[#4CAF50]"
+                            />
+
+                            <div className="flex justify-end gap-3">
+                                <button
+                                    onClick={() => setShowImport(false)}
+                                    className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleAIImport}
+                                    disabled={isGenerating}
+                                    className={`px-4 py-2 bg-[#041612] text-white rounded-lg flex items-center gap-2 ${isGenerating ? 'opacity-50' : 'hover:bg-[#0B2B24]'}`}
+                                >
+                                    {isGenerating ? 'Generating...' : 'Start Import ✨'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* EDITOR MODAL ... existing ... */}
                 {editingBlog && (
                     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 overflow-y-auto">
                         <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl my-8">

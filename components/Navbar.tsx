@@ -20,15 +20,13 @@ const Navbar: React.FC = () => {
         <div className="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-wider text-white/70">
           <a href="#vision" className="hover:text-white transition-colors">Vision</a>
           <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-          <a href="#hub" className="hover:text-white transition-colors">Knowledge Hub</a>
+
           <a href="#stats" className="hover:text-white transition-colors">Impact</a>
         </div>
 
-        <button className="hidden md:block bg-[#C5A059] hover:bg-[#D4B977] text-black px-6 py-2 rounded-xl font-bold transition-all transform active:scale-95">
-          Get Involved
-        </button>
 
-        <button 
+
+        <button
           className="md:hidden p-2 text-white"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -42,9 +40,8 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col gap-6 text-center font-bold uppercase">
             <a href="#vision" onClick={() => setIsOpen(false)}>Vision</a>
             <a href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
-            <a href="#hub" onClick={() => setIsOpen(false)}>Knowledge Hub</a>
+
             <a href="#stats" onClick={() => setIsOpen(false)}>Impact</a>
-            <button className="bg-[#C5A059] text-black w-full py-3 rounded-xl">Get Involved</button>
           </div>
         </div>
       )}
