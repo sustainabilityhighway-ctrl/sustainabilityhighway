@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
+import { STATIC_BLOGS } from '../staticBlogs';
 
 interface Blog {
     id: number;
@@ -29,9 +30,10 @@ export default function BlogList() {
             .order('created_at', { ascending: false });
 
         if (error) {
-            console.error('Error fetching blogs:', error);
+            console.error('Error fetching blogs from DB (using static fallback):', error);
+            setBlogs(STATIC_BLOGS);
         } else {
-            setBlogs(data || []);
+            setBlogs((data && data.length > 0) ? data : STATIC_BLOGS);
         }
         setLoading(false);
     }
@@ -45,10 +47,10 @@ export default function BlogList() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24] py-20 px-6">
+        <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24] py-24 px-6 pt-32">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl font-black text-white mb-4 uppercase tracking-tight">
+                    <h1 className="text-5xl font-black text-white mb-4 uppercase tracking-tight font-heading">
                         Sustainability <span className="text-[#C5A059]">Insights</span>
                     </h1>
                     <p className="text-white/60 text-lg max-w-2xl mx-auto">
@@ -88,12 +90,6 @@ export default function BlogList() {
                         </a>
                     ))}
                 </div>
-
-                {blogs.length === 0 && (
-                    <div className="text-center text-white/40 py-20">
-                        <p className="text-xl">No published articles yet. Check back soon!</p>
-                    </div>
-                )}
             </div>
         </div>
     );
