@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
+import { STATIC_BLOGS } from '../staticBlogs';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
@@ -244,12 +245,53 @@ export default function AdminDashboard() {
         setIsGenerating(false);
     }
 
+    async function handleImportDefaults() {
+        if (!confirm('Import default static blogs as Drafts?')) return;
+        setLoading(true);
+        let importedCount = 0;
+
+        for (const blog of STATIC_BLOGS) {
+            // 1. Check duplicate slug
+            const { data: existing } = await supabase
+                .from('blogs')
+                .select('id')
+                .eq('slug', blog.slug)
+                .single();
+
+            if (!existing) {
+                // 2. Insert as Draft
+                const { error } = await supabase.from('blogs').insert({
+                    title: blog.title,
+                    slug: blog.slug,
+                    content: blog.content,
+                    image_url: blog.image_url,
+                    meta_title: blog.meta_title,
+                    meta_description: blog.meta_description,
+                    faq_data: blog.faq_data,
+                    is_published: false, // Force Draft
+                    source_url: 'Static Import',
+                    link: blog.slug
+                });
+                if (!error) importedCount++;
+            }
+        }
+        alert(`Imported ${importedCount} new blogs to Admin.`);
+        fetchBlogs();
+        setLoading(false);
+    }
+
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
             <div className="bg-[#041612] text-white py-4 px-8 flex justify-between items-center">
                 <div className="flex items-center gap-4">
                     <h1 className="text-2xl font-bold">Content & Imports</h1>
+                    <button
+                        onClick={handleImportDefaults}
+                        className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 text-white"
+                    >
+                        📥 Import Defaults
+                    </button>
                     <button
                         onClick={() => setShowImport(true)}
                         className="bg-[#4CAF50] hover:bg-[#43a047] px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 text-[#041612]"

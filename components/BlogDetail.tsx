@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 import { STATIC_BLOGS } from '../staticBlogs';
 import { useParams } from 'react-router-dom';
+import SEOHead from './SEOHead';
 
 interface Blog {
     id: number;
@@ -74,6 +75,14 @@ export default function BlogDetail() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24]">
+            <SEOHead
+                title={blog.meta_title || blog.title}
+                description={blog.meta_description}
+                image={blog.image_url}
+                url={`https://sustainabilityhighway.com/blog/${blog.slug}`}
+                type="article"
+                schema={blog.schema_data}
+            />
             {/* Hero Section */}
             {blog.image_url && (
                 <div className="h-96 relative overflow-hidden">

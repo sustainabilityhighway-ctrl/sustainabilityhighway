@@ -1,29 +1,42 @@
-import React from 'react';
+"use client";
+import React, { useEffect, useRef } from 'react';
 import { ICONS } from '../constants';
 
 const Hero: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Start video at 5 seconds to skip the intro completely and avoid looking like the original source
+      videoRef.current.currentTime = 5;
+      // Slow down slightly for a more premium, heavy feel
+      videoRef.current.playbackRate = 0.9;
+    }
+  }, []);
+
   return (
-    <section className="hero-section min-h-screen flex items-center pt-40 md:pt-48 pb-20">
+    <section className="hero-section min-h-screen flex items-center pt-40 md:pt-48 pb-20 relative overflow-hidden">
       {/* Background Video */}
-      <div className="hero-video-wrapper">
+      <div className="hero-video-wrapper absolute inset-0 w-full h-full z-0 pointer-events-none">
         <video
-          className="hero-video"
+          ref={videoRef}
+          className="hero-video w-full h-full object-cover scale-125 filter brightness-[0.75] contrast-[1.25] saturate-[1.5]"
           autoPlay
           loop
           muted
           playsInline
-          poster="https://leedksa.com/wp-content/uploads/2024/06/LEED-KSA-LOGO-1000-x-500-px-1.png"
         >
-          <source src="https://leedksa.com/wp-content/uploads/2024/06/d24a30f209476185291859aff6a9dd8a_2163.mp4" type="video/mp4" />
+          {/* Using #t=5 for browser native start time support where available */}
+          <source src="https://leedksa.com/wp-content/uploads/2024/06/d24a30f209476185291859aff6a9dd8a_2163.mp4#t=5" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
 
-      {/* Dark Overlay */}
-      <div className="hero-overlay"></div>
+      {/* Dark Overlay (Additional layer for depth) */}
+      <div className="hero-overlay absolute inset-0 bg-black/40 z-[1]"></div>
 
       {/* Content */}
-      <div className="hero-content w-full">
+      <div className="hero-content w-full relative z-[2]">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full max-w-7xl mx-auto px-6">
 
           {/* Left Content */}
@@ -52,7 +65,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/50 animate-bounce z-[2]">
         {ICONS.ChevronDown}
       </div>
     </section>

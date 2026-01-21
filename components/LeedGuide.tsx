@@ -1,9 +1,15 @@
 import React from 'react';
 import { Leaf, Droplets, Zap, Box, Wind, MapPin, Heart, Globe } from 'lucide-react';
+import SEOHead from './SEOHead';
 
 const LeedGuide: React.FC = () => {
     return (
         <div className="bg-[#041612] min-h-screen text-white pt-24 pb-20">
+            <SEOHead
+                title="LEED Certification Guide Saudi Arabia | Vision 2030"
+                description="Comprehensive guide to LEED Certification in Saudi Arabia. Learn about credits, levels, and how LEED aligns with Vision 2030."
+                url="https://sustainabilityhighway.com/leed-guide"
+            />
 
             {/* Header */}
             <div className="text-center max-w-4xl mx-auto px-6 mb-16">

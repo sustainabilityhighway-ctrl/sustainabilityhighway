@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 import { STATIC_BLOGS } from '../staticBlogs';
+import SEOHead from './SEOHead';
 
 interface Blog {
     id: number;
@@ -33,7 +34,7 @@ export default function BlogList() {
             console.error('Error fetching blogs from DB (using static fallback):', error);
             setBlogs(STATIC_BLOGS);
         } else {
-            setBlogs((data && data.length > 0) ? data : STATIC_BLOGS);
+            setBlogs((data && data.length > 0) ? data : STATIC_BLOGS.filter(b => b.is_published));
         }
         setLoading(false);
     }
@@ -48,6 +49,11 @@ export default function BlogList() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24] py-24 px-6 pt-32">
+            <SEOHead
+                title="Sustainability Insights | Vision 2030 News"
+                description="Expert knowledge on Vision 2030, LEED, Mostadam, and sustainable construction in Saudi Arabia."
+                url="https://sustainabilityhighway.com/insights"
+            />
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h1 className="text-5xl font-black text-white mb-4 uppercase tracking-tight font-heading">

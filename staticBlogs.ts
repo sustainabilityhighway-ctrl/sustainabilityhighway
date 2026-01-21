@@ -3,7 +3,7 @@ export const STATIC_BLOGS = [
         id: 101,
         title: "Understanding LEED Certification in Saudi Arabia: A Complete Guide",
         slug: "understanding-leed-certification-saudi-arabia",
-        // Enhanced URL: WebP format, Quality 50, Width 600 (<100KB approx)
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=50&w=600&fm=webp",
         meta_title: "LEED Certification Saudi Arabia: Vision 2030 Guide | Sustainability Highway",
         meta_description: "Comprehensive guide to LEED Certification in Saudi Arabia. Learn about ratings, costs, and how it aligns with Vision 2030 sustainability goals.",
@@ -13,18 +13,7 @@ export const STATIC_BLOGS = [
             "@type": "Article",
             "headline": "Understanding LEED Certification in Saudi Arabia",
             "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=50&w=600&fm=webp",
-            "author": {
-                "@type": "Organization",
-                "name": "Sustainability Highway"
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "Sustainability Highway",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://sustainabilityhighway.com/sh-icon.svg"
-                }
-            },
+            "author": { "@type": "Organization", "name": "Sustainability Highway" },
             "datePublished": "2026-01-15T10:00:00Z"
         },
         content: `
@@ -63,6 +52,7 @@ export const STATIC_BLOGS = [
         id: 102,
         title: "Mostadam vs LEED: Which Rating System Should You Choose?",
         slug: "mostadam-vs-leed-comparison",
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=50&w=600&fm=webp",
         meta_title: "Mostadam vs LEED: Comparison for Saudi Projects | Sustainability Highway",
         meta_description: "Detailed comparison of Mostadam vs LEED rating systems for Saudi construction. Analyzes costs, local relevance, and certification processes.",
@@ -123,6 +113,7 @@ export const STATIC_BLOGS = [
         id: 103,
         title: "Green Construction Technologies Transforming Riyadh",
         slug: "green-construction-technologies-riyadh",
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?auto=format&fit=crop&q=50&w=600&fm=webp",
         meta_title: "Green Construction Tech in Riyadh | Smart Buildings & Solar",
         meta_description: "Explore top green construction technologies in Riyadh: Smart Glass, BIPV, Green Concrete, and AI energy management systems reducing carbon footprints.",
@@ -157,6 +148,7 @@ export const STATIC_BLOGS = [
         id: 104,
         title: "The Mostadam Rating System: A Pillar of Saudi Sustainability",
         slug: "mostadam-rating-system-guide",
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=50&w=800&fm=webp",
         meta_title: "Mostadam Rating System Guide | Sustainability Highway",
         meta_description: "Deep dive into the Mostadam rating system. Understand its three distinct rating systems for residential, commercial, and communities in Saudi Arabia.",
@@ -196,6 +188,7 @@ export const STATIC_BLOGS = [
         id: 105,
         title: "Envision: Sustainability Beyond the Building",
         slug: "envision-infrastructure-sustainability",
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1466096115517-bceecbfb6fde?auto=format&fit=crop&q=50&w=800&fm=webp",
         meta_title: "Envision Infrastructure Rating System | Sustainability Highway",
         meta_description: "Learn how the Envision framework is redefining sustainable infrastructure projects like roads, bridges, and energy grids in Saudi Arabia.",
@@ -229,6 +222,7 @@ export const STATIC_BLOGS = [
         id: 106,
         title: "WELL Building Standard: Healthier People, Healthier Bottom Line",
         slug: "well-building-standard-health",
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=50&w=800&fm=webp",
         meta_title: "WELL Building Standard Explained | Sustainability Highway",
         meta_description: "Discover how the WELL Building Standard improves occupant health through air, water, and light optimization. A guide for Saudi employers.",
@@ -262,6 +256,7 @@ export const STATIC_BLOGS = [
         id: 107,
         title: "Vision 2050: The Long-Term Path to Net Zero",
         slug: "vision-2050-net-zero-saudi-arabia",
+        is_published: false,
         image_url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=50&w=800&fm=webp",
         meta_title: "Vision 2050 and Net Zero Guide | Sustainability Highway",
         meta_description: "Beyond 2030: Exploring Saudi Arabia's long-term strategy for 2050 and Net Zero 2060. Carbon Circular Economy and afforestation.",

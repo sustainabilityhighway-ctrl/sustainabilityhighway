@@ -11,6 +11,7 @@ import WellPage from './components/projects/WellPage';
 import Vision2050Page from './components/projects/Vision2050Page';
 import BlogList from './components/BlogList';
 import BlogDetail from './components/BlogDetail';
+import SEOHead from './components/SEOHead';
 import AdminDashboard from './components/AdminDashboard';
 import Login from './components/Login';
 import NotFound from './components/NotFound';
@@ -24,6 +25,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <main>
+            <SEOHead />
             <Hero />
             <HomeBody />
           </main>

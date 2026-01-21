@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
           {/* Projects Dropdown */}
           <div className="relative group">
             <button className="flex items-center gap-1 text-white hover:text-[#4CAF50] transition-colors font-medium uppercase tracking-wide text-sm py-4">
-              Our Projects
+              Standards
               <span className="group-hover:rotate-180 transition-transform duration-300">
                 <ChevronDown size={16} />
               </span>
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
           <a href="/" className="text-white hover:text-[#4CAF50] text-lg font-bold">Home</a>
           <a href="/leed-guide" className="text-white hover:text-[#4CAF50] text-lg font-bold">LEED Guide</a>
           <div className="flex flex-col gap-3 pl-4 border-l-2 border-white/10 ml-1">
-            <span className="text-white/50 text-sm uppercase tracking-wider font-bold mb-1">Our Projects</span>
+            <span className="text-white/50 text-sm uppercase tracking-wider font-bold mb-1">Standards</span>
             <a href="/leed-guide" className="text-white hover:text-[#4CAF50] text-lg font-bold">LEED</a>
             <a href="/projects/mostadam" className="text-white hover:text-[#4CAF50] text-lg font-bold">Mostadam</a>
             <a href="/projects/envision" className="text-white hover:text-[#4CAF50] text-lg font-bold">Envision</a>
