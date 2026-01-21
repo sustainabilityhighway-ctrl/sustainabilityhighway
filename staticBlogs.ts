@@ -152,5 +152,143 @@ export const STATIC_BLOGS = [
             <h2>Impact on ROI</h2>
             <p>While initial costs are higher, smart buildings offer lower operational costs (OpEx) and command higher rental premiums, ensuring a healthy Return on Investment.</p>
         `
+    },
+    {
+        id: 104,
+        title: "The Mostadam Rating System: A Pillar of Saudi Sustainability",
+        slug: "mostadam-rating-system-guide",
+        image_url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=50&w=800&fm=webp",
+        meta_title: "Mostadam Rating System Guide | Sustainability Highway",
+        meta_description: "Deep dive into the Mostadam rating system. Understand its three distinct rating systems for residential, commercial, and communities in Saudi Arabia.",
+        created_at: "2026-01-21T09:00:00Z",
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "The Mostadam Rating System: A Pillar of Saudi Sustainability",
+            "image": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=50&w=800&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-01-21T09:00:00Z"
+        },
+        content: `
+            <h2>Designed for the Kingdom</h2>
+            <p><strong>Mostadam</strong> is the first green building rating system developed specifically for Saudi Arabia. Unlike international standards that apply a broad brush, Mostadam addresses the specific environmental challenges of the region, particularly <strong>water scarcity</strong> and <strong>cooling demands</strong>.</p>
+            
+            <h2>Three Rating Systems</h2>
+            <p>Mostadam is not a one-size-fits-all. It is divided into three comprehensive systems:</p>
+            <ul>
+                <li><strong>Residential Buildings:</strong> Targeted at villas and housing complexes, focusing on family comfort and privacy while maximizing efficiency.</li>
+                <li><strong>Commercial Buildings:</strong> For offices, schools, and malls, emphasizing operational efficiency and indoor environmental quality to boost productivity.</li>
+                <li><strong>Communities:</strong> A master-planning tool that ensures entire districts are walkable, connected, and sustainable.</li>
+            </ul>
+
+            <h2>Key Credits</h2>
+            <h3>Water Conservation (25% Weight)</h3>
+            <p>Given the Kingdom's reliance on desalination, water efficiency holds the highest weight. This involves smart irrigation, greywater recycling, and low-flow fixtures.</p>
+
+            <h3>Local Culture & Heritage</h3>
+            <p>Mostadam rewards designs that reflect Saudi architectural heritage, such as the use of Mashrabiya for shading, which reduces cooling loads while maintaining privacy.</p>
+            
+            <h2>Conclusion</h2>
+            <p>Adopting Mostadam is a direct contribution to Vision 2030, ensuring that the rapid urban development of the Kingdom is sustainable and resilient.</p>
+        `
+    },
+    {
+        id: 105,
+        title: "Envision: Sustainability Beyond the Building",
+        slug: "envision-infrastructure-sustainability",
+        image_url: "https://images.unsplash.com/photo-1466096115517-bceecbfb6fde?auto=format&fit=crop&q=50&w=800&fm=webp",
+        meta_title: "Envision Infrastructure Rating System | Sustainability Highway",
+        meta_description: "Learn how the Envision framework is redefining sustainable infrastructure projects like roads, bridges, and energy grids in Saudi Arabia.",
+        created_at: "2026-01-21T10:00:00Z",
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Envision: Sustainability Beyond the Building",
+            "image": "https://images.unsplash.com/photo-1466096115517-bceecbfb6fde?auto=format&fit=crop&q=50&w=800&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-01-21T10:00:00Z"
+        },
+        content: `
+            <h2>Infrastructure is the Backbone</h2>
+            <p>While LEED and Mostadam focus on vertical structures, <strong>Envision</strong> focuses on the horizontal infrastructure that connects them—roads, bridges, airports, and power plants. As Saudi Arabia embarks on mega-projects like NEOM, Envision ensures the backbone of these cities is green.</p>
+            
+            <h2>The 5 Pillars of Envision</h2>
+            <ol>
+                <li><strong>Quality of Life:</strong> Does the project improve the well-being of the community?</li>
+                <li><strong>Leadership:</strong> Is there a long-term commitment to sustainability?</li>
+                <li><strong>Resource Allocation:</strong> Are materials and energy used efficiently?</li>
+                <li><strong>Natural World:</strong> Does the project protect or restore local ecosystems?</li>
+                <li><strong>Climate & Resilience:</strong> Can the infrastructure withstand future climate risks?</li>
+            </ol>
+
+            <h2>Why it Matters for Giga-Projects</h2>
+            <p>Projects like <strong>The Line</strong> are infrastructure-heavy. Applying Envision ensures that the massive investments in transit and utilities yield long-term environmental benefits.</p>
+        `
+    },
+    {
+        id: 106,
+        title: "WELL Building Standard: Healthier People, Healthier Bottom Line",
+        slug: "well-building-standard-health",
+        image_url: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=50&w=800&fm=webp",
+        meta_title: "WELL Building Standard Explained | Sustainability Highway",
+        meta_description: "Discover how the WELL Building Standard improves occupant health through air, water, and light optimization. A guide for Saudi employers.",
+        created_at: "2026-01-21T11:00:00Z",
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "WELL Building Standard: Healthier People, Healthier Bottom Line",
+            "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=50&w=800&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-01-21T11:00:00Z"
+        },
+        content: `
+            <h2>The Human Focus</h2>
+            <p>Most sustainability standards focus on the building's impact on the planet. <strong>WELL</strong> focuses on the building's impact on the <em>people</em> inside it. In a post-pandemic world, this certification has become a top priority for premium tenants.</p>
+            
+            <h2>10 Concepts of WELL</h2>
+            <p>WELL v2 measures performance across 10 categories:</p>
+            <div class="grid grid-cols-2 gap-4 my-6">
+                <div class="p-4 bg-gray-800 rounded"><strong>Air:</strong> Indoor quality monitoring.</div>
+                <div class="p-4 bg-gray-800 rounded"><strong>Water:</strong> Filtration and access.</div>
+                <div class="p-4 bg-gray-800 rounded"><strong>Light:</strong> Circadian lighting design.</div>
+                <div class="p-4 bg-gray-800 rounded"><strong>Mind:</strong> Mental health support.</div>
+            </div>
+
+            <h2>ROI of Wellness</h2>
+            <p>Studies show that WELL-certified offices see improved employee retention and reduced sick leave. In the competitive Saudi market, this is a key differentiator for attracting top talent.</p>
+        `
+    },
+    {
+        id: 107,
+        title: "Vision 2050: The Long-Term Path to Net Zero",
+        slug: "vision-2050-net-zero-saudi-arabia",
+        image_url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=50&w=800&fm=webp",
+        meta_title: "Vision 2050 and Net Zero Guide | Sustainability Highway",
+        meta_description: "Beyond 2030: Exploring Saudi Arabia's long-term strategy for 2050 and Net Zero 2060. Carbon Circular Economy and afforestation.",
+        created_at: "2026-01-21T12:00:00Z",
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Vision 2050: The Long-Term Path to Net Zero",
+            "image": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=50&w=800&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-01-21T12:00:00Z"
+        },
+        content: `
+            <h2>Looking Beyond 2030</h2>
+            <p>While <strong>Vision 2030</strong> sets the immediate stage for transformation, the Kingdom has its eyes set further on the horizon. The commitment to reach <strong>Net Zero by 2060</strong> requires a roadmap that extends through 2040 and 2050.</p>
+            
+            <h2>The Circular Carbon Economy (CCE)</h2>
+            <p>Saudi Arabia is pioneering the CCE framework, endorsed by the G20. It centers on 4 Rs:</p>
+            <ul>
+                <li><strong>Reduce:</strong> Energy efficiency and renewables.</li>
+                <li><strong>Reuse:</strong> Carbon capture for value-added products.</li>
+                <li><strong>Recycle:</strong> Transforming carbon into new materials (e.g., concrete curing).</li>
+                <li><strong>Remove:</strong> Natural and technological carbon removal.</li>
+            </ul>
+
+            <h2>The Role of Construction</h2>
+            <p>By 2050, the built environment must be fully decarbonized. This means every new building must be Net Zero Operational Carbon, and embodied carbon must be minimized through green steel and concrete.</p>
+        `
     }
 ];
