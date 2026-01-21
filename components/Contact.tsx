@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Globe, MessageSquare, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Clock, Globe, MessageSquare, CheckCircle, HelpCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
     const [formState, setFormState] = useState({
@@ -47,45 +47,36 @@ const Contact: React.FC = () => {
                         <div className="grid gap-8">
                             <div className="bg-[#0B2B24] p-8 rounded-2xl border border-white/5 hover:border-[#4CAF50]/50 transition-all duration-300 group">
                                 <div className="bg-[#4CAF50]/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#4CAF50] transition-colors">
-                                    <MapPin className="text-[#4CAF50] w-6 h-6 group-hover:text-[#041612]" />
+                                    <Mail className="text-[#4CAF50] w-6 h-6 group-hover:text-[#041612]" />
                                 </div>
-                                <h3 className="text-2xl font-bold mb-2 font-heading">Visit Our Office</h3>
+                                <h3 className="text-2xl font-bold mb-2 font-heading">Online Inquiry</h3>
                                 <p className="text-white/60 mb-4">
-                                    King Fahd Road, Olaya District<br />
-                                    Riyadh 12211, Kingdom of Saudi Arabia
+                                    We are a digital-first platform dedicated to providing the latest sustainability insights. For specific inquiries, partnership opportunities, or content corrections, please reach out via email.
                                 </p>
-                                <a href="#" className="text-[#C5A059] font-bold text-sm tracking-widest uppercase hover:underline">Get Directions</a>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="bg-[#0B2B24] p-8 rounded-2xl border border-white/5 hover:border-[#4CAF50]/50 transition-all duration-300 group">
-                                    <div className="bg-[#4CAF50]/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#4CAF50] transition-colors">
-                                        <Mail className="text-[#4CAF50] w-6 h-6 group-hover:text-[#041612]" />
-                                    </div>
-                                    <h3 className="text-lg font-bold mb-2">Email Us</h3>
-                                    <p className="text-white/60 text-sm">info@sustainabilityhighway.com</p>
-                                </div>
-                                <div className="bg-[#0B2B24] p-8 rounded-2xl border border-white/5 hover:border-[#4CAF50]/50 transition-all duration-300 group">
-                                    <div className="bg-[#4CAF50]/10 w-12 h-12 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#4CAF50] transition-colors">
-                                        <Phone className="text-[#4CAF50] w-6 h-6 group-hover:text-[#041612]" />
-                                    </div>
-                                    <h3 className="text-lg font-bold mb-2">Call Us</h3>
-                                    <p className="text-white/60 text-sm">+966 11 234 5678</p>
-                                </div>
+                                <a href="mailto:info@sustainabilityhighway.com" className="text-[#C5A059] font-bold text-lg tracking-wide hover:underline">info@sustainabilityhighway.com</a>
                             </div>
                         </div>
 
                         {/* FAQ / Expectations */}
                         <div>
-                            <h3 className="text-2xl font-bold mb-6 font-heading">What to expect?</h3>
-                            <div className="space-y-4">
+                            <h3 className="text-2xl font-bold mb-6 font-heading">Frequently Asked Questions</h3>
+                            <div className="space-y-6">
                                 <div className="flex gap-4">
                                     <div className="bg-white/5 p-2 rounded-lg h-10 w-10 flex items-center justify-center flex-shrink-0">
                                         <Clock size={20} className="text-[#C5A059]" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold mb-1">24-Hour Response</h4>
-                                        <p className="text-white/60 text-sm">We value your time. Our team will get back to you within one business day.</p>
+                                        <h4 className="font-bold mb-1">Response Time?</h4>
+                                        <p className="text-white/60 text-sm">We aim to respond to general inquiries within 24-48 hours.</p>
+                                    </div>
+                                </div>
+                                <div className="flex gap-4">
+                                    <div className="bg-white/5 p-2 rounded-lg h-10 w-10 flex items-center justify-center flex-shrink-0">
+                                        <HelpCircle size={20} className="text-[#C5A059]" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold mb-1">Do you offer services?</h4>
+                                        <p className="text-white/60 text-sm">No. We are a digital content platform. We do not provide construction or certification services directly.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -93,8 +84,8 @@ const Contact: React.FC = () => {
                                         <Globe size={20} className="text-[#C5A059]" />
                                     </div>
                                     <div>
-                                        <h4 className="font-bold mb-1">Global Expertise, Local Focus</h4>
-                                        <p className="text-white/60 text-sm">Consultants who understand both International Standards and Saudi Regulations.</p>
+                                        <h4 className="font-bold mb-1">Can I contribute?</h4>
+                                        <p className="text-white/60 text-sm">Yes! We welcome guest posts from sustainability experts. Contact us to discuss.</p>
                                     </div>
                                 </div>
                             </div>

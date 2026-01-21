@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
 import { ICONS } from '../constants';
 
 const Footer: React.FC = () => {
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
                         </span>
                     </div>
                     <p className="text-gray-400 text-sm leading-relaxed">
-                        Empowering the Kingdom's construction industry with modern standards and AI-driven intelligence for a greener Vision 2030.
+                        Your premier digital resource for green building standards and sustainability insights aligned with Vision 2030.
                     </p>
                     <div className="flex items-center gap-2 text-sm text-[#4CAF50] font-bold">
                         <MapPin size={16} />
@@ -69,7 +69,6 @@ const Footer: React.FC = () => {
                     </div>
                     <div className="space-y-2 text-sm text-gray-400">
                         <p className="flex items-center gap-2"><Mail size={14} className="text-[#C5A059]" /> contact@sustainabilityhighway.com</p>
-                        <p className="flex items-center gap-2"><Phone size={14} className="text-[#C5A059]" /> +966 11 000 0000</p>
                     </div>
                 </div>
             </div>

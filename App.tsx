@@ -8,6 +8,7 @@ import LeedGuide from './components/LeedGuide';
 import MostadamPage from './components/projects/MostadamPage';
 import EnvisionPage from './components/projects/EnvisionPage';
 import WellPage from './components/projects/WellPage';
+import GreenRiyadhPage from './components/projects/GreenRiyadhPage';
 import Vision2050Page from './components/projects/Vision2050Page';
 import BlogList from './components/BlogList';
 import BlogDetail from './components/BlogDetail';
@@ -32,6 +33,7 @@ function App() {
         <Route path="/projects/mostadam" element={<MostadamPage />} />
         <Route path="/projects/envision" element={<EnvisionPage />} />
         <Route path="/projects/well" element={<WellPage />} />
+        <Route path="/projects/green-riyadh" element={<GreenRiyadhPage />} />
         <Route path="/projects/vision-2050" element={<Vision2050Page />} />
         <Route path="/insights" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />

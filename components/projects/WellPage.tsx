@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Activity, Sun, Moon, Wind, Coffee, Music, Smile } from 'lucide-react';
+import { Heart, Activity, Sun, Moon, Wind, Coffee, Music, Smile, Droplets } from 'lucide-react';
 
 const WellPage: React.FC = () => {
     return (
@@ -80,6 +80,6 @@ const WellPage: React.FC = () => {
         </div>
     );
 };
-import { Droplets } from 'lucide-react'; // Added missing import
+
 
 export default WellPage;

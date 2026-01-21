@@ -217,9 +217,21 @@ export default function AdminDashboard() {
         const generated = await gemini.generateBlogPost(importTopic);
 
         if (generated) {
+            // Check for duplicate slug
+            const { data: existing } = await supabase
+                .from('blogs')
+                .select('id')
+                .eq('slug', generated.slug)
+                .single();
+
+            let finalSlug = generated.slug;
+            if (existing) {
+                finalSlug = `${generated.slug}-${Math.floor(Math.random() * 1000)}`;
+            }
+
             const { error } = await supabase.from('blogs').insert({
                 title: generated.title,
-                slug: generated.slug,
+                slug: finalSlug,
                 meta_title: generated.meta_title,
                 meta_description: generated.meta_description,
                 content: generated.content,
@@ -232,7 +244,7 @@ export default function AdminDashboard() {
             if (error) {
                 alert('Error saving generated blog: ' + error.message);
             } else {
-                alert('✨ Article generated and saved as Draft! You can now add an image.');
+                alert('✨ Article generated and saved as DRAFT! Please review and publish it from the list.');
                 setShowImport(false);
                 setImportTopic('');
                 fetchBlogs();

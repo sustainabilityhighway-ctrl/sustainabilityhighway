@@ -34,7 +34,7 @@ const EnvisionPage: React.FC = () => {
                             <div>
                                 <h2 className="text-3xl font-bold font-heading text-[#4CAF50] mb-4">Sustainable Infrastructure</h2>
                                 <p className="text-white/80 leading-relaxed text-lg">
-                                    Envision is not just about buildings; it's about the systems that connect them. Roads, bridges, pipelines, and energy grids. We use Envision to guide projects towards true sustainability, assessing impacts on community quality of life and resource allocation.
+                                    Envision is not just about buildings; it's about the systems that connect them. Roads, bridges, pipelines, and energy grids. Envision is used to guide projects towards true sustainability, assessing impacts on community quality of life and resource allocation.
                                 </p>
                             </div>
 

@@ -7,12 +7,21 @@ const Hero: React.FC = () => {
       {/* Background Video */}
       <div className="hero-video-wrapper">
         <video
+          ref={(el) => {
+            if (el) {
+              el.playbackRate = 0.7;
+            }
+          }}
           className="hero-video"
           autoPlay
           loop
           muted
           playsInline
           poster="https://leedksa.com/wp-content/uploads/2024/06/LEED-KSA-LOGO-1000-x-500-px-1.png"
+          onLoadedMetadata={(e) => {
+            e.currentTarget.currentTime = 5;
+            e.currentTarget.play().catch(error => console.error("Video play failed:", error));
+          }}
         >
           <source src="https://leedksa.com/wp-content/uploads/2024/06/d24a30f209476185291859aff6a9dd8a_2163.mp4" type="video/mp4" />
           Your browser does not support the video tag.

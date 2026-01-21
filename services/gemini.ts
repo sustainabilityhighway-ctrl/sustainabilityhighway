@@ -53,13 +53,20 @@ export class GeminiService {
     const prompt = `Act as an expert journalist for "Sustainability Highway". Write a complete, SEO-optimized blog post about: "${topic}".
     Context: Saudi Vision 2030, Green Building standards (Mostadam, LEED), and eco-infrastructure.
     
+    Requirements:
+    1. Length: Minimum 800 words.
+    2. Tone: Professional, authoritative, yet accessible.
+    3. Structure: Use multiple <h2> and <h3> headers.
+    4. Content: Include specific statistics, references to Vision 2030 goals, and actionable insights.
+    5. Formatting: Return ONLY VALID JSON. No intro text.
+
     Return a STRICT VALID JSON object with no markdown formatting:
     {
       "title": "A compelling, news-style title",
       "slug": "kebab-case-slug",
       "meta_title": "SEO Title (max 60 chars)",
       "meta_description": "SEO Description (max 150 chars)",
-      "content": "Rich HTML content with <h2>, <h3>, <p>, <ul> tags. Write at least 600 words."
+      "content": "Rich HTML content with <h2>, <h3>, <p>, <ul> tags. Do NOT use <h1>."
     }`;
 
     try {
