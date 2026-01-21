@@ -92,7 +92,18 @@ h6 {
 }
 
 .gold-text {
+  background: linear-gradient(135deg, #C5A059 0%, #F4E2B2 50%, #C5A059 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: #C5A059;
+  /* Fallback */
+  background-size: 200% auto;
+  transition: background-position 0.5s ease;
+}
+
+.gold-text:hover {
+  background-position: right center;
 }
 
 /* Image Optimization */
