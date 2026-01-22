@@ -1,29 +1,18 @@
-import { useEffect, useState } from 'react';
-import { supabase } from '../services/supabaseClient';
-import { STATIC_BLOGS } from '../staticBlogs';
-import SEOHead from './SEOHead';
+import Link from 'next/link';
+import { supabase } from '../../services/supabaseClient';
+import { STATIC_BLOGS } from '../../staticBlogs';
+import { Metadata } from 'next';
 
-interface Blog {
-    id: number;
-    title: string;
-    content?: string;
-    image_url?: string;
-    slug?: string;
-    meta_title?: string;
-    meta_description?: string;
-    created_at?: string;
-    faq_data?: any[];
+export const metadata: Metadata = {
+    title: 'Sustainability Insights | Vision 2030 News',
+    description: 'Expert knowledge on Vision 2030, LEED, Mostadam, and sustainable construction in Saudi Arabia.',
+    openGraph: {
+        url: 'https://sustainabilityhighway.com/insights',
+    }
 }
 
-export default function BlogList() {
-    const [blogs, setBlogs] = useState<Blog[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetchPublishedBlogs();
-    }, []);
-
-    async function fetchPublishedBlogs() {
+async function getBlogs() {
+    try {
         const { data, error } = await supabase
             .from('blogs')
             .select('*')
@@ -31,29 +20,26 @@ export default function BlogList() {
             .order('created_at', { ascending: false });
 
         if (error) {
-            console.error('Error fetching blogs from DB (using static fallback):', error);
-            setBlogs(STATIC_BLOGS);
-        } else {
-            setBlogs((data && data.length > 0) ? data : STATIC_BLOGS.filter(b => b.is_published));
+            console.error('Error fetching blogs:', error);
+            return STATIC_BLOGS.filter(b => b.is_published);
         }
-        setLoading(false);
-    }
 
-    if (loading) {
-        return (
-            <div className="min-h-screen bg-[#0B2B24] flex items-center justify-center">
-                <div className="text-white text-xl">Loading insights...</div>
-            </div>
-        );
+        if (!data || data.length === 0) {
+            return STATIC_BLOGS.filter(b => b.is_published);
+        }
+
+        return data;
+    } catch (e) {
+        console.error('Exception fetching blogs:', e);
+        return STATIC_BLOGS.filter(b => b.is_published);
     }
+}
+
+export default async function InsightsPage() {
+    const blogs = await getBlogs();
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24] py-24 px-6 pt-32">
-            <SEOHead
-                title="Sustainability Insights | Vision 2030 News"
-                description="Expert knowledge on Vision 2030, LEED, Mostadam, and sustainable construction in Saudi Arabia."
-                url="https://sustainabilityhighway.com/insights"
-            />
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h1 className="text-5xl font-black text-white mb-4 uppercase tracking-tight font-heading">
@@ -65,19 +51,23 @@ export default function BlogList() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {blogs.map((blog) => (
-                        <a
+                    {blogs.map((blog: any) => (
+                        <Link
                             key={blog.id}
                             href={`/blog/${blog.slug || blog.id}`}
                             className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#4CAF50] transition-all duration-300 hover:transform hover:scale-105"
                         >
-                            {blog.image_url && (
+                            {blog.image_url ? (
                                 <div className="h-48 overflow-hidden bg-gray-800">
                                     <img
                                         src={blog.image_url}
                                         alt={blog.title}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                     />
+                                </div>
+                            ) : (
+                                <div className="h-48 overflow-hidden bg-gray-800 flex items-center justify-center">
+                                    <span className="text-white/20 text-4xl font-bold">SH</span>
                                 </div>
                             )}
                             <div className="p-6">
@@ -93,7 +83,7 @@ export default function BlogList() {
                                     Read More →
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

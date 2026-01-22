@@ -1,6 +1,6 @@
+"use client";
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock, Globe, MessageSquare, CheckCircle } from 'lucide-react';
-import SEOHead from './SEOHead';
+import { Mail, Phone, MapPin, Send, Clock, Globe, CheckCircle } from 'lucide-react';
 
 const Contact: React.FC = () => {
     const [formState, setFormState] = useState({
@@ -28,11 +28,6 @@ const Contact: React.FC = () => {
 
     return (
         <div className="bg-[#041612] min-h-screen text-white pt-24 pb-20">
-            <SEOHead
-                title="Contact Sustainability Highway | Riyadh KSA"
-                description="Get in touch with Saudi Arabia's leading sustainability consultants for LEED and Mostadam certification projects."
-                url="https://sustainabilityhighway.com/contact"
-            />
             {/* Header */}
             <div className="text-center max-w-4xl mx-auto px-6 mb-16">
                 <span className="text-[#4CAF50] font-bold tracking-widest uppercase text-sm mb-4 block">Let's Connect</span>

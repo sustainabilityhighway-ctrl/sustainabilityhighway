@@ -1,3 +1,4 @@
+"use client";
 import { useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 
@@ -20,9 +21,8 @@ export default function Login() {
         if (error) {
             setError(error.message);
         } else {
-            // Login successful, the parent component should handle the session change state update
-            // or we can reload the page which is a simple way to reset state in this basic router
-            window.location.reload();
+            // Login successful
+            window.location.href = '/admin'; // Redirect to admin
         }
         setLoading(false);
     };

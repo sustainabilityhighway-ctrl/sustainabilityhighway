@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookOpen, Leaf, Zap, Droplets, CheckCircle, Shield, TrendingUp, Users, Globe, MessageSquare, Compass, Hammer, Award, Star, Heart, Map, Activity, Building, PieChart, ArrowRight, Layout } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import FAQ from './FAQ';
 
 const HomeBody: React.FC = () => {
@@ -269,9 +269,9 @@ const HomeBody: React.FC = () => {
                                 "The Saudi Green Initiative aims for net-zero emissions by 2060, making every construction project a vital step towards this national goal."
                             </p>
                         </div>
-                        <a href="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] font-bold uppercase tracking-widest hover:text-white transition-colors mt-4">
+                        <Link href="/leed-guide" className="inline-flex items-center gap-2 text-[#4CAF50] font-bold uppercase tracking-widest hover:text-white transition-colors mt-4">
                             Read Guidelines <BookOpen className="w-5 h-5" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -407,7 +407,7 @@ const HomeBody: React.FC = () => {
                                 Sustainability <span className="gold-text">Insights</span>
                             </h2>
                         </div>
-                        <Link to="/insights" className="hidden md:flex items-center gap-2 text-white/70 hover:text-[#C5A059] transition-colors">
+                        <Link href="/insights" className="hidden md:flex items-center gap-2 text-white/70 hover:text-[#C5A059] transition-colors">
                             View All <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
@@ -424,7 +424,7 @@ const HomeBody: React.FC = () => {
                             <p className="text-white/60 text-sm line-clamp-3">
                                 As Vision 2030 accelerates, the demand for sustainable infrastructure is skyrocketing. Learn how new regulations are shaping the market.
                             </p>
-                            <Link to="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] text-sm font-bold mt-4 hover:underline">Read Article</Link>
+                            <Link href="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] text-sm font-bold mt-4 hover:underline">Read Article</Link>
                         </div>
 
                         {/* Blog 2 */}
@@ -438,7 +438,7 @@ const HomeBody: React.FC = () => {
                             <p className="text-white/60 text-sm line-clamp-3">
                                 A comprehensive comparison of credit categories, costs, and local applicability to help you make an informed decision.
                             </p>
-                            <Link to="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] text-sm font-bold mt-4 hover:underline">Read Article</Link>
+                            <Link href="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] text-sm font-bold mt-4 hover:underline">Read Article</Link>
                         </div>
 
                         {/* Blog 3 */}
@@ -452,7 +452,7 @@ const HomeBody: React.FC = () => {
                             <p className="text-white/60 text-sm line-clamp-3">
                                 Real-world data showing how energy efficiency upgrades can deliver ROI in under 3 years for existing commercial buildings.
                             </p>
-                            <Link to="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] text-sm font-bold mt-4 hover:underline">Read Article</Link>
+                            <Link href="/insights" className="inline-flex items-center gap-2 text-[#4CAF50] text-sm font-bold mt-4 hover:underline">Read Article</Link>
                         </div>
                     </div>
                 </div>

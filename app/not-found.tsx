@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function NotFound() {
     return (
         <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24] flex items-center justify-center px-6">
@@ -8,18 +10,18 @@ export default function NotFound() {
                     The page you're looking for doesn't exist or has been moved.
                 </p>
                 <div className="flex gap-4 justify-center">
-                    <a
+                    <Link
                         href="/"
                         className="px-6 py-3 bg-[#4CAF50] text-white rounded-lg hover:bg-[#45a049] transition-colors font-semibold"
                     >
                         Go Home
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="/insights"
                         className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors font-semibold border border-white/20"
                     >
                         Browse Insights
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

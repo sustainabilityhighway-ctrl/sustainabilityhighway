@@ -1,8 +1,10 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../services/supabaseClient';
 import { STATIC_BLOGS } from '../staticBlogs';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import dynamic from 'next/dynamic';
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
 
 interface Blog {
     id: number;

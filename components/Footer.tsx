@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { ICONS } from '../constants';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
     return (
@@ -32,10 +33,10 @@ const Footer: React.FC = () => {
                 <div>
                     <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-[#C5A059]">Quick Links</h4>
                     <ul className="space-y-4 text-sm text-gray-400">
-                        <li><a href="#" className="hover:text-white transition-colors">Our Vision</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors">Projects</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-                        <li><a href="/insights" className="hover:text-white transition-colors">Latest Insights</a></li>
+                        <li><Link href="#" className="hover:text-white transition-colors">Our Vision</Link></li>
+                        <li><Link href="/projects/mostadam" className="hover:text-white transition-colors">Projects</Link></li>
+                        <li><Link href="/leed-guide" className="hover:text-white transition-colors">Services</Link></li>
+                        <li><Link href="/insights" className="hover:text-white transition-colors">Latest Insights</Link></li>
                     </ul>
                 </div>
 
@@ -43,10 +44,10 @@ const Footer: React.FC = () => {
                 <div>
                     <h4 className="font-bold uppercase text-xs tracking-widest mb-6 text-[#C5A059]">Standards</h4>
                     <ul className="space-y-4 text-sm text-gray-400">
-                        <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> LEED KSA</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> Mostadam</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> Green Riyadh</a></li>
-                        <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> Wellness Standard</a></li>
+                        <li><Link href="/leed-guide" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> LEED KSA</Link></li>
+                        <li><Link href="/projects/mostadam" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> Mostadam</Link></li>
+                        <li><Link href="#" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> Green Riyadh</Link></li>
+                        <li><Link href="/projects/well" className="hover:text-white transition-colors flex items-center gap-2"><span className="w-1 h-1 bg-[#4CAF50] rounded-full"></span> Wellness Standard</Link></li>
                     </ul>
                 </div>
 
@@ -80,8 +81,8 @@ const Footer: React.FC = () => {
                     © 2026 Sustainability Highway. All Rights Reserved.
                 </p>
                 <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-600">
-                    <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" className="hover:text-white transition-colors">Terms of Use</a>
+                    <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+                    <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
                 </div>
             </div>
         </footer>
