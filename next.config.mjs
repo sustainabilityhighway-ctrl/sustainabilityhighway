@@ -2,7 +2,20 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['images.unsplash.com', 'cdn.jsdelivr.net', 'cdn.tailwindcss.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.jsdelivr.net',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.tailwindcss.com',
+            },
+        ],
     },
 };
 

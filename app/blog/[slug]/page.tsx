@@ -10,15 +10,25 @@ type Props = {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+export async function generateStaticParams() {
+    return STATIC_BLOGS.map((blog) => ({
+        slug: blog.slug,
+    }));
+}
+
 async function getBlog(slug: string) {
     // Try finding by slug or id
-    const { data, error } = await supabase
-        .from('blogs')
-        .select('*')
-        .or(`slug.eq.${slug},id.eq.${slug}`) // Attempt to match slug or id (if slug is numeric)
-        .single();
+    try {
+        const { data, error } = await supabase
+            .from('blogs')
+            .select('*')
+            .or(`slug.eq.${slug},id.eq.${slug}`) // Attempt to match slug or id (if slug is numeric)
+            .single();
 
-    if (data) return data;
+        if (data) return data;
+    } catch (e) {
+        console.warn('Supabase fetch failed (expected during build if no env vars):', e);
+    }
 
     // Fallback to static
     return STATIC_BLOGS.find(b => b.slug === slug || b.id.toString() === slug);
