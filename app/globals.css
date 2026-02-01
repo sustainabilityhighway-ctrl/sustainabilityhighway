@@ -128,3 +128,16 @@ button:focus {
     z-index: 9999;
     background-image: url('https://grainy-gradients.vercel.app/noise.svg');
 }
+
+/* Custom Utilities for Gradient Animations */
+.bg-size-200 {
+    background-size: 200% auto;
+}
+
+.bg-pos-0 {
+    background-position: 0% 0%;
+}
+
+.bg-pos-100 {
+    background-position: 100% 0%;
+}

@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      Role     @default(ADMIN)
+  blogs     Blog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model Blog {
+  id              Int      @id @default(autoincrement())
+  title           String
+  slug            String   @unique
+  content         String   @db.Text
+  excerpt         String?  @db.Text
+  image_url       String?
+  status          Status   @default(DRAFT)
+  
+  meta_title       String?
+  meta_description String?
+  canonical_url    String?
+  
+  topic_tags      String[]
+  faq_data        Json?     @default("[]")
+  schema_data     Json?     @default("{}")
+  template_id     String?   @default("standard")
+  source_url      String?
+  
+  author          User     @relation(fields: [authorId], references: [id])
+  authorId        String
+  category        Category? @relation(fields: [categoryId], references: [id])
+  categoryId      Int?
+  tags            Tag[]
+  
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  slug  String @unique
+  blogs Blog[]
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  slug  String @unique
+  blogs Blog[]
+}

@@ -1,9 +1,14 @@
+"use client";
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { ICONS } from '../constants';
 import Link from 'next/link';
 
 const Footer: React.FC = () => {
+    const pathname = usePathname();
+    if (pathname && pathname.startsWith('/admin')) return null;
+
     return (
         <footer className="bg-[#0e0e0e] text-white pt-20 pb-10 border-t border-white/5 relative overflow-hidden">
             {/* Top Gradient Line */}

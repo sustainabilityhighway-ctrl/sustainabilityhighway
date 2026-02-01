@@ -1,4 +1,7 @@
+import { PREMIUM_ARTICLE } from './premiumArticle';
+
 export const STATIC_BLOGS = [
+    PREMIUM_ARTICLE,
     {
         id: 101,
         title: "Understanding LEED Certification in Saudi Arabia: A Complete Guide",
@@ -285,5 +288,167 @@ export const STATIC_BLOGS = [
             <h2>The Role of Construction</h2>
             <p>By 2050, the built environment must be fully decarbonized. This means every new building must be Net Zero Operational Carbon, and embodied carbon must be minimized through green steel and concrete.</p>
         `
+    },
+    {
+        id: 108,
+        title: "7 Strategic Goals of the Saudi Green Initiative (SGI)",
+        slug: "7-goals-saudi-green-initiative",
+        is_published: false,
+        image_url: "https://images.unsplash.com/photo-1542361345439-c5297129f10c?auto=format&fit=crop&q=50&w=800&fm=webp",
+        meta_title: "7 Goals of Saudi Green Initiative (SGI) | Vision 2030 Targets",
+        meta_description: "Explore the 7 key targets of the Saudi Green Initiative: Planting 10 billion trees, 50% renewables, and protecting 30% of land and sea.",
+        created_at: "2026-01-31T12:00:00Z",
+        topic_tags: ["SGI", "Vision 2030", "Sustainability", "Environment"],
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "7 Strategic Goals of the Saudi Green Initiative (SGI)",
+            "image": "https://images.unsplash.com/photo-1542361345439-c5297129f10c?auto=format&fit=crop&q=50&w=800&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-01-31T12:00:00Z"
+        },
+        content: `
+            <div id="toc" class="bg-gray-50 p-6 rounded-xl mb-8 border border-gray-100">
+                <h3 class="text-lg font-bold mb-3">Table of Contents</h3>
+                <ul class="space-y-2 text-sm text-green-700">
+                    <li><a href="#emissions" class="hover:underline">1. Reducing Carbon Emissions</a></li>
+                    <li><a href="#trees" class="hover:underline">2. Planting 10 Billion Trees</a></li>
+                    <li><a href="#protection" class="hover:underline">3. Protecting 30% of Land & Sea</a></li>
+                    <li><a href="#renewables" class="hover:underline">4. 50% Renewable Energy Mix</a></li>
+                    <li><a href="#waste" class="hover:underline">5. Waste Management & Diversion</a></li>
+                    <li><a href="#biodiversity" class="hover:underline">6. Rewilding & Biodiversity</a></li>
+                    <li><a href="#netzero" class="hover:underline">7. Achieving Net Zero by 2060</a></li>
+                </ul>
+            </div>
+
+            <p>The <strong>Saudi Green Initiative (SGI)</strong> is a whole-of-nation ambition to combat climate change. Within the framework of <a href="/vision-2050">Vision 2030</a>, SGI sets clear, measurable targets to reshape the Kingdom's environmental future.</p>
+
+            <h2 id="emissions">1. Reducing Carbon Emissions</h2>
+            <p>SGI aims to reduce carbon emissions by <strong>278 million tons per annum (mtpa)</strong> by 2030. This massive reduction places Saudi Arabia as a regional leader in climate action, utilizing Circular Carbon Economy (CCE) technologies.</p>
+
+            <h2 id="trees">2. Planting 10 Billion Trees</h2>
+            <p>Perhaps the most famous goal, the Kingdom plans to plant <strong>10 billion trees</strong> over the coming decades. This will rehabilitate 40 million hectares of degraded land, combat desertification, and reduce dust storms across the region.</p>
+            <p>[Infographic: Map showing SGI afforestation zones vs. urban areas]</p>
+
+            <h2 id="protection">3. Protecting 30% of Land & Sea</h2>
+            <p>Saudi Arabia has committed to designating <strong>30% of its terrestrial and marine area</strong> as protected reserves by 2030. This includes protecting coral reefs in the Red Sea and wildlife sanctuaries in AlUla.</p>
+
+            <h2 id="renewables">4. 50% Renewable Energy Mix</h2>
+            <p>By 2030, 50% of the Kingdom's electricity will come from renewable sources, primarily <strong>solar and wind</strong>. This shift dramatically reduces reliance on liquid fuels for power generation.</p>
+
+            <h2 id="waste">5. Waste Management & Diversion</h2>
+            <p>Riyadh alone aims for <strong>94% waste diversion</strong> from landfills. Through recycling and waste-to-energy projects, SGI promotes a cleaner urban environment and supports the circular economy.</p>
+
+            <h2 id="biodiversity">6. Rewilding & Biodiversity</h2>
+            <p>SGI is not just about Green; it's about Life. Reintroducing endangered species like the Arabian Leopard and the Oryx into the wild is a core pillar of the initiative.</p>
+
+            <h2 id="netzero">7. Achieving Net Zero by 2060</h2>
+            <p>Looking further ahead, the ultimate goal is <strong>Net Zero emissions by 2060</strong>. This long-term commitment ensures that future generations inherit a thriving, sustainable Kingdom.</p>
+
+            <h3>Conclusion</h3>
+            <p>These 7 goals form the backbone of Saudi Arabia's contribution to global climate efforts. For detail on how construction standards support these goals, explore our <a href="/mostadam-rating-system-guide">Mostadam Guide</a>.</p>
+        `,
+        faq_data: [
+            { question: "When was SGI launched?", answer: "The Saudi Green Initiative was launched by HRH Crown Prince Mohammed bin Salman in 2021." },
+            { question: "How does 10 billion trees help?", answer: "It restores vegetation cover, reduces local temperatures, combats desertification, and absorbs carbon dioxide." },
+            { question: "What is the 2030 emissions target?", answer: "The target is to reduce emissions by 278 mtpa relative to business-as-usual scenarios." }
+        ]
+    },
+    {
+        id: 109,
+        title: "Vision 2030: A Comprehensive Guide to Saudi Arabia's Transformation",
+        slug: "saudi-vision-2030-sustainability-goals",
+        is_published: false,
+        image_url: "https://images.unsplash.com/photo-1551041777-ed02b7ef59b5?auto=format&fit=crop&q=40&w=600&fm=webp",
+        meta_title: "Saudi Vision 2030 Sustainability Goals | Complete Guide",
+        meta_description: "Explore how Vision 2030 is transforming Saudi Arabia. A deep dive into sustainability targets, economic diversification, and the three main pillars.",
+        created_at: "2026-02-01T09:00:00Z",
+        topic_tags: ["Vision 2030", "Economy", "Sustainability", "Riyadh"],
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Vision 2030: A Comprehensive Guide to Saudi Arabia's Transformation",
+            "image": "https://images.unsplash.com/photo-1551041777-ed02b7ef59b5?auto=format&fit=crop&q=40&w=600&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-02-01T09:00:00Z"
+        },
+        content: `
+            <div id="toc" class="bg-gray-50 p-6 rounded-xl mb-8 border border-gray-100">
+                <h3 class="text-lg font-bold mb-3">Table of Contents</h3>
+                <ul class="space-y-2 text-sm text-green-700">
+                    <li><a href="#intro" class="hover:underline">1. What is Vision 2030?</a></li>
+                    <li><a href="#pillars" class="hover:underline">2. The Three Pillars</a></li>
+                    <li><a href="#sustainability" class="hover:underline">3. Sustainability Targets</a></li>
+                    <li><a href="#projects" class="hover:underline">4. Key Giga-Projects</a></li>
+                </ul>
+            </div>
+
+            <h2 id="intro">1. What is Vision 2030?</h2>
+            <p>Launched in 2016 by HRH Crown Prince Mohammed bin Salman, <strong>Vision 2030</strong> is a blueprint to reduce Saudi Arabia's dependence on oil, diversify its economy, and develop public service sectors such as health, education, infrastructure, recreation, and tourism.</p>
+
+            <h2 id="pillars">2. The Three Pillars</h2>
+            <p>The vision is built on three strategic pillars:</p>
+            <ul>
+                <li><strong>A Vibrant Society:</strong> Focusing on Urbanism, Culture, and Entertainment.</li>
+                <li><strong>A Thriving Economy:</strong> Diversification through non-oil exports and FDI.</li>
+                <li><strong>An Ambitious Nation:</strong> Enhancing government efficiency and accountability.</li>
+            </ul>
+
+            <h2 id="sustainability">3. Sustainability Targets</h2>
+            <p>Sustainability is woven into the DNA of the vision. From the <a href="/7-goals-saudi-green-initiative">Saudi Green Initiative</a> to the Circular Carbon Economy, the goal is to reach Net Zero by 2060 while preserving the Kingdom's natural beauty.</p>
+
+            <h2 id="projects">4. Key Giga-Projects</h2>
+            <p>Projects like <a href="/neom-the-line-sustainable-city">NEOM</a>, Red Sea Global, and Qiddiya are the physical manifestations of this vision, setting new global standards for eco-tourism and smart living.</p>
+        `,
+        faq_data: [
+            { question: "What are the 3 pillars of Vision 2030?", answer: "A Vibrant Society, A Thriving Economy, and An Ambitious Nation." },
+            { question: "How does it affect the environment?", answer: "It mandates strict environmental standards for all new projects, aiming for Net Zero emissions." }
+        ]
+    },
+    {
+        id: 110,
+        title: "NEOM & The Line: The Future of Zero-Gravity Urbanism",
+        slug: "neom-the-line-sustainable-city",
+        is_published: false,
+        image_url: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=40&w=600&fm=webp",
+        meta_title: "NEOM and The Line: Zero Carbon City Guide | Sustainability Highway",
+        meta_description: "Discover NEOM's The Line: A revolution in urban living with zero cars, zero streets, and zero carbon emissions. The future of sustainable cities.",
+        created_at: "2026-02-01T10:00:00Z",
+        topic_tags: ["NEOM", "The Line", "Smart City", "Innovation"],
+        schema_data: {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "NEOM & The Line: The Future of Zero-Gravity Urbanism",
+            "image": "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=40&w=600&fm=webp",
+            "author": "Sustainability Highway",
+            "datePublished": "2026-02-01T10:00:00Z"
+        },
+        content: `
+            <div id="toc" class="bg-gray-50 p-6 rounded-xl mb-8 border border-gray-100">
+                <h3 class="text-lg font-bold mb-3">Table of Contents</h3>
+                <ul class="space-y-2 text-sm text-green-700">
+                    <li><a href="#concept" class="hover:underline">1. The Concept of The Line</a></li>
+                    <li><a href="#zerocarbon" class="hover:underline">2. Zero Carbon, Zero Cars</a></li>
+                    <li><a href="#nature" class="hover:underline">3. 95% Nature Preservation</a></li>
+                    <li><a href="#tech" class="hover:underline">4. Cognitive City Tech</a></li>
+                </ul>
+            </div>
+
+            <h2 id="concept">1. The Concept of The Line</h2>
+            <p><strong>The Line</strong> is a civilizational revolution that puts humans first, providing an unprecedented urban living experience while preserving the surrounding nature. It redefines the concept of urban development and what cities of the future should look like.</p>
+
+            <h2 id="zerocarbon">2. Zero Carbon, Zero Cars</h2>
+            <p>No roads, no cars, no emissions. The Line will run on <strong>100% renewable energy</strong> and 95% of land will be preserved for nature. People's health and wellbeing will be prioritized over transportation and infrastructure.</p>
+
+            <h2 id="nature">3. 95% Nature Preservation</h2>
+            <p>Unlike traditional cities that sprawl outwards, The Line is built upwards (Vertical Urbanism). This footprint allows for the vast majority of NEOM's land to remain untouched, protecting biodiversity.</p>
+
+            <h2 id="tech">4. Cognitive City Tech</h2>
+            <p>Utilizing AI and data, The Line will be a cognitive city that predicts user needs, making life easier and more efficient. For more on green tech, check our article on <a href="/green-construction-technologies-riyadh">Green Construction Technologies</a>.</p>
+        `,
+        faq_data: [
+            { question: "Will The Line have cars?", answer: "No. The Line is designed to be completely car-free and street-free." },
+            { question: "How large is The Line?", answer: "It is designed to be 170km long and only 200 meters wide." }
+        ]
     }
 ];

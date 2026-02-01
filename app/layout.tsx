@@ -43,7 +43,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
-            <body className="font-sans antialiased text-[#F7FAF7] bg-[#041612]">
+            <body className="font-sans antialiased text-[#F7FAF7] bg-[#041612]" suppressHydrationWarning>
                 <div className="noise-overlay"></div>
                 <Navbar />
                 {children}
