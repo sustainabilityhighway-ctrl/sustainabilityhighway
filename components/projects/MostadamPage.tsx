@@ -1,9 +1,15 @@
 import React from 'react';
 import { Leaf, Award, Shield, Sun, Droplets, MapPin, Heart, Globe, Cloud, CheckCircle } from 'lucide-react';
+import SEOHead from '../SEOHead';
 
 const MostadamPage: React.FC = () => {
     return (
         <div className="bg-[#041612] min-h-screen text-white pt-24 pb-20">
+            <SEOHead
+                title="Mostadam Rating System Guide | Saudi Green Building"
+                description="Everything you need to know about Mostadam, Saudi Arabia's local sustainability rating system for residential and commercial buildings."
+                url="https://sustainabilityhighway.com/projects/mostadam"
+            />
             {/* Header */}
             <div className="text-center max-w-4xl mx-auto px-6 mb-16">
                 <h1 className="text-5xl md:text-6xl font-black mb-6 font-heading">

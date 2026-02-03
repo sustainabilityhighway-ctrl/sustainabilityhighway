@@ -105,17 +105,65 @@ const Vision2050Page: React.FC = () => {
             </section>
             {/* Video Section */}
             <section className="max-w-7xl mx-auto px-6 mb-24">
-                <div className="bg-black/40 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                    <div className="aspect-w-16 aspect-h-9 relative pb-[56.25%] h-0">
-                        <iframe
-                            src="https://www.youtube.com/embed/VIDEO_ID"
-                            title="Vision 2030 Sustainability"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="absolute top-0 left-0 w-full h-full"
-                        ></iframe>
-                        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span className="bg-black/50 px-4 py-2 rounded text-white text-sm">Video Guide Placeholder</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-8">
+                        <div>
+                            <h2 className="text-3xl font-bold font-heading text-white mb-4">NEOM & The Line</h2>
+                            <p className="text-white/80 leading-relaxed text-lg">
+                                At the heart of Vision 2050 lies NEOM, a living laboratory for entrepreneurship and innovation. 'The Line', a cognitive city stretching 170km, redefines urban living with zero cars, zero streets, and zero carbon emissions.
+                            </p>
+                        </div>
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="bg-[#0A201A] p-6 rounded-xl border border-white/5">
+                                <h3 className="text-2xl font-bold text-emerald-400 mb-1">95%</h3>
+                                <p className="text-white/60 text-sm">Land Preserved for Nature</p>
+                            </div>
+                            <div className="bg-[#0A201A] p-6 rounded-xl border border-white/5">
+                                <h3 className="text-2xl font-bold text-emerald-400 mb-1">100%</h3>
+                                <p className="text-white/60 text-sm">Clean Energy</p>
+                            </div>
+                            <div className="bg-[#0A201A] p-6 rounded-xl border border-white/5">
+                                <h3 className="text-2xl font-bold text-emerald-400 mb-1">20min</h3>
+                                <p className="text-white/60 text-sm">End-to-End Transit</p>
+                            </div>
+                            <div className="bg-[#0A201A] p-6 rounded-xl border border-white/5">
+                                <h3 className="text-2xl font-bold text-emerald-400 mb-1">9M</h3>
+                                <p className="text-white/60 text-sm">Projected Residents</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-4">
+                            <div className="h-64 rounded-2xl overflow-hidden border border-white/10 group">
+                                <img
+                                    src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800&auto=format&fit=crop"
+                                    alt="Sustainable Future City"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                            <div className="h-40 rounded-2xl overflow-hidden border border-white/10 group">
+                                <img
+                                    src="https://images.unsplash.com/photo-1518005052351-e3b7d67df647?q=80&w=800&auto=format&fit=crop"
+                                    alt="Green Energy"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                        </div>
+                        <div className="space-y-4 pt-8">
+                            <div className="h-40 rounded-2xl overflow-hidden border border-white/10 group">
+                                <img
+                                    src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=800&auto=format&fit=crop"
+                                    alt="Wind Power"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
+                            <div className="h-64 rounded-2xl overflow-hidden border border-white/10 group">
+                                <img
+                                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop"
+                                    alt="Modern Architecture"
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
