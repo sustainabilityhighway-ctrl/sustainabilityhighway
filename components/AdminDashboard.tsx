@@ -25,6 +25,7 @@ interface Blog {
     slug?: string;
     meta_title?: string;
     meta_description?: string;
+    canonical_url?: string;
     faq_data?: any[];
     created_at?: string;
     views?: number;
@@ -103,8 +104,8 @@ export default function AdminDashboard() {
         setLoading(true);
         try {
             const data = await api.get('/blogs');
-            // Assuming the backend returns { data: Blog[], total: number, ... }
-            setBlogs(data.data || data);
+            // Backend returns { items: Blog[], meta: { ... } }
+            setBlogs(data.items || (Array.isArray(data) ? data : []));
 
             // Mock Data for other modules until backend is ready
             setCategories([
@@ -162,13 +163,26 @@ export default function AdminDashboard() {
 
     const openEditor = (blog: Blog) => {
         setEditingBlog(blog);
-        setFaqs(blog.faq_data || []);
+        let parsedFaqs: FAQ[] = [];
+        try {
+            if (typeof blog.faq_data === 'string') {
+                parsedFaqs = JSON.parse(blog.faq_data);
+            } else if (Array.isArray(blog.faq_data)) {
+                parsedFaqs = blog.faq_data;
+            }
+        } catch (e) {
+            console.error("Failed to parse FAQ data", e);
+        }
+        setFaqs(parsedFaqs);
     };
 
     const saveContent = async () => {
         if (!editingBlog) return;
         try {
-            const payload = { ...editingBlog, faq_data: faqs };
+            const payload = {
+                ...editingBlog,
+                faq_data: JSON.stringify(faqs)
+            };
             if (editingBlog.id) {
                 await api.patch(`/blogs/${editingBlog.id}`, payload);
             } else {
@@ -177,8 +191,16 @@ export default function AdminDashboard() {
             showToast('Saved Successfully');
             setEditingBlog(null);
             fetchData();
-        } catch (err) {
-            showToast('Save failed', 'error');
+        } catch (err: any) {
+            showToast(err.message || 'Save failed', 'error');
+        }
+    };
+
+    const handlePreview = () => {
+        if (editingBlog?.slug) {
+            window.open(`/blogs/${editingBlog.slug}`, '_blank');
+        } else {
+            showToast('Please set a slug to preview', 'error');
         }
     };
 
@@ -587,7 +609,7 @@ export default function AdminDashboard() {
                             </div>
                         </div>
                         <div className="flex items-center gap-6">
-                            <button className={`px-8 py-4 rounded-2xl font-black transition-all border ${isDarkMode ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5' : 'border-gray-200'}`}>
+                            <button onClick={handlePreview} className={`px-8 py-4 rounded-2xl font-black transition-all border ${isDarkMode ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5' : 'border-gray-200'}`}>
                                 Preview <ExternalLink className="inline-block w-4 h-4 ml-2" />
                             </button>
                             <button onClick={saveContent} className="px-12 py-4 bg-accent text-primary rounded-2xl font-black shadow-2xl shadow-accent/30 hover:scale-[1.05] transition-all">
@@ -667,6 +689,12 @@ export default function AdminDashboard() {
                                     <h4 className="text-[11px] font-black uppercase text-accent tracking-[0.3em] mb-8">SEO Metadata</h4>
                                     <div className="space-y-8">
                                         <div className="space-y-3">
+                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Meta Title</label>
+                                            <div className={`p-4 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 focus-within:border-accent/40' : 'bg-gray-50 border-gray-200'}`}>
+                                                <input value={editingBlog.meta_title} onChange={e => setEditingBlog({ ...editingBlog, meta_title: e.target.value })} className="w-full bg-transparent outline-none font-bold text-sm" placeholder="SEO Title Tags..." />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-3">
                                             <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Meta Description</label>
                                             <textarea
                                                 value={editingBlog.meta_description}
@@ -675,6 +703,12 @@ export default function AdminDashboard() {
                                                 rows={5}
                                                 placeholder="Write a compelling summary for Google results..."
                                             />
+                                        </div>
+                                        <div className="space-y-3">
+                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Canonical URL</label>
+                                            <div className={`p-4 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 focus-within:border-accent/40' : 'bg-gray-50 border-gray-200'}`}>
+                                                <input value={editingBlog.canonical_url} onChange={e => setEditingBlog({ ...editingBlog, canonical_url: e.target.value })} className="w-full bg-transparent outline-none font-bold text-sm" placeholder="https://..." />
+                                            </div>
                                         </div>
                                         <div className="space-y-3">
                                             <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Primary Keywords</label>

@@ -7,6 +7,19 @@ export class BlogsService {
     constructor(private prisma: PrismaService) { }
 
     async create(createBlogDto: CreateBlogDto, authorId: string) {
+        const existing = await this.prisma.blog.findFirst({
+            where: {
+                OR: [
+                    { slug: createBlogDto.slug },
+                    { title: createBlogDto.title }
+                ]
+            }
+        });
+
+        if (existing) {
+            throw new Error('A blog with this title or slug already exists.');
+        }
+
         return this.prisma.blog.create({
             data: {
                 ...createBlogDto,

@@ -17,20 +17,45 @@ export async function generateStaticParams() {
 }
 
 async function getBlog(slug: string) {
-    // Try finding by slug or id
+    // 1. Try fetching from the NestJS Backend API (Local SQLite)
     try {
-        const { data, error } = await supabase
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1'; // Fallback for SSG/SSR
+        const res = await fetch(`${apiUrl}/blogs?search=${slug}`); // Using search since we don't have a direct slug endpoint yet or we can filter. 
+        // Ideally we should have a get by slug endpoint. But check if findAll supports filtering by slug? 
+        // The Controller has findAll(@Query('search') search?: string). 
+        // A better approach: If the backend supports retrieving by ID, we can't use it easily with a slug. 
+        // Let's assume we can fetch all and find, or update backend to support slug.
+        // For now, let's fetch list and find.
+
+        if (res.ok) {
+            const data = await res.json();
+            // The backend returns { items: Blog[], meta: ... } or Blog[] depending on implementation. 
+            // Looking at AdminDashboard: setBlogs(data.items || (Array.isArray(data) ? data : []));
+            // Let's assume data.items is the array.
+            const blogs = data.items || (Array.isArray(data) ? data : []);
+
+            // Find the specific blog
+            const found = blogs.find((b: any) => b.slug === slug || b.id.toString() === slug);
+            if (found) return found;
+        }
+    } catch (e) {
+        console.warn('Backend API fetch failed:', e);
+    }
+
+    // 2. Fallback to Supabase (if needed, but likely data is in SQLite)
+    try {
+        const { data } = await supabase
             .from('blogs')
             .select('*')
-            .or(`slug.eq.${slug},id.eq.${slug}`) // Attempt to match slug or id (if slug is numeric)
+            .or(`slug.eq.${slug},id.eq.${slug}`)
             .single();
 
         if (data) return data;
     } catch (e) {
-        console.warn('Supabase fetch failed (expected during build if no env vars):', e);
+        // Warning suppressed
     }
 
-    // Fallback to static
+    // 3. Fallback to static content
     return STATIC_BLOGS.find(b => b.slug === slug || b.id.toString() === slug);
 }
 
@@ -49,7 +74,7 @@ export async function generateMetadata(
             title: blog.meta_title || blog.title,
             description: blog.meta_description,
             images: blog.image_url ? [blog.image_url] : [],
-            url: `https://sustainabilityhighway.com/blog/${blog.slug}`,
+            url: `https://sustainabilityhighway.com/blogs/${blog.slug}`,
             type: 'article',
         },
         // Schema logic could be added here or via script in body
@@ -62,6 +87,15 @@ export default async function BlogPage(props: Props) {
 
     if (!blog) {
         notFound();
+    }
+
+    // Ensure faq_data is an array (backend returns stringified JSON)
+    if (typeof blog.faq_data === 'string') {
+        try {
+            blog.faq_data = JSON.parse(blog.faq_data);
+        } catch (e) {
+            blog.faq_data = [];
+        }
     }
 
     return (

@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -12,49 +12,35 @@ model User {
   email     String   @unique
   password  String
   name      String?
-  role      Role     @default(ADMIN)
-  blogs     Blog[]
+  role      String   @default("ADMIN")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-enum Role {
-  ADMIN
-  EDITOR
+  blogs     Blog[]
 }
 
 model Blog {
-  id              Int      @id @default(autoincrement())
-  title           String
-  slug            String   @unique
-  content         String   @db.Text
-  excerpt         String?  @db.Text
-  image_url       String?
-  status          Status   @default(DRAFT)
-  
+  id               Int       @id @default(autoincrement())
+  title            String
+  slug             String    @unique
+  content          String
+  excerpt          String?
+  image_url        String?
+  status           String    @default("DRAFT")
   meta_title       String?
   meta_description String?
   canonical_url    String?
-  
-  topic_tags      String[]
-  faq_data        Json?     @default("[]")
-  schema_data     Json?     @default("{}")
-  template_id     String?   @default("standard")
-  source_url      String?
-  
-  author          User     @relation(fields: [authorId], references: [id])
-  authorId        String
-  category        Category? @relation(fields: [categoryId], references: [id])
-  categoryId      Int?
-  tags            Tag[]
-  
-  created_at       DateTime @default(now())
-  updated_at       DateTime @updatedAt
-}
-
-enum Status {
-  DRAFT
-  PUBLISHED
+  topic_tags       String?
+  faq_data         String?
+  schema_data      String?
+  template_id      String?   @default("standard")
+  source_url       String?
+  authorId         String
+  categoryId       Int?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+  category         Category? @relation(fields: [categoryId], references: [id])
+  author           User      @relation(fields: [authorId], references: [id])
+  tags             BlogTag[]
 }
 
 model Category {
@@ -65,8 +51,17 @@ model Category {
 }
 
 model Tag {
-  id    Int    @id @default(autoincrement())
-  name  String @unique
-  slug  String @unique
-  blogs Blog[]
+  id    Int       @id @default(autoincrement())
+  name  String    @unique
+  slug  String    @unique
+  blogs BlogTag[]
+}
+
+model BlogTag {
+  blogId Int
+  tagId  Int
+  tag    Tag  @relation(fields: [tagId], references: [id])
+  blog   Blog @relation(fields: [blogId], references: [id])
+
+  @@id([blogId, tagId])
 }

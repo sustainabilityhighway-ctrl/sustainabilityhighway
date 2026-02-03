@@ -54,7 +54,7 @@ export default async function InsightsPage() {
                     {blogs.map((blog: any) => (
                         <Link
                             key={blog.id}
-                            href={`/blog/${blog.slug || blog.id}`}
+                            href={`/blogs/${blog.slug || blog.id}`}
                             className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#4CAF50] transition-all duration-300 hover:transform hover:scale-105"
                         >
                             {blog.image_url ? (

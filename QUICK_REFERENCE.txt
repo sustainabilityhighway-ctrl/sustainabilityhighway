@@ -1,0 +1,53 @@
+╔══════════════════════════════════════════════════════════════╗
+║         SUSTAINABILITY HIGHWAY - QUICK REFERENCE             ║
+╚══════════════════════════════════════════════════════════════╝
+
+🌐 URLS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Frontend:        http://localhost:3000
+Admin Login:     http://localhost:3000/admin/login
+Admin Dashboard: http://localhost:3000/admin
+Backend API:     http://localhost:3001/api/v1
+API Docs:        http://localhost:3001/docs
+
+🔐 CREDENTIALS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Email:    sustainabilityhighway@gmail.com
+Password: Zooni@2024
+
+⚡ QUICK COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Start Frontend:    npm run dev
+Start Backend:     cd server && npm run start:dev
+Reset Admin:       cd server && npx ts-node reset-admin.ts
+Database GUI:      cd server && npx prisma studio
+
+📊 SERVER STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ Servers: I have stopped the background servers so you can 
+            run them in your own terminal without lock errors.
+
+Start Frontend: npm run dev
+Start Backend:  cd server; npm run start:dev
+
+🎨 ADMIN FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Full SEO Implementation (Meta Title, Description, Canonical)
+• Duplicate Content Protection (Check on Title/Slug)
+• Draft/Publish Workflow
+• AI Content Synthesis (Draft Mode)
+
+📝 LATEST CONTENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Article: Mastering the UN Sustainable Development Goals (UNSDG)
+Status:  DRAFT (Saved in database)
+Action:  Login to Admin -> Manage Content -> Publish
+
+💡 SOLUTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Lock Error: Always terminate previous npm run dev sessions before starting new ones.
+• SEO Checklist: Use WebP images < 100KB for maximum performance.
+
+╔══════════════════════════════════════════════════════════════╗
+║                  🚀 READY TO GO! 🚀                          ║
+╚══════════════════════════════════════════════════════════════╝
