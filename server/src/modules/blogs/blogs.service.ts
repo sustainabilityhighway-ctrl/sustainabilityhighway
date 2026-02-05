@@ -82,6 +82,15 @@ export class BlogsService {
         return blog;
     }
 
+    async findOneBySlug(slug: string) {
+        const blog = await this.prisma.blog.findUnique({
+            where: { slug },
+            include: { category: true, tags: true, author: true },
+        });
+        if (!blog) throw new NotFoundException(`Blog with slug ${slug} not found`);
+        return blog;
+    }
+
     async update(id: number, updateBlogDto: UpdateBlogDto) {
         return this.prisma.blog.update({
             where: { id },
