@@ -108,14 +108,14 @@ async function main() {
                         <div class="p-16 border-4 border-[#C5A059]/30 rounded-[4rem] space-y-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)]" style="background-color: #0a0a0a !important; border-color: rgba(197,160,137,0.3) !important;">
                             <h4 class="text-white font-black text-4xl uppercase tracking-tighter" style="color: #ffffff !important;">Technical Insight: The HVAC Mandate</h4>
                             <p class="text-gray-400 italic text-lg leading-relaxed" style="color: #9ca3af !important;">
-                                "The Energy category carries the highest weight. Projects targeting Gold or Diamond must optimize the building envelope—U-values for glazing should not exceed 1.8 W/m²K. Furthermore, HVAC systems must use zero CFC-based refrigerants, protecting both the ozone layer and the building's future regulatory standing under the international Montreal Protocol."
+                                "The Energy category carries the highest weight. Projects targeting Gold or Diamond must optimize the building envelope—U-values for glazing should not exceed 1.8 W/m². Furthermore, HVAC systems must use zero CFC-based refrigerants, protecting both the ozone layer and the building's future regulatory standing under the international Montreal Protocol."
                             </p>
                         </div>
                     </div>
                     
                     <!-- EXTREMELY HIGH VISIBILITY TABLE -->
                     <div class="flex-1 w-full bg-white rounded-[5rem] p-20 shadow-[0_80px_200px_rgba(0,0,0,1)] text-black border-[15px] border-black/5" style="background-color: #ffffff !important; color: #000000 !important;">
-                        <h3 class="text-6xl font-black mb-16 uppercase tracking-tighter border-b-8 border-black/10 pb-8">Credit Matrix</h3>
+                        <h3 class="text-6xl font-black mb-16 uppercase tracking-tighter border-b-8 border-black/10 pb-8" style="color: #000000 !important; border-color: #000000 !important;">Credit Matrix</h3>
                         <div class="space-y-10">
                             <div class="flex justify-between items-center group border-b-4 border-black/5 pb-10">
                                 <div class="space-y-2">
@@ -147,8 +147,8 @@ async function main() {
                             </div>
                             <div class="flex justify-between items-center group pb-10">
                                 <div class="space-y-2">
-                                    <span class="text-3xl font-black block">Indoor Quality (IEQ)</span>
-                                    <span class="text-black/50 text-base font-bold block uppercase tracking-widest">Thermal Comfort & Lighting Control</span>
+                                    <span class="text-3xl font-black block" style="color: #000000 !important;">Indoor Quality (IEQ)</span>
+                                    <span class="text-black/50 text-base font-bold block uppercase tracking-widest" style="color: rgba(0,0,0,0.6) !important;">Thermal Comfort & Lighting Control</span>
                                 </div>
                                 <span class="text-5xl font-mono font-black text-[#C5A059]">12 Pts</span>
                             </div>
@@ -286,22 +286,22 @@ async function main() {
             </section>
 
             <!-- Mostadam vs. LEED Comparison: EXTREME VISIBILITY -->
-            <section class="max-w-7xl mx-auto p-24 bg-white rounded-[7rem] shadow-[0_120px_250px_rgba(0,0,0,1)] text-black border-[20px] border-black/5">
+            <section class="max-w-7xl mx-auto p-24 bg-white rounded-[7rem] shadow-[0_120px_250px_rgba(0,0,0,1)] text-black border-[20px] border-black/5" style="background-color: #ffffff !important; color: #000000 !important;">
                 <div class="space-y-20">
-                     <h2 class="text-7xl font-black tracking-tighter text-center uppercase">Mostadam vs. LEED</h2>
+                     <h2 class="text-7xl font-black tracking-tighter text-center uppercase" style="color: #000000 !important;">Mostadam vs. LEED</h2>
                      <div class="w-40 h-4 bg-black mx-auto rounded-full"></div>
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
                             <h4 class="text-[#C5A059] font-black text-4xl uppercase tracking-tighter border-b-8 border-[#C5A059] pb-6">Mostadam Strategy</h4>
-                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80" style="color: #000000 !important;">
                                 <p>Essential for all projects within the Ministry of Housing (Sakani) and MOMRAH jurisdiction. It is the language of Saudi regulation and national pride.</p>
                                 <p>Unmatched focus on water conservation and desert thermodynamic performance—metrics that international standards often over-generalize.</p>
                                 <p>Prioritizes the local supply chain, giving developers a direct link to the "Saudi Made" economic benefits and tax incentives.</p>
                             </div>
                         </div>
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
-                            <h4 class="text-black font-black text-4xl uppercase tracking-tighter border-b-8 border-black pb-6">LEED Strategy</h4>
-                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
+                            <h4 class="text-black font-black text-4xl uppercase tracking-tighter border-b-8 border-black pb-6" style="color: #000000 !important; border-color: #000000 !important;">LEED Strategy</h4>
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80" style="color: #000000 !important;">
                                 <p>The global gold standard for international REITs and institutional investors from Europe and the Americas. It is a universal ESG currency.</p>
                                 <p>Standardized global benchmarking allows multinational corporations to compare the performance of their Jeddah office to their New York or London assets.</p>
                                 <p>Offers a massive database of international case studies and a global network of LEED AP professionals to draw expertise from.</p>

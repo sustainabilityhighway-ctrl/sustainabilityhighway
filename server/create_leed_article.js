@@ -77,34 +77,34 @@ async function main() {
             <section class="space-y-16">
                 <div class="text-center space-y-4">
                     <h2 class="text-6xl font-black text-white tracking-tighter uppercase">The Hierarchy of Achievement</h2>
-                    <p class="text-2xl text-gray-400 font-light italic">Points earned are a measure of commitment to the Kingdom's future.</p>
+                    <p class="text-lg text-gray-400 font-light italic">Points earned are a measure of commitment to the Kingdom's future.</p>
                 </div>
 
-                <div class="not-prose overflow-hidden rounded-[5rem] border-4 border-white/10 shadow-[0_100px_200px_rgba(0,0,0,1)] bg-white text-black">
+                <div class="not-prose overflow-hidden rounded-[5rem] border-4 border-white/10 shadow-[0_100px_200px_rgba(0,0,0,1)] bg-white text-black" style="background-color: #ffffff !important; color: #000000 !important;">
                      <div class="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100 text-center">
                         <div class="p-16 space-y-8 hover:bg-slate-50 transition-all duration-500">
                             <div class="w-14 h-14 rounded-full bg-emerald-500 mx-auto shadow-[0_0_30px_rgba(16,185,129,0.5)]"></div>
-                            <p class="font-black text-3xl">Certified</p>
+                            <p class="font-black text-3xl" style="color: #000000 !important;">Certified</p>
                             <p class="text-[#C5A059] font-bold text-lg uppercase tracking-widest">40-49 Pts</p>
-                            <p class="text-slate-500 text-sm font-medium">Entry-level sustainability. Focuses on meeting all prerequisites and basic credits.</p>
+                            <p class="text-slate-600 text-lg font-medium" style="color: #475569 !important;">Entry-level sustainability. Focuses on meeting all prerequisites and basic credits.</p>
                         </div>
                         <div class="p-16 space-y-8 hover:bg-slate-50 transition-all duration-500">
                             <div class="w-14 h-14 rounded-full bg-slate-400 mx-auto shadow-[0_0_30px_rgba(148,163,184,0.5)]"></div>
-                            <p class="font-black text-3xl">Silver</p>
-                            <p class="text-[#C5A059] font-bold text-xl uppercase tracking-widest">50-59 Pts</p>
-                            <p class="text-slate-500 text-sm font-medium">Demonstrates proactive environmental strategy and improved mechanical systems.</p>
+                            <p class="font-black text-3xl" style="color: #000000 !important;">Silver</p>
+                            <p class="text-[#C5A059] font-bold text-lg uppercase tracking-widest">50-59 Pts</p>
+                            <p class="text-slate-600 text-lg font-medium" style="color: #475569 !important;">Demonstrates proactive environmental strategy and improved mechanical systems.</p>
                         </div>
                         <div class="p-16 space-y-8 bg-slate-50/50">
                             <div class="w-14 h-14 rounded-full bg-[#C5A059] mx-auto shadow-[0_0_30px_rgba(197,160,89,0.5)]"></div>
-                            <p class="font-black text-3xl">Gold</p>
-                            <p class="text-[#C5A059] font-bold text-xl uppercase tracking-widest">60-79 Pts</p>
-                            <p class="text-slate-500 text-sm font-medium">Sustainable market leadership; most new Class-A commercial towers target this level.</p>
+                            <p class="font-black text-3xl" style="color: #000000 !important;">Gold</p>
+                            <p class="text-[#C5A059] font-bold text-lg uppercase tracking-widest">60-79 Pts</p>
+                            <p class="text-slate-600 text-lg font-medium" style="color: #475569 !important;">Sustainable market leadership; most new Class-A commercial towers target this level.</p>
                         </div>
                         <div class="p-16 space-y-8 bg-black text-white border-l-8 border-[#C5A059]">
                             <div class="w-20 h-20 rounded-full bg-white mx-auto shadow-[0_0_50px_white] animate-pulse"></div>
                             <p class="font-black text-3xl text-white">Platinum</p>
-                            <p class="text-[#C5A059] font-bold text-xl uppercase tracking-widest">80+ Pts</p>
-                            <p class="text-gray-400 text-sm font-light">Global benchmark; achieved through innovation and aggressive resource circularity.</p>
+                            <p class="text-[#C5A059] font-bold text-lg uppercase tracking-widest">80+ Pts</p>
+                            <p class="text-gray-400 text-lg font-light">Global benchmark; achieved through innovation and aggressive resource circularity.</p>
                         </div>
                      </div>
                 </div>
@@ -152,12 +152,12 @@ async function main() {
             </section>
 
              <!-- Section 4: Success Stories Case Study (Mostadam vs LEED) -->
-            <section class="p-24 bg-white rounded-[7rem] shadow-[0_120px_250px_rgba(0,0,0,1)] text-black border-[20px] border-black/5 relative overflow-hidden">
+            <section class="p-24 bg-white rounded-[7rem] shadow-[0_120px_250px_rgba(0,0,0,1)] text-black border-[20px] border-black/5 relative overflow-hidden" style="background-color: #ffffff !important; color: #000000 !important;">
                 <div class="absolute -right-40 -top-40 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-[100px]"></div>
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                     <div class="space-y-12">
-                        <h2 class="text-7xl font-black tracking-tighter uppercase leading-none border-l-[15px] border-black pl-12">The Platinum <br/>Blueprint</h2>
-                        <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
+                        <h2 class="text-7xl font-black tracking-tighter uppercase leading-none border-l-[15px] border-black pl-12" style="color: #000000 !important; border-color: #000000 !important;">The Platinum <br/>Blueprint</h2>
+                        <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80" style="color: #1a1a1a !important;">
                             <p>
                                 The King Abdullah Financial District (KAFD) represents the pinnacle of LEED achievement at an urban scale. As the world's largest LEED-certified financial district, KAFD uses a district cooling plant that is 40% more efficient than traditional HVAC.
                             </p>
@@ -250,29 +250,29 @@ async function main() {
             </section>
 
              <!-- Comparison with Mostadam: EXTREME VISIBILITY -->
-            <section class="max-w-7xl mx-auto p-24 bg-white rounded-[7rem] shadow-[0_120px_250px_rgba(0,0,0,1)] text-black border-[20px] border-black/5">
+            <section class="max-w-7xl mx-auto p-24 bg-white rounded-[7rem] shadow-[0_120px_250px_rgba(0,0,0,1)] text-black border-[20px] border-black/5" style="background-color: #ffffff !important; color: #000000 !important;">
                 <div class="space-y-20">
-                     <h2 class="text-7xl font-black tracking-tighter text-center uppercase">Dual Certification Strategy</h2>
+                     <h2 class="text-7xl font-black tracking-tighter text-center uppercase" style="color: #000000 !important;">Dual Certification Strategy</h2>
                      <div class="w-40 h-4 bg-black mx-auto rounded-full"></div>
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
                             <h4 class="text-[#C5A059] font-black text-4xl uppercase tracking-tighter border-b-8 border-[#C5A059] pb-6">LEED Strategy</h4>
-                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80" style="color: #1a1a1a !important;">
                                 <p>Used for international benchmarking and attracting multinational corporate tenants and global finance.</p>
                                 <p>Focuses on global standards like ASHRAE for energy and USGBC protocols for materials.</p>
                                 <p>Standardized credits allow for easy comparison across high-rise assets worldwide.</p>
                             </div>
                         </div>
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
-                            <h4 class="text-black font-black text-4xl uppercase tracking-tighter border-b-8 border-black pb-6">Mostadam Strategy</h4>
-                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
+                            <h4 class="text-black font-black text-4xl uppercase tracking-tighter border-b-8 border-black pb-6" style="color: #000000 !important; border-color: #000000 !important;">Mostadam Strategy</h4>
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80" style="color: #1a1a1a !important;">
                                 <p>Directly aligned with Saudi Building Code and mandatory for MOMRAH building permits.</p>
                                 <p>Exchanges credits for localized water conservation and thermal comfort specific to Riyadh/Jeddah heat.</p>
                                 <p>Reinforces the "Saudi Made" vision by focusing on regional supply chain and local labor.</p>
                             </div>
                         </div>
                      </div>
-                     <p class="text-center text-xl font-bold italic text-black/60 pt-10">Flagship projects often target both systems to maximize regulatory ease and international marketability.</p>
+                     <p class="text-center text-xl font-bold italic text-black/60 pt-10" style="color: #4b5563 !important;">Flagship projects often target both systems to maximize regulatory ease and international marketability.</p>
                 </div>
             </section>
 
