@@ -13,7 +13,7 @@ async function main() {
                 <p class="text-4xl leading-relaxed text-white font-black border-l-[12px] border-[#C5A059] pl-12 uppercase tracking-tighter italic">
                     Saudi Arabia is not just building cities; it is architecting a sustainable legacy.
                 </p>
-                <div class="space-y-8 text-2xl leading-relaxed text-gray-300 max-w-5xl">
+                <div class="space-y-8 text-lg leading-relaxed text-gray-300 max-w-5xl">
                     <p>
                         As the cornerstone of <a href="/projects/vision-2030" class="text-[#C5A059] hover:underline font-black">Vision 2030</a>, the <strong>Mostadam Rating System</strong> has transitioned from a voluntary framework into a national mandate for sustainable excellence. Developed by the <strong>Ministry of Municipal and Rural Affairs and Housing (MOMRAH)</strong>, Mostadam is a ground-up technical standard designed to solve the thermodynamic and cultural challenges of the Arabian Peninsula.
                     </p>
@@ -37,9 +37,9 @@ async function main() {
             <!-- Section 1: The Three Strategic Pillars -->
             <section class="space-y-24" style="background-color: transparent !important;">
                 <div class="space-y-10 text-center">
-                    <h2 class="text-8xl font-black text-white tracking-tighter uppercase mb-4" style="color: #ffffff !important;">1. The Three Strategic Pillars</h2>
+                    <h2 class="text-6xl font-black text-white tracking-tighter uppercase mb-4" style="color: #ffffff !important;">1. The Three Strategic Pillars</h2>
                     <div class="w-40 h-2 bg-[#C5A059] mx-auto rounded-full mb-12" style="background-color: #C5A059 !important;"></div>
-                    <p class="text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed" style="color: #9ca3af !important;">
+                    <p class="text-lg text-gray-400 max-w-4xl mx-auto leading-relaxed" style="color: #9ca3af !important;">
                         To address the complexity of a modern G20 economy, Mostadam is architected into three independent yet harmonized rating systems. This ensures that every project, from a single family villa to a multi-billion dollar gigaproject, has a relevant and achievable sustainability benchmark that supports the national vision.
                     </p>
                 </div>
@@ -49,7 +49,7 @@ async function main() {
                     <div class="p-16 rounded-[6rem] border-4 border-white/5 relative group transition-all duration-700" style="background-color: #000000 !important; border-color: rgba(255,255,255,0.05) !important;">
                         <div class="text-8xl mb-12">🏡</div>
                         <h3 class="text-4xl font-black text-white mb-10 border-b-8 border-[#C5A059] pb-6 inline-block uppercase tracking-tighter" style="color: #ffffff !important; border-color: #C5A059 !important;">Mostadam Residential</h3>
-                        <div class="space-y-8 text-xl leading-relaxed" style="color: #9ca3af !important;">
+                        <div class="space-y-8 text-lg leading-relaxed" style="color: #9ca3af !important;">
                             <p>
                                 The Residential scheme is the most intimate layer of the Mostadam suite. It is specifically designed to improve the standard of living for Saudi citizens by focusing on occupant comfort, privacy, and long-term utility savings. In a region where residential energy consumption accounts for a massive share of the national grid load during the summer—often reaching 70% of peak capacity—this pillar introduces rigorous thermal insulation requirements (U-values) that align with and exceed the latest Saudi Building Code (SBC 601/602).
                             </p>
@@ -63,7 +63,7 @@ async function main() {
                     <div class="p-16 rounded-[6rem] border-4 border-white/5 relative group transition-all duration-700" style="background-color: #000000 !important; border-color: rgba(255,255,255,0.05) !important;">
                         <div class="text-8xl mb-12">🏢</div>
                         <h3 class="text-4xl font-black text-white mb-10 border-b-8 border-[#C5A059] pb-6 inline-block uppercase tracking-tighter" style="color: #ffffff !important; border-color: #C5A059 !important;">Mostadam Commercial</h3>
-                        <div class="space-y-8 text-xl leading-relaxed" style="color: #9ca3af !important;">
+                        <div class="space-y-8 text-lg leading-relaxed" style="color: #9ca3af !important;">
                             <p>
                                 The Commercial scheme provides a rigorous performance framework for offices, retail malls, schools, mosques, and healthcare facilities. This pillar is heavily focused on the operational efficiency and lifecycle cost of high-occupancy assets. It mandates the use of Advanced Building Management Systems (BMS) to automate lighting and HVAC based on real-time occupancy data, drastically reducing waste in large-scale facilities.
                             </p>
@@ -77,7 +77,7 @@ async function main() {
                     <div class="p-16 rounded-[6rem] border-4 border-white/5 relative group transition-all duration-700" style="background-color: #000000 !important; border-color: rgba(255,255,255,0.05) !important;">
                         <div class="text-8xl mb-12">🏙️</div>
                         <h3 class="text-4xl font-black text-white mb-10 border-b-8 border-[#C5A059] pb-6 inline-block uppercase tracking-tighter" style="color: #ffffff !important; border-color: #C5A059 !important;">Mostadam Communities</h3>
-                        <div class="space-y-8 text-xl leading-relaxed" style="color: #9ca3af !important;">
+                        <div class="space-y-8 text-lg leading-relaxed" style="color: #9ca3af !important;">
                             <p>
                                 The Community pillar operates at the macro scale, governing the development of master-planned districts and entire smart cities like those found in NEOM, Diriyah, and the Red Sea project. At this level, the focus shifts to urban resilience and the public realm. Mostadam Communities incentivizes the preservation of natural wadis and the local topography, preventing the "cookie-cutter" land-grading that destroys fragile desert ecosystems.
                             </p>
@@ -94,7 +94,7 @@ async function main() {
                 <div class="flex flex-col lg:flex-row gap-24 items-start">
                     <div class="flex-1 space-y-12">
                         <h2 class="text-7xl font-black text-white tracking-tighter border-l-[12px] border-[#C5A059] pl-10 uppercase" style="color: #ffffff !important; border-color: #C5A059 !important;">2. Technical Framework</h2>
-                        <div class="space-y-10 text-2xl text-gray-300 leading-relaxed font-light" style="color: #d1d5db !important;">
+                        <div class="space-y-10 text-lg text-gray-300 leading-relaxed font-light" style="color: #d1d5db !important;">
                             <p>
                                 Mostadam is a points-based system, but it is unique in its use of <strong>Keystones</strong>. A Keystone is a mandatory requirement that must be met regardless of the project's rating target. If a project fails to implement even one Keystone, it is ineligible for certification. This ensures a minimum baseline of sustainability across all certified buildings in the Kingdom.
                             </p>
@@ -107,7 +107,7 @@ async function main() {
                         </div>
                         <div class="p-16 border-4 border-[#C5A059]/30 rounded-[4rem] space-y-8 shadow-[0_40px_100px_rgba(0,0,0,0.8)]" style="background-color: #0a0a0a !important; border-color: rgba(197,160,137,0.3) !important;">
                             <h4 class="text-white font-black text-4xl uppercase tracking-tighter" style="color: #ffffff !important;">Technical Insight: The HVAC Mandate</h4>
-                            <p class="text-gray-400 italic text-2xl leading-relaxed" style="color: #9ca3af !important;">
+                            <p class="text-gray-400 italic text-lg leading-relaxed" style="color: #9ca3af !important;">
                                 "The Energy category carries the highest weight. Projects targeting Gold or Diamond must optimize the building envelope—U-values for glazing should not exceed 1.8 W/m²K. Furthermore, HVAC systems must use zero CFC-based refrigerants, protecting both the ozone layer and the building's future regulatory standing under the international Montreal Protocol."
                             </p>
                         </div>
@@ -161,8 +161,8 @@ async function main() {
             <section class="space-y-24 bg-[#050505] p-24 rounded-[6rem] border-4 border-white/5 shadow-inner">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
                     <div class="space-y-12">
-                        <h3 class="text-[#C5A059] font-black text-5xl uppercase tracking-tighter">Water Conservation Mandate</h3>
-                        <div class="space-y-8 text-2xl text-gray-400 leading-relaxed font-light">
+                        <h3 class="text-[#C5A059] font-black text-4xl uppercase tracking-tighter">Water Conservation Mandate</h3>
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light">
                             <p>
                                 In an arid climate like Saudi Arabia, water is more than a utility; it is a strategic national asset. Mostadam’s Water category requires a revolutionary approach to plumbing and irrigation. One of the mandatory Keystones is the implementation of 100% metering for all building water lines, allowing management to detect leaks instantly via the BMS system.
                             </p>
@@ -173,7 +173,7 @@ async function main() {
                     </div>
                     <div class="space-y-12">
                         <h3 class="text-[#C5A059] font-black text-5xl uppercase tracking-tighter">Local Content & Sustainability</h3>
-                        <div class="space-y-8 text-2xl text-gray-400 leading-relaxed font-light">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light">
                             <p>
                                 Mostadam is a powerful engine for the "Saudi Made" vision. By awarding significant elective points to projects that source materials harvested or manufactured within 500km of the project site, it creates a massive demand for local steel, glass, and sustainable concrete. This not only bolsters the local economy but also drastically reduces the embodied carbon of the project by eliminating long-distance international shipping emissions.
                             </p>
@@ -190,7 +190,7 @@ async function main() {
                 <div class="space-y-12">
                     <h2 class="text-7xl font-black text-white tracking-tighter uppercase" style="color: #ffffff !important;">The Accreditation Journey</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                         <div class="space-y-8 text-2xl text-gray-300 font-light leading-relaxed" style="color: #d1d5db !important;">
+                         <div class="space-y-8 text-lg text-gray-300 font-light leading-relaxed" style="color: #d1d5db !important;">
                             <p>
                                 The path to a Mostadam rating is a multi-phase process that begins long before the first shovel hits the ground. It requires a highly collaborative "Integrated Design Process" (IDP) involving architects, MEP engineers, and sustainability consultants from the earliest conceptual stages of the project.
                             </p>
@@ -224,7 +224,7 @@ async function main() {
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
                      <div class="space-y-12 border-l-[15px] border-[#C5A059] pl-16">
                         <h3 class="text-white font-black text-6xl uppercase tracking-tighter" style="color: #ffffff !important;">Local Content & Vision 2030</h3>
-                        <div class="space-y-8 text-2xl text-gray-400 leading-relaxed font-light" style="color: #9ca3af !important;">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light" style="color: #9ca3af !important;">
                             <p>
                                 Mostadam is a primary driver for the "Saudi Made" initiative. By awarding significant elective points to projects that source materials harvested, extracted, or manufactured within 500km of the project site, it creates a massive demand for local steel, glass, and sustainable concrete. This reduces the project's embodied carbon and reinforces the domestic job market.
                             </p>
@@ -235,7 +235,7 @@ async function main() {
                      </div>
                      <div class="space-y-12 border-l-[15px] border-white/10 pl-16">
                         <h3 class="text-white font-black text-6xl uppercase tracking-tighter" style="color: #ffffff !important;">Global ESG & Market Value</h3>
-                        <div class="space-y-8 text-2xl text-gray-400 leading-relaxed font-light" style="color: #9ca3af !important;">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light" style="color: #9ca3af !important;">
                             <p>
                                 For international investors, Mostadam certification is a recognized mark of risk mitigation. Certified buildings demonstrate lower operational costs, higher tenant retention, and resilience against future resource shortages or carbon taxes.
                             </p>
@@ -250,8 +250,8 @@ async function main() {
              <!-- Section 4: Rating Tiers & Visual Breakdown -->
             <section class="space-y-16" style="background-color: transparent !important;">
                 <div class="text-center space-y-8">
-                    <h2 class="text-8xl font-black text-white tracking-widest uppercase mb-4" style="color: #ffffff !important;">Certification Tiers</h2>
-                    <p class="text-3xl text-gray-400 max-w-2xl mx-auto font-light italic" style="color: #9ca3af !important;">Excellence is measured in points and persistence.</p>
+                    <h2 class="text-6xl font-black text-white tracking-widest uppercase mb-4" style="color: #ffffff !important;">Certification Tiers</h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto font-light italic" style="color: #9ca3af !important;">Excellence is measured in points and persistence.</p>
                 </div>
 
                 <div class="not-prose overflow-hidden rounded-[6rem] border-4 border-white/10 shadow-[0_100px_200px_rgba(0,0,0,1)]" style="background-color: #000000 !important;">
@@ -293,7 +293,7 @@ async function main() {
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
                             <h4 class="text-[#C5A059] font-black text-4xl uppercase tracking-tighter border-b-8 border-[#C5A059] pb-6">Mostadam Strategy</h4>
-                            <div class="space-y-8 text-2xl leading-relaxed font-bold text-black/80">
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
                                 <p>Essential for all projects within the Ministry of Housing (Sakani) and MOMRAH jurisdiction. It is the language of Saudi regulation and national pride.</p>
                                 <p>Unmatched focus on water conservation and desert thermodynamic performance—metrics that international standards often over-generalize.</p>
                                 <p>Prioritizes the local supply chain, giving developers a direct link to the "Saudi Made" economic benefits and tax incentives.</p>
@@ -301,7 +301,7 @@ async function main() {
                         </div>
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
                             <h4 class="text-black font-black text-4xl uppercase tracking-tighter border-b-8 border-black pb-6">LEED Strategy</h4>
-                            <div class="space-y-8 text-2xl leading-relaxed font-bold text-black/80">
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
                                 <p>The global gold standard for international REITs and institutional investors from Europe and the Americas. It is a universal ESG currency.</p>
                                 <p>Standardized global benchmarking allows multinational corporations to compare the performance of their Jeddah office to their New York or London assets.</p>
                                 <p>Offers a massive database of international case studies and a global network of LEED AP professionals to draw expertise from.</p>
@@ -315,17 +315,17 @@ async function main() {
             <section class="space-y-24 py-48 border-t-[30px] border-[#C5A059] text-center bg-black rounded-[6rem] mt-32 relative overflow-hidden" style="background-color: #000000 !important; border-color: #C5A059 !important;">
                 <div class="absolute inset-0 bg-gradient-to-b from-[#C5A059]/10 to-transparent"></div>
                 <div class="max-w-6xl mx-auto space-y-20 px-10 relative z-10">
-                    <h2 class="text-[12rem] font-black text-white/5 tracking-[0.2em] leading-none absolute left-0 right-0 -translate-y-24 select-none pointer-events-none uppercase italic">FOUNDATION</h2>
-                    <h3 class="text-9xl font-black text-white tracking-widest uppercase mb-4" style="color: #ffffff !important;">CONCLUSION</h3>
+                    <h2 class="text-[8rem] font-black text-white/5 tracking-[0.2em] leading-none absolute left-0 right-0 -translate-y-12 select-none pointer-events-none uppercase italic">FOUNDATION</h2>
+                    <h3 class="text-6xl font-black text-white tracking-widest uppercase mb-4" style="color: #ffffff !important;">CONCLUSION</h3>
                      <div class="w-48 h-6 bg-[#C5A059] mx-auto rounded-full" style="background-color: #C5A059 !important;"></div>
-                    <div class="space-y-16 text-4xl text-gray-300 font-light leading-relaxed max-w-5xl mx-auto text-center" style="color: #d1d5db !important;">
+                    <div class="space-y-16 text-xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto text-center" style="color: #d1d5db !important;">
                         <p>
                             The Mostadam Rating System is more than a technical benchmark; it is the architectural vernacular of a new Saudi Arabia. It bridges the gap between our rich desert heritage and the high-tech requirements of a post-oil economy. By integrating these local standards today, we are protecting our natural wadis, conserving our precious groundwater, and creating a resilient habitat for several generations to come.
                         </p>
                         <p>
                             As we drive toward the final vision of 2030, and look beyond toward the Net Zero goals of 2060, Mostadam remains the technical backbone of every landmark, from the vertical streets of THE LINE to the coastal resorts of the Red Sea. Mastery of this system is no longer optional—it is the baseline for excellence in the modern Saudi market.
                         </p>
-                         <p class="text-white font-black text-5xl uppercase tracking-tighter italic border-y-4 border-white/10 py-16 bg-white/5 rounded-[3rem]" style="color: #ffffff !important;">
+                         <p class="text-white font-black text-2xl uppercase tracking-tighter italic border-y-4 border-white/10 py-16 bg-white/5 rounded-[3rem]" style="color: #ffffff !important;">
                             Those who lead in sustainability today will be the architects of the Kingdom’s prosperity tomorrow.
                         </p>
                     </div>

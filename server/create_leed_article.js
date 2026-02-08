@@ -13,7 +13,7 @@ async function main() {
                 <p class="text-4xl leading-relaxed text-white font-black border-l-[12px] border-[#C5A059] pl-12 uppercase tracking-tighter italic">
                     The Kingdom is no longer just dreaming of a green future; it is certifying it block by block.
                 </p>
-                <div class="space-y-8 text-2xl leading-relaxed text-gray-300 max-w-5xl">
+                <div class="space-y-8 text-lg leading-relaxed text-gray-300 max-w-5xl">
                     <p>
                         In the rapid modernization of Saudi Arabia's urban centers, the <strong>LEED (Leadership in Energy and Environmental Design)</strong> certification has emerged as the premier international benchmark for sustainability. While the local <a href="/blogs/mostadam-rating-system-guide" class="text-[#C5A059] hover:underline font-bold">Mostadam system</a> provides regulatory alignment, LEED offers the global prestige and ESG (Environmental, Social, and Governance) transparency required by international institutional investors.
                     </p>
@@ -42,7 +42,7 @@ async function main() {
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                    <div class="space-y-6 text-xl leading-relaxed text-gray-400">
+                    <div class="space-y-6 text-lg leading-relaxed text-gray-400">
                         <p>
                             Developed by the U.S. Green Building Council (USGBC), LEED provides a points-based system that allows building owners and operators to be environmentally responsible and use resources efficiently. In Saudi Arabia, LEED has become an essential tool for attracting foreign capital. Global Real Estate Investment Trusts (REITs) and institutional lenders now view LEED certification as a non-negotiable indicator of risk mitigation and future-proofed asset management.
                         </p>
@@ -85,7 +85,7 @@ async function main() {
                         <div class="p-16 space-y-8 hover:bg-slate-50 transition-all duration-500">
                             <div class="w-14 h-14 rounded-full bg-emerald-500 mx-auto shadow-[0_0_30px_rgba(16,185,129,0.5)]"></div>
                             <p class="font-black text-3xl">Certified</p>
-                            <p class="text-[#C5A059] font-bold text-xl uppercase tracking-widest">40-49 Pts</p>
+                            <p class="text-[#C5A059] font-bold text-lg uppercase tracking-widest">40-49 Pts</p>
                             <p class="text-slate-500 text-sm font-medium">Entry-level sustainability. Focuses on meeting all prerequisites and basic credits.</p>
                         </div>
                         <div class="p-16 space-y-8 hover:bg-slate-50 transition-all duration-500">
@@ -122,7 +122,7 @@ async function main() {
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
                      <div class="space-y-12">
                         <h3 class="text-white font-black text-5xl border-l-[15px] border-[#C5A059] pl-10 uppercase tracking-tighter">Energy & Cooling</h3>
-                        <div class="space-y-8 text-2xl text-gray-400 leading-relaxed font-light">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light">
                             <p>
                                 Energy modeling is the cornerstone of any LEED application in the Kingdom. With exterior temperatures often exceeding 45°C, the cooling load dominates the building's energy profile. To secure high points in the <strong>Energy and Atmosphere</strong> category, projects must focus on "Envelope-First" strategies. Using high-performance thermal breaks, triple-glazed windows with low-E coatings, and high Solar Reflectance Index (SRI) roofing materials can reduce the cooling load by up to 15% before mechanical systems are even considered.
                             </p>
@@ -136,7 +136,7 @@ async function main() {
                     </div>
                     <div class="space-y-12">
                         <h3 class="text-white font-black text-5xl border-l-[15px] border-white/20 pl-10 uppercase tracking-tighter">Water Circularity</h3>
-                        <div class="space-y-8 text-2xl text-gray-400 leading-relaxed font-light">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light">
                             <p>
                                 In Saudi Arabia, water is a strategic national asset. LEED's <strong>Water Efficiency</strong> category rewards projects that treated water as a finite resource. A mandatory prerequisite is 100% metering for all building water lines, including separate meters for indoor use, cooling towers, and irrigation. This allows the BMS to detect minor leaks instantly, preventing thousands of gallons of loss in a region where desalination is the primary water source.
                             </p>
@@ -157,7 +157,7 @@ async function main() {
                 <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
                     <div class="space-y-12">
                         <h2 class="text-7xl font-black tracking-tighter uppercase leading-none border-l-[15px] border-black pl-12">The Platinum <br/>Blueprint</h2>
-                        <div class="space-y-8 text-2xl leading-relaxed font-bold text-black/80">
+                        <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
                             <p>
                                 The King Abdullah Financial District (KAFD) represents the pinnacle of LEED achievement at an urban scale. As the world's largest LEED-certified financial district, KAFD uses a district cooling plant that is 40% more efficient than traditional HVAC.
                             </p>
@@ -179,7 +179,7 @@ async function main() {
             <!-- Section 5: The ROI of Green Building -->
             <section class="space-y-16">
                  <div class="text-center space-y-8">
-                    <h2 class="text-8xl font-black text-white tracking-widest uppercase mb-4">Investment & ROI</h2>
+                    <h2 class="text-6xl font-black text-white tracking-widest uppercase mb-4">Investment & ROI</h2>
                     <p class="text-3xl text-gray-400 max-w-3xl mx-auto font-light italic">Sustainability is a competitive advantage, not a cost center.</p>
                 </div>
 
@@ -187,7 +187,7 @@ async function main() {
                      <div class="p-16 rounded-[6rem] border-4 border-white/5 relative group transition-all duration-700 bg-black">
                         <div class="text-8xl mb-12">📈</div>
                         <h3 class="text-4xl font-black text-white mb-10 border-b-8 border-[#C5A059] pb-6 inline-block uppercase tracking-tighter">Market Value</h3>
-                        <div class="space-y-8 text-xl text-gray-400 leading-relaxed font-light">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light">
                              <p>
                                 In the Saudi market, LEED-certified assets command a significant "Green Premium." Evidence suggests that Class-A office space with LEED Gold or Platinum status can achieve 12-18% higher rental rates compared to non-certified buildings. Furthermore, these buildings exhibit faster absorption rates (leasing up to 30% quicker) as they satisfy the corporate mandates of multinational tenants who are bound by global emission reduction targets.
                             </p>
@@ -199,7 +199,7 @@ async function main() {
                     <div class="p-16 rounded-[6rem] border-4 border-white/5 relative group transition-all duration-700 bg-black">
                         <div class="text-8xl mb-12">🔧</div>
                         <h3 class="text-4xl font-black text-white mb-10 border-b-8 border-[#C5A059] pb-6 inline-block uppercase tracking-tighter">Operational Efficiency</h3>
-                        <div class="space-y-8 text-xl text-gray-400 leading-relaxed font-light">
+                        <div class="space-y-8 text-lg text-gray-400 leading-relaxed font-light">
                              <p>
                                 Operational savings are the most direct benefit of the LEED framework. While the initial investment in high-performance glazing and smart AC systems may add 2-4% to the capital expenditure, the operational payback is often achieved within 5 years. In large-scale developments, the saving on electricity alone can reach millions of Riyals annually.
                             </p>
@@ -216,7 +216,7 @@ async function main() {
                 <div class="space-y-12">
                     <h2 class="text-7xl font-black text-white tracking-tighter uppercase">The Certification Roadmap</h2>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                         <div class="space-y-8 text-2xl text-gray-300 font-light leading-relaxed">
+                         <div class="space-y-8 text-lg text-gray-300 font-light leading-relaxed">
                             <p>
                                 Achieving LEED certification is a multi-phase process that begins during the schematic design phase. It requires an "Integrative Process," where architects, MEP engineers, and sustainability consultants work together rather than in silos.
                             </p>
@@ -257,7 +257,7 @@ async function main() {
                      <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
                             <h4 class="text-[#C5A059] font-black text-4xl uppercase tracking-tighter border-b-8 border-[#C5A059] pb-6">LEED Strategy</h4>
-                            <div class="space-y-8 text-2xl leading-relaxed font-bold text-black/80">
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
                                 <p>Used for international benchmarking and attracting multinational corporate tenants and global finance.</p>
                                 <p>Focuses on global standards like ASHRAE for energy and USGBC protocols for materials.</p>
                                 <p>Standardized credits allow for easy comparison across high-rise assets worldwide.</p>
@@ -265,7 +265,7 @@ async function main() {
                         </div>
                         <div class="space-y-10 p-12 bg-black/5 rounded-[4rem]">
                             <h4 class="text-black font-black text-4xl uppercase tracking-tighter border-b-8 border-black pb-6">Mostadam Strategy</h4>
-                            <div class="space-y-8 text-2xl leading-relaxed font-bold text-black/80">
+                            <div class="space-y-8 text-lg leading-relaxed font-bold text-black/80">
                                 <p>Directly aligned with Saudi Building Code and mandatory for MOMRAH building permits.</p>
                                 <p>Exchanges credits for localized water conservation and thermal comfort specific to Riyadh/Jeddah heat.</p>
                                 <p>Reinforces the "Saudi Made" vision by focusing on regional supply chain and local labor.</p>
@@ -323,17 +323,17 @@ async function main() {
             <section class="space-y-24 py-48 border-t-[30px] border-[#C5A059] text-center bg-black rounded-[6rem] mt-32 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-b from-[#C5A059]/10 to-transparent"></div>
                 <div class="max-w-6xl mx-auto space-y-20 px-10 relative z-10">
-                    <h2 class="text-[12rem] font-black text-white/5 tracking-[0.2em] leading-none absolute left-0 right-0 -translate-y-24 select-none pointer-events-none uppercase italic">PROSPERITY</h2>
-                    <h3 class="text-9xl font-black text-white tracking-widest uppercase mb-4">CONCLUSION</h3>
+                    <h2 class="text-[8rem] font-black text-white/5 tracking-[0.2em] leading-none absolute left-0 right-0 -translate-y-12 select-none pointer-events-none uppercase italic">PROSPERITY</h2>
+                    <h3 class="text-6xl font-black text-white tracking-widest uppercase mb-4">CONCLUSION</h3>
                      <div class="w-48 h-6 bg-[#C5A059] mx-auto rounded-full"></div>
-                    <div class="space-y-16 text-4xl text-gray-300 font-light leading-relaxed max-w-5xl mx-auto text-center" style="color: #d1d5db !important;">
+                    <div class="space-y-16 text-lg text-gray-300 font-light leading-relaxed max-w-4xl mx-auto text-center" style="color: #d1d5db !important;">
                         <p>
                             LEED certification in Saudi Arabia is far more than a marketing exercise; it is a fundamental shift toward building a sustainable, post-oil economy. By adhering to these rigorous standards, developers are not just meeting current demands but are future-proofing their assets against a changing climate and evolving global regulations.
                         </p>
                         <p>
                             As we drive toward the final vision of 2030, and look beyond toward the Net Zero goals of 2060, LEED remains the technical backbone of every landmark, from the vertical streets of THE LINE to the coastal resorts of the Red Sea. Mastery of this system is no longer optional—it is the baseline for excellence in the modern Saudi market.
                         </p>
-                         <p class="text-white font-black text-5xl uppercase tracking-tighter italic border-y-4 border-white/10 py-16 bg-white/5 rounded-[3rem]" style="color: #ffffff !important;">
+                         <p class="text-white font-black text-2xl uppercase tracking-tighter italic border-y-4 border-white/10 py-16 bg-white/5 rounded-[3rem]" style="color: #ffffff !important;">
                             Those who lead in sustainability today will be the architects of the Kingdom’s prosperity tomorrow.
                         </p>
                     </div>
