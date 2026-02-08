@@ -329,11 +329,6 @@ async function main() {
                             Those who lead in sustainability today will be the architects of the Kingdom’s prosperity tomorrow.
                         </p>
                     </div>
-                    <div class="pt-32 scale-125">
-                        <a href="/consultation" class="px-28 py-14 rounded-full bg-[#C5A059] text-black font-black text-4xl uppercase tracking-[0.5em] hover:bg-white hover:scale-110 transition-all shadow-[0_60px_120px_rgba(197,160,89,0.5)] inline-block">
-                            Consult with Experts
-                        </a>
-                    </div>
                 </div>
             </section>
 
