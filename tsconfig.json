@@ -15,6 +15,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "incremental": true,
     "plugins": [
       {
@@ -30,8 +32,13 @@
   },
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "app",
+    "components",
+    "services",
+    "constants.ts",
+    "premiumArticle.ts",
+    "staticBlogs.ts",
+    "types.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
