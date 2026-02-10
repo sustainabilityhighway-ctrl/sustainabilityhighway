@@ -86,6 +86,7 @@ const Footer: React.FC = () => {
                     © 2026 Sustainability Highway. All Rights Reserved.
                 </p>
                 <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-gray-600">
+                    <Link href="/admin/login" className="hover:text-[#C5A059] transition-colors">Admin Access</Link>
                     <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
                     <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
                 </div>
