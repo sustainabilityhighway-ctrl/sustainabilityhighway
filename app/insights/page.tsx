@@ -20,7 +20,7 @@ async function getBlogs() {
             .order('created_at', { ascending: false });
 
         if (error) {
-            console.error('Error fetching blogs:', error);
+            // console.error('Error fetching blogs:', error);
             return STATIC_BLOGS.filter(b => b.is_published);
         }
 
@@ -30,7 +30,7 @@ async function getBlogs() {
 
         return data;
     } catch (e) {
-        console.error('Exception fetching blogs:', e);
+        // console.error('Exception fetching blogs:', e);
         return STATIC_BLOGS.filter(b => b.is_published);
     }
 }

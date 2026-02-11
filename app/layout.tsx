@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' })
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://sustainabilityhighway.com'),
     title: 'Sustainability Highway | Vision 2030 LEED & Mostadam Insights in Saudi Arabia',
     description: 'Your premier source for sustainability insights for Vision 2030 projects in KSA. LEED certification guides, Mostadam rating info, and green building news for Saudi Arabia.',
     keywords: 'Vision 2030, LEED KSA, Mostadam, sustainability Saudi Arabia, green building, NEOM, construction KSA updates',

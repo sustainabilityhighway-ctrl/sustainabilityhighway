@@ -32,9 +32,9 @@ export class GeminiService {
 
   constructor() {
     const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
-    if (!apiKey) {
+    /* if (!apiKey) {
       console.warn("Gemini API Key is missing. AI features will not work.");
-    }
+    } */
     this.ai = new GoogleGenAI({ apiKey });
   }
 

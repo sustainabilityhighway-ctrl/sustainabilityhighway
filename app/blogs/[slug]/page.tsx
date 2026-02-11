@@ -38,7 +38,7 @@ async function getBlog(slug: string) {
             return await res.json();
         }
     } catch (e) {
-        console.warn('Backend API fetch by slug failed:', e);
+        // Silent fallback for build clean-up
     }
 
     // 2. Fallback to Supabase (if needed, but likely data is in SQLite)
