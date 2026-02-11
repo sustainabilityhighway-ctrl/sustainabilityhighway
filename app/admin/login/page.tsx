@@ -7,6 +7,8 @@ import { Lock, Mail, ArrowRight, ShieldCheck, Leaf, Globe, Sparkles, CheckCircle
 
 
 
+import { supabase } from '../../../services/supabaseClient';
+
 export default function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,26 +20,24 @@ export default function AdminLogin() {
         setIsLoading(true);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
             });
 
-            const data = await response.json();
-
-            if (!response.ok) {
-                alert('Login failed: ' + (data.message || 'Invalid credentials'));
+            if (error) {
+                alert('Login failed: ' + error.message);
                 setIsLoading(false);
-            } else {
-                localStorage.setItem('adminToken', data.access_token);
+                return;
+            }
+
+            if (data.session) {
+                localStorage.setItem('adminToken', data.session.access_token);
                 localStorage.setItem('adminUser', JSON.stringify(data.user));
                 router.push('/admin');
             }
         } catch (err) {
-            alert('An unexpected error occurred. Is the backend running?');
+            alert('An unexpected error occurred. Please try again.');
             setIsLoading(false);
         }
     };
