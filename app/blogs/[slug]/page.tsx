@@ -19,7 +19,9 @@ export async function generateStaticParams() {
 async function getBlog(slug: string) {
     // 1. Try fetching from the NestJS Backend API (Local SQLite)
     try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3001/api/v1' : '');
+
+        if (!apiUrl) throw new Error('API URL not configured');
 
         // Use the specific by-slug endpoint for better reliability and performance
         let res = await fetch(`${apiUrl}/blogs/slug/${slug}`, {

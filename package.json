@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -p \"[{name}]\" -n \"NEXT,SERVER\" -c \"cyan.bold,green.bold\" \"next dev\" \"npm run server\"",
+    "dev": "npx concurrently -k -p \"[{name}]\" -n \"NEXT,SERVER\" -c \"cyan.bold,green.bold\" \"next dev\" \"npm run server\"",
     "server": "npm run start:dev --prefix server",
     "build": "next build",
     "start": "next start",

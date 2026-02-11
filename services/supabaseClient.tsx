@@ -17,8 +17,8 @@ const isValidUrl = (url: string | undefined) => {
     }
 };
 
-const finalSupabaseUrl = isValidUrl(supabaseUrl) ? supabaseUrl : 'https://xohrvqoftgiugocrhfnr.supabase.co';
-const finalSupabaseKey = supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhvaHJ2cW9mdGdpdWdvY3JoZm5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3NDgxNTgsImV4cCI6MjA4NDMyNDE1OH0.BilKFzk-ySSbtWuWGrXJ0cMPQ3FwcR-s40V3P0Vd9iA';
+const finalSupabaseUrl = isValidUrl(supabaseUrl) ? supabaseUrl : 'https://wwsktlepebphvzeafhsx.supabase.co';
+const finalSupabaseKey = supabaseAnonKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3c2t0bGVwZWJwaHZ6ZWFmaHN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2OTI2MzgsImV4cCI6MjA4NTI2ODYzOH0.6dCZ6AsjnlhC2ye5ZLyIrxwrDSeAIK3OvgBDR-uoF6c';
 
 // Fallback to prevent crash if keys are missing
 export const supabase = createClient(
