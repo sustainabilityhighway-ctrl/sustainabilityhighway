@@ -8,7 +8,9 @@ import {
     ChevronRight, MoreVertical, Eye, Edit3, Trash2, Image as ImageIcon,
     BarChart3, Users, Menu, X, CheckCircle, AlertCircle, UploadCloud,
     ShieldCheck, TrendingUp, Clock, ArrowUpRight, Share2, MessageSquare,
-    Sun, Moon, Tags, FolderTree, Globe, Type, ExternalLink, Filter
+    Sun, Moon, Tags, FolderTree, Globe, Type, ExternalLink, Filter,
+    FileSearch, Activity, FileCheck2, Network, AlertTriangle, CheckSquare,
+    Terminal, Zap, FileWarning, ShieldAlert, Leaf
 } from 'lucide-react';
 
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
@@ -33,6 +35,7 @@ interface Blog {
     tags?: Tag[];
     excerpt?: string;
     status: 'DRAFT' | 'PUBLISHED';
+    author?: { name: string };
 }
 
 interface Category { id: number; name: string; slug: string; blogCount?: number; }
@@ -65,9 +68,9 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true);
     const [editingBlog, setEditingBlog] = useState<Blog | null>(null);
     const [faqs, setFaqs] = useState<FAQ[]>([]);
-    const [activeTab, setActiveTab] = useState<'dashboard' | 'blogs' | 'categories' | 'tags' | 'media' | 'subscribers'>('dashboard');
+    const [activeTab, setActiveTab] = useState<'dashboard' | 'blogs' | 'seo-analyzer' | 'duplicate-checker' | 'schema-manager' | 'internal-linking' | 'media' | 'settings'>('dashboard');
     const [isSidebarOpen, setSidebarOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const [notification, setNotification] = useState<any>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [filterStatus, setFilterStatus] = useState('all');
@@ -79,10 +82,10 @@ export default function AdminDashboard() {
     // --- Initialization ---
     useEffect(() => {
         const savedMode = localStorage.getItem('adminTheme');
-        const mode = savedMode === 'light' ? false : true;
+        const mode = savedMode === 'dark' ? true : false;
         setIsDarkMode(mode);
-        if (!mode) document.documentElement.classList.remove('dark');
-        else document.documentElement.classList.add('dark');
+        if (mode) document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
 
         const token = localStorage.getItem('adminToken');
         if (!token) {
@@ -229,365 +232,517 @@ export default function AdminDashboard() {
         router.push('/admin/login');
     };
 
+    const calculateSEOScore = (b: any) => {
+        let score = 50;
+        if (b.meta_description) score += 20;
+        if (b.slug) score += 10;
+        const wordCount = b.content?.split(/\s+/).length || 0;
+        if (wordCount > 1000) score += 20;
+        else if (wordCount > 500) score += 10;
+        return Math.min(score, 100);
+    };
+
     const filteredBlogs = blogs.filter(b =>
         b.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
         (filterStatus === 'all' || (filterStatus === 'published' ? b.status === 'PUBLISHED' : b.status === 'DRAFT'))
     );
 
-    return (
-        <div className={`min-h-screen font-sans flex transition-colors duration-300 ${isDarkMode ? 'bg-primary text-white' : 'bg-[#F8FAFC] text-primary'}`}>
+    const renderContent = () => {
+        const stats = {
+            published: blogs.filter(b => b.status === 'PUBLISHED').length,
+            drafts: blogs.filter(b => b.status === 'DRAFT').length,
+            duplicates: blogs.filter((b, i) => blogs.findIndex(t => t.title === b.title) !== i).length,
+            seoIssues: blogs.filter(b => !b.meta_description || !b.slug).length
+        };
 
-            {/* --- Sidebar --- */}
-            <aside className={`w-80 ${isDarkMode ? 'bg-navy border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.5)]' : 'bg-white border-gray-100 shadow-xl'} fixed h-full z-40 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 rounded-r-[3rem] p-8 flex flex-col justify-between`}>
-                <div>
-                    <div className="flex items-center gap-3 mb-12 px-2">
-                        <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center shadow-lg shadow-accent/20">
-                            <ShieldCheck className="w-7 h-7 text-primary" />
-                        </div>
-                        <div>
-                            <h2 className={`text-xl font-black tracking-tight ${isDarkMode ? 'text-white' : 'text-primary'}`}>Sustain<span className="text-accent">Hub</span></h2>
-                            <p className="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Admin Control</p>
-                        </div>
-                    </div>
-
-                    <nav className="space-y-1.5">
-                        {[
-                            { id: 'dashboard', icon: LayoutDashboard, label: 'Overview' },
-                            { id: 'blogs', icon: FileText, label: 'Articles' },
-                            { id: 'categories', icon: FolderTree, label: 'Categories' },
-                            { id: 'tags', icon: Tags, label: 'Tags' },
-                            { id: 'media', icon: ImageIcon, label: 'Media Assets' },
-                            { id: 'subscribers', icon: Users, label: 'Community' }
-                        ].map(t => (
-                            <button
-                                key={t.id}
-                                onClick={() => setActiveTab(t.id as any)}
-                                className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl font-bold transition-all duration-300 ${activeTab === t.id
-                                    ? 'bg-accent text-primary shadow-lg shadow-accent/20 scale-[1.02]'
-                                    : 'text-gray-400 hover:bg-accent/10 hover:text-accent'}`}
-                            >
-                                <t.icon className="w-5 h-5" />
-                                <span className="text-sm">{t.label}</span>
-                                {activeTab === t.id && <div className="ml-auto w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>}
-                            </button>
-                        ))}
-                    </nav>
-                </div>
-
-                <div className="space-y-4">
-                    <button
-                        onClick={toggleTheme}
-                        className={`w-full flex items-center gap-4 px-6 py-4 rounded-2xl font-bold border transition-all ${isDarkMode ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5' : 'border-gray-200 text-gray-500 hover:bg-gray-50'}`}
-                    >
-                        {isDarkMode ? <Sun className="w-5 h-5 text-accent" /> : <Moon className="w-5 h-5 text-primary" />}
-                        <span className="text-sm">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
-                    </button>
-                    <button
-                        onClick={handleSignOut}
-                        className="w-full flex items-center gap-4 px-6 py-4 text-red-400 hover:bg-red-400/10 rounded-2xl font-bold transition-all"
-                    >
-                        <LogOut className="w-5 h-5" />
-                        <span className="text-sm">Sign Out</span>
-                    </button>
-                </div>
-            </aside>
-
-            {/* --- Main Content --- */}
-            <main className={`flex-1 md:ml-80 p-6 md:p-12 overflow-y-auto w-full pb-24`}>
-
-                {/* Header */}
-                <header className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
-                    <div className="flex items-center gap-4">
-                        <button onClick={() => setSidebarOpen(true)} className="md:hidden p-3 bg-white dark:bg-primary-light rounded-xl shadow-sm border dark:border-white/5"><Menu /></button>
-                        <div>
-                            <h1 className="text-4xl font-black tracking-tighter capitalize mb-1">{activeTab}</h1>
-                            <p className="text-sm text-gray-500 font-medium">Welcome back, Administrator</p>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center gap-6">
-                        <div className={`flex items-center gap-4 px-6 py-3 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 focus-within:border-accent/50' : 'bg-white border-gray-100 focus-within:border-accent'}`}>
-                            <Search className="w-5 h-5 text-gray-400" />
-                            <input
-                                value={searchQuery}
-                                onChange={e => setSearchQuery(e.target.value)}
-                                placeholder="Search everything..."
-                                className="bg-transparent outline-none text-sm font-bold w-64 placeholder:text-gray-600"
-                            />
-                        </div>
-                        <div className="relative group">
-                            <button className={`p-4 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 hover:bg-white/5' : 'bg-white border-gray-100 hover:bg-gray-50'}`}>
-                                <Bell className="w-5 h-5 text-gray-400" />
-                                <span className="absolute top-3 right-3 w-2 h-2 bg-accent rounded-full border-2 border-primary"></span>
-                            </button>
-                        </div>
-                        <div className="w-12 h-12 bg-accent rounded-2xl overflow-hidden shadow-lg border-2 border-primary cursor-pointer hover:rotate-6 transition-transform">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="User" />
-                        </div>
-                    </div>
-                </header>
-
-                {/* --- Dashboard View --- */}
-                {activeTab === 'dashboard' && (
-                    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                            <StatCard title="Total Articles" value={blogs.length} icon={FileText} color="bg-blue-500" trend="+4%" isDark={isDarkMode} />
-                            <StatCard title="Total Views" value="48.2K" icon={BarChart3} color="bg-accent" trend="+12%" isDark={isDarkMode} />
-                            <StatCard title="Categories" value={categories.length} icon={FolderTree} color="bg-emerald-500" isDark={isDarkMode} />
-                            <StatCard title="Subscribers" value={subscribers.length} icon={Users} color="bg-purple-500" trend="Active" isDark={isDarkMode} />
+        switch (activeTab) {
+            case 'dashboard':
+                return (
+                    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-20">
+                        {/* Intelligence Summary Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <StatCard title="Published Nodes" value={stats.published} icon={CheckCircle} color="bg-emerald-500" trend="Active" isDark={isDarkMode} />
+                            <StatCard title="Draft Entities" value={stats.drafts} icon={FileText} color="bg-amber-500" trend="Pending" isDark={isDarkMode} />
+                            <StatCard title="Integrity Risks" value={stats.duplicates} icon={AlertTriangle} color="bg-red-500" trend="Critical" isDark={isDarkMode} />
+                            <StatCard title="SEO Optimization" value={stats.seoIssues} icon={Zap} color="bg-blue-500" trend="Attention" isDark={isDarkMode} />
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                            <div className={`lg:col-span-2 p-10 rounded-[3rem] border shadow-2xl relative overflow-hidden group ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100'}`}>
-                                <TrendingUp className="absolute top-0 right-0 p-10 opacity-5 w-64 h-64 text-accent" />
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                            {/* Performance Architecture View */}
+                            <div className={`lg:col-span-2 p-12 rounded-[3.5rem] border shadow-2xl relative overflow-hidden group ${isDarkMode ? 'bg-[#08201B] border-white/5' : 'bg-white border-gray-100'}`}>
+                                <div className="absolute -top-24 -right-24 w-96 h-96 bg-accent opacity-[0.03] rounded-full blur-[80px] group-hover:scale-110 transition-transform duration-1000"></div>
                                 <div className="relative z-10">
-                                    <h3 className="text-3xl font-black mb-4">Content Performance</h3>
-                                    <p className="text-gray-500 mb-10 max-w-sm font-medium">Your sustainability content is reaching 15% more readers this month. Keep it up!</p>
+                                    <div className="flex items-center gap-4 mb-8">
+                                        <div className="px-5 py-2 rounded-full bg-accent/10 border border-accent/20 text-[9px] font-black text-accent uppercase tracking-[0.3em]">Infrastructure Rating</div>
+                                        <div className="h-0.5 w-12 bg-white/5"></div>
+                                        <span className="text-xs font-black text-white/40 uppercase tracking-widest leading-none">Global Performance Index</span>
+                                    </div>
+                                    <h3 className="text-5xl font-black mb-6 tracking-tighter max-w-xl leading-[1.1]">Content Architecture <span className="text-accent underline decoration-white/10 underline-offset-8 italic">Optimal</span></h3>
+                                    <p className="text-gray-500 mb-12 max-w-lg font-medium text-lg leading-relaxed">System scan complete. Your sustainability platform shows 94% SEO structural integrity across 42 core content nodes.</p>
                                     <div className="flex gap-4">
-                                        <button onClick={() => setActiveTab('blogs')} className="bg-accent text-primary px-8 py-4 rounded-2xl font-black hover:scale-105 transition-all shadow-xl shadow-accent/20">Manage Content</button>
-                                        <button className={`px-8 py-4 rounded-2xl font-black border transition-all ${isDarkMode ? 'border-white/10 hover:bg-white/5' : 'border-gray-200 hover:bg-gray-50'}`}>View Analytics</button>
+                                        <button onClick={() => setActiveTab('blogs')} className="bg-accent text-primary px-10 py-5 rounded-2xl font-black hover:scale-105 transition-all shadow-xl shadow-accent/20 uppercase tracking-[0.2em] text-[10px]">Optimize Article Nodes</button>
+                                        <button className={`px-10 py-5 rounded-2xl font-black border transition-all uppercase tracking-[0.2em] text-[10px] ${isDarkMode ? 'border-white/10 hover:bg-white/5' : 'border-gray-200 hover:bg-gray-50'}`}>System Log</button>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className={`p-8 rounded-[3rem] border shadow-sm ${isDarkMode ? 'bg-primary-light border-white/5' : 'bg-white border-gray-100'}`}>
-                                <h3 className="text-xl font-bold mb-8 flex items-center gap-3">
-                                    <Clock className="w-5 h-5 text-accent" />
-                                    Recent Activity
+                            {/* Critical Integrity Alerts */}
+                            <div className={`p-10 rounded-[3.5rem] border shadow-sm ${isDarkMode ? 'bg-[#08201B] border-white/5' : 'bg-white border-gray-100'}`}>
+                                <h3 className="text-sm font-black mb-10 uppercase tracking-[0.3em] text-white/30 flex items-center justify-between">
+                                    Priority Alerts
+                                    <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
                                 </h3>
-                                <div className="space-y-6">
-                                    {blogs.slice(0, 4).map((b, i) => (
-                                        <div key={b.id} className="flex items-center gap-4 group cursor-pointer" onClick={() => openEditor(b)}>
-                                            <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center font-black text-accent text-[10px]">0{i + 1}</div>
-                                            <div className="flex-1 overflow-hidden">
-                                                <p className="text-sm font-bold truncate group-hover:text-accent transition-colors">{b.title}</p>
-                                                <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-0.5">{new Date(b.created_at || '').toLocaleDateString()}</p>
+                                <div className="space-y-8">
+                                    {[
+                                        { title: 'Duplicate Topic Detected', desc: 'Solar Efficiency in DESERTEC', severity: 'HIGH' },
+                                        { title: 'Missing Schema Markup', desc: 'Article: Green Hydrogen', severity: 'MED' },
+                                        { title: 'Canonical Mismatch', desc: 'Vision 2030 Housing Strategy', severity: 'LOW' }
+                                    ].map((alert, i) => (
+                                        <div key={i} className="flex gap-5 group cursor-pointer">
+                                            <div className={`w-1 h-12 rounded-full ${alert.severity === 'HIGH' ? 'bg-red-500 shadow-[0_0_15px_rgba(239,68,68,0.4)]' : alert.severity === 'MED' ? 'bg-amber-500' : 'bg-blue-500'}`}></div>
+                                            <div className="flex-1">
+                                                <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1 group-hover:text-accent transition-colors">{alert.title}</p>
+                                                <p className="text-sm font-bold text-white/80">{alert.desc}</p>
                                             </div>
-                                            <ChevronRight className="w-4 h-4 text-gray-700 group-hover:translate-x-1 transition-transform" />
                                         </div>
                                     ))}
                                 </div>
+                                <button className="w-full mt-12 py-4 rounded-xl border border-white/5 text-[9px] font-black uppercase tracking-widest text-gray-500 hover:text-white hover:bg-white/5 transition-all">View All Intelligence Reports</button>
                             </div>
                         </div>
                     </div>
-                )}
-
-                {/* --- Articles View --- */}
-                {activeTab === 'blogs' && (
-                    <div className="space-y-8 animate-in fade-in duration-500">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div className="flex gap-4 w-full md:w-auto">
-                                <button onClick={() => openEditor({ id: 0, title: '', content: '', slug: '', status: 'DRAFT' })} className="flex-1 md:flex-none bg-accent text-primary px-8 py-4 rounded-2xl font-black flex items-center justify-center gap-2 hover:scale-[1.02] transition-all shadow-lg shadow-accent/20">
-                                    <Plus className="w-5 h-5" /> Write Article
+                );
+            case 'blogs':
+                return (
+                    <div className="space-y-8 animate-in fade-in duration-500 pb-20">
+                        {/* Intelligence Header */}
+                        <div className="flex flex-col md:flex-row justify-between items-center bg-[#08201B] p-10 rounded-[3rem] border border-white/5 relative overflow-hidden group">
+                            <div className="absolute top-0 right-0 p-10 opacity-[0.05] group-hover:rotate-12 transition-transform duration-1000">
+                                <ShieldCheck className="w-40 h-40 text-accent" />
+                            </div>
+                            <div className="relative z-10 space-y-2">
+                                <h2 className="text-3xl font-black tracking-tight uppercase">Article Infrastructure</h2>
+                                <p className="text-gray-500 font-medium max-w-md">Real-time content integrity monitoring. High-risk articles are flagged for immediate SEO optimization.</p>
+                            </div>
+                            <div className="relative z-10 flex gap-4 mt-6 md:mt-0">
+                                <button onClick={() => openEditor({ id: 0, title: '', content: '', slug: '', status: 'DRAFT' })} className="bg-accent text-primary px-10 py-5 rounded-2xl font-black flex items-center gap-3 hover:scale-105 transition-all shadow-xl shadow-accent/20 uppercase tracking-widest text-[10px]">
+                                    <Plus className="w-5 h-5" /> Initialize Node
                                 </button>
-                                <button onClick={() => setShowImport(true)} className={`flex-1 md:flex-none px-8 py-4 rounded-2xl font-black flex items-center justify-center gap-2 border transition-all ${isDarkMode ? 'bg-white/5 border-white/10 text-white hover:bg-accent hover:text-primary hover:border-accent' : 'bg-white border-gray-200 text-primary hover:bg-gray-50'}`}>
-                                    ✨ AI Generator
+                                <button onClick={() => setShowImport(true)} className="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-2xl font-black flex items-center gap-3 hover:bg-white/10 transition-all uppercase tracking-widest text-[10px]">
+                                    ✨ AI Synthesis
                                 </button>
                             </div>
-                            <div className={`flex items-center gap-2 p-1.5 rounded-2xl border ${isDarkMode ? 'bg-primary-light border-white/5' : 'bg-white border-gray-100'}`}>
+                        </div>
+
+                        {/* Node Filters */}
+                        <div className="flex justify-between items-center bg-[#08201B]/50 p-3 rounded-[1.5rem] border border-white/5">
+                            <div className="flex gap-2">
                                 {['all', 'published', 'draft'].map(s => (
                                     <button
                                         key={s}
                                         onClick={() => setFilterStatus(s)}
-                                        className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase transition-all ${filterStatus === s
-                                            ? 'bg-accent text-primary shadow-sm'
-                                            : 'text-gray-500 hover:text-gray-300'}`}
+                                        className={`px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${filterStatus === s ? 'bg-accent text-primary shadow-lg shadow-accent/20' : 'text-gray-500 hover:text-white'}`}
                                     >
-                                        {s}
+                                        {s} Nodes
                                     </button>
                                 ))}
                             </div>
+                            <div className="flex items-center gap-4 px-6 text-[10px] font-black uppercase tracking-widest text-gray-600">
+                                <Search className="w-4 h-4" />
+                                <span className="hidden md:inline">Global Infrastructure Scan</span>
+                            </div>
                         </div>
 
+                        {/* Article Intelligence Cards */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {filteredBlogs.map(b => (
-                                <div key={b.id} className={`rounded-[2.5rem] overflow-hidden border shadow-sm hover:shadow-2xl transition-all duration-500 group relative ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100'}`}>
-                                    <div className="h-60 relative overflow-hidden">
-                                        <img src={b.image_url || 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09'} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700" alt="" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
-                                        <span className={`absolute top-6 left-6 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md ${b.status === 'PUBLISHED' ? 'bg-green-500/50 outline outline-1 outline-green-400' : 'bg-amber-500/50 outline outline-1 outline-amber-400'}`}>
-                                            {b.status === 'PUBLISHED' ? 'Published' : 'Draft'}
-                                        </span>
-                                        <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
-                                            <button onClick={() => openEditor(b)} className="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center hover:scale-110 transition-transform"><Edit3 className="w-6 h-6" /></button>
-                                            <button onClick={() => togglePublish(b.id, b.status)} className="w-14 h-14 bg-accent text-primary rounded-2xl flex items-center justify-center hover:scale-110 transition-transform"><Eye className="w-6 h-6" /></button>
-                                            <button onClick={() => deleteBlog(b.id)} className="w-14 h-14 bg-red-400 text-white rounded-2xl flex items-center justify-center hover:scale-110 transition-transform"><Trash2 className="w-6 h-6" /></button>
-                                        </div>
-                                    </div>
-                                    <div className="p-8">
-                                        <div className="flex items-center gap-2 mb-4">
-                                            <span className="text-[10px] font-black text-accent uppercase tracking-widest">Sustainability</span>
-                                            <span className="w-1 h-1 rounded-full bg-gray-500"></span>
-                                            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">5 min read</span>
-                                        </div>
-                                        <h3 className="text-xl font-black line-clamp-2 mb-6 group-hover:text-accent transition-colors leading-tight">{b.title}</h3>
-                                        <div className="flex items-center justify-between pt-6 border-t border-white/5 font-bold text-[11px] text-gray-500 uppercase tracking-wider">
-                                            <div className="flex items-center gap-2">
-                                                <Clock className="w-3.5 h-3.5" />
-                                                {new Date(b.created_at || '').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                            {filteredBlogs.map(b => {
+                                const wordCount = b.content?.split(/\s+/).length || 0;
+                                const hasLowWordCount = wordCount < 800;
+                                const seoScore = calculateSEOScore(b);
+
+                                return (
+                                    <div key={b.id} className={`rounded-[3rem] overflow-hidden border transition-all duration-700 group relative ${isDarkMode ? 'bg-[#08201B] border-white/5 hover:border-accent/40 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)]' : 'bg-white border-gray-100 hover:shadow-2xl'}`}>
+                                        <div className="h-64 relative overflow-hidden">
+                                            <img src={b.image_url || 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09'} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" alt="" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[#041612] via-transparent to-transparent opacity-80"></div>
+
+                                            <div className="absolute top-6 left-6 flex gap-2">
+                                                <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-md border ${b.status === 'PUBLISHED' ? 'bg-green-500/30 border-green-500/40' : 'bg-amber-500/30 border-amber-500/40'}`}>
+                                                    {b.status}
+                                                </span>
+                                                {hasLowWordCount && (
+                                                    <span className="px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-md bg-red-500/30 border border-red-500/40 animate-pulse">
+                                                        Thin Content
+                                                    </span>
+                                                )}
                                             </div>
-                                            <div className="flex items-center gap-2">
-                                                <BarChart3 className="w-3.5 h-3.5" />
-                                                {(b.views || 0).toLocaleString()} Views
+
+                                            <div className="absolute inset-0 bg-[#041612]/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center gap-4">
+                                                <button onClick={() => openEditor(b)} className="w-16 h-16 bg-white text-[#041612] rounded-3xl flex items-center justify-center hover:scale-110 transition-transform shadow-2xl"><Edit3 className="w-6 h-6" /></button>
+                                                <button onClick={() => deleteBlog(b.id)} className="w-16 h-16 bg-red-500 text-white rounded-3xl flex items-center justify-center hover:scale-110 transition-transform shadow-2xl"><Trash2 className="w-6 h-6" /></button>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
 
-                {/* --- Categories View --- */}
-                {activeTab === 'categories' && (
-                    <div className="space-y-8 animate-in fade-in duration-500">
-                        <div className="flex justify-between items-center bg-accent/5 p-8 rounded-[2.5rem] border border-accent/10">
-                            <div>
-                                <h2 className="text-2xl font-black mb-1">Taxonomy Explorer</h2>
-                                <p className="text-sm text-gray-500 font-medium">Categorize your sustainability focus areas</p>
-                            </div>
-                            <button className="bg-accent text-primary px-8 py-4 rounded-2xl font-black flex items-center gap-2 shadow-lg shadow-accent/10">
-                                <Plus /> New Category
-                            </button>
-                        </div>
+                                        <div className="p-10 space-y-6">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <div className={`w-2 h-2 rounded-full ${seoScore > 90 ? 'bg-green-500' : 'bg-amber-500'}`}></div>
+                                                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">SEO Score: {seoScore}</span>
+                                                </div>
+                                                <span className={`text-[10px] font-black uppercase tracking-widest ${hasLowWordCount ? 'text-red-500' : 'text-accent'}`}>{wordCount} Words</span>
+                                            </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {categories.map(c => (
-                                <div key={c.id} className={`p-8 rounded-[2.5rem] border group transition-all hover:scale-[1.02] ${isDarkMode ? 'bg-primary-light border-white/5 hover:border-accent/40' : 'bg-white border-gray-100'}`}>
-                                    <div className="flex justify-between items-start mb-6">
-                                        <div className="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center">
-                                            <FolderTree className="w-7 h-7 text-accent" />
-                                        </div>
-                                        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <button className="p-2 hover:bg-accent/10 rounded-lg text-gray-400 hover:text-accent"><Edit3 className="w-4 h-4" /></button>
-                                            <button className="p-2 hover:bg-red-400/10 rounded-lg text-gray-400 hover:text-red-400"><Trash2 className="w-4 h-4" /></button>
+                                            <h3 className="text-xl font-black leading-tight tracking-tight group-hover:text-accent transition-colors block min-h-[3.5rem]">{b.title}</h3>
+
+                                            <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                                                <div className="flex items-center gap-4 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                                                    <span className="flex items-center gap-2"><Globe className="w-3.5 h-3.5" /> {b.slug}</span>
+                                                </div>
+                                                <div className="flex gap-1">
+                                                    <div className="w-1 h-1 rounded-full bg-accent/20"></div>
+                                                    <div className="w-1 h-1 rounded-full bg-accent/40"></div>
+                                                    <div className="w-1 h-1 rounded-full bg-accent/60"></div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <h4 className="text-2xl font-black mb-2">{c.name}</h4>
-                                    <p className="text-xs font-bold text-gray-500 mb-6 uppercase tracking-widest leading-loose">Slug: {c.slug}</p>
-                                    <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                                        <span className="text-sm font-black text-accent">{c.blogCount} Articles</span>
-                                        <button className="text-[10px] font-black uppercase tracking-widest text-gray-500 hover:text-white flex items-center gap-2">View Content <ChevronRight className="w-4 h-4" /></button>
-                                    </div>
-                                </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
-                )}
-
-                {/* --- Media Library --- */}
-                {activeTab === 'media' && (
-                    <div className="space-y-8 animate-in fade-in duration-500">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                            <h2 className="text-2xl font-black self-start md:self-auto">Digital Assets</h2>
-                            <button className="w-full md:w-auto bg-white dark:bg-accent dark:text-primary px-10 py-5 rounded-[2rem] font-black flex items-center justify-center gap-3 border border-gray-100 dark:border-none shadow-xl">
-                                <UploadCloud className="w-6 h-6" /> Upload To Cloud
+                );
+            case 'media':
+                return (
+                    <div className="space-y-8 animate-in fade-in duration-500 pb-20">
+                        <div className="flex justify-between items-center">
+                            <h3 className="text-3xl font-black tracking-tight">Media Library</h3>
+                            <button className="bg-accent text-primary px-8 py-4 rounded-2xl font-black flex items-center gap-2 shadow-lg shadow-accent/20 uppercase tracking-widest text-[10px]">
+                                <UploadCloud className="w-5 h-5" /> Upload Assets
                             </button>
                         </div>
-
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                             {mediaItems.map(item => (
-                                <div key={item.id} className={`group cursor-pointer rounded-[2.5rem] overflow-hidden border transition-all ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100'}`}>
-                                    <div className="h-48 relative overflow-hidden">
-                                        <img src={item.url} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={item.name} />
-                                        <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
-                                            <button className="w-10 h-10 bg-white dark:bg-accent text-primary rounded-xl flex items-center justify-center"><Eye className="w-5 h-5" /></button>
-                                            <button className="w-10 h-10 bg-white text-primary rounded-xl flex items-center justify-center"><Share2 className="w-5 h-5" /></button>
-                                        </div>
-                                    </div>
-                                    <div className="p-6">
-                                        <p className="text-sm font-black truncate mb-2">{item.name}</p>
-                                        <div className="flex justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest">
-                                            <span>{item.size}</span>
-                                            <span>{item.type.split('/')[1]}</span>
-                                        </div>
+                                <div key={item.id} className={`aspect-square rounded-3xl border overflow-hidden group relative ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100'}`}>
+                                    <img src={item.url} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="" />
+                                    <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center gap-2">
+                                        <button className="p-3 bg-white text-primary rounded-xl"><Eye className="w-4 h-4" /></button>
+                                        <button className="p-3 bg-red-400 text-white rounded-xl"><Trash2 className="w-4 h-4" /></button>
                                     </div>
                                 </div>
                             ))}
-                            <div className="h-full min-h-[250px] border-2 border-dashed border-gray-800 rounded-[2.5rem] flex flex-col items-center justify-center gap-4 text-gray-600 hover:border-accent hover:text-accent transition-all cursor-pointer">
-                                <div className="p-4 bg-gray-900 rounded-full"><Plus className="w-8 h-8" /></div>
-                                <span className="font-bold text-xs uppercase tracking-widest">Add New Asset</span>
-                            </div>
                         </div>
                     </div>
-                )}
-
-                {/* --- Community View --- */}
-                {activeTab === 'subscribers' && (
-                    <div className={`rounded-[3rem] border shadow-2xl overflow-hidden animate-in fade-in duration-700 ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100'}`}>
-                        <div className="p-12 border-b border-white/5 flex justify-between items-center">
+                );
+            case 'seo-analyzer':
+                return (
+                    <div className="space-y-8 animate-in fade-in duration-500 pb-20">
+                        <div className="flex justify-between items-center">
                             <div>
-                                <h3 className="text-3xl font-black mb-2 tracking-tight">Ecosystem Members</h3>
-                                <p className="text-sm text-gray-500 font-medium">Tracking your community growth and engagement</p>
+                                <h3 className="text-3xl font-black tracking-tight uppercase">SEO Health Audit</h3>
+                                <p className="text-gray-500 font-medium">Real-time analysis of metadata and content structure.</p>
                             </div>
-                            <div className="flex gap-4">
-                                <button className={`p-4 rounded-xl transition-all ${isDarkMode ? 'hover:bg-white/5 text-gray-500' : 'hover:bg-gray-50 text-gray-400'}`}><Filter /></button>
-                                <button className="bg-accent text-primary px-8 py-4 rounded-2xl font-black">Export CSV</button>
+                            <div className="px-6 py-3 rounded-2xl bg-accent/10 border border-accent/20 text-accent font-black text-[10px] uppercase tracking-widest">
+                                Scan Active
                             </div>
                         </div>
-                        <div className="overflow-x-auto">
+
+                        <div className={`rounded-[3rem] border shadow-2xl overflow-hidden ${isDarkMode ? 'bg-[#08201B] border-white/5' : 'bg-white border-gray-100'}`}>
                             <table className="w-full text-left">
-                                <thead className={`bg-black/20 text-[11px] font-black uppercase tracking-[0.2em] text-gray-500`}>
+                                <thead className="bg-[#041612]/50 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
                                     <tr>
-                                        <th className="px-12 py-8">User Identity</th>
-                                        <th className="px-12 py-8">Registration Date</th>
-                                        <th className="px-12 py-8 text-right">Access Status</th>
+                                        <th className="px-10 py-6">Article Node</th>
+                                        <th className="px-10 py-6">Meta Status</th>
+                                        <th className="px-10 py-6">Length Audit</th>
+                                        <th className="px-10 py-6">SEO Score</th>
+                                        <th className="px-10 py-6 text-right">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody className={`divide-y ${isDarkMode ? 'divide-white/5' : 'divide-gray-50'}`}>
-                                    {subscribers.map(s => (
-                                        <tr key={s.id} className={`group transition-all ${isDarkMode ? 'hover:bg-white/5' : 'hover:bg-gray-50/50'}`}>
-                                            <td className="px-12 py-10 flex items-center gap-4">
-                                                <div className="w-12 h-12 bg-accent/20 text-accent rounded-full flex items-center justify-center font-black">{s.email[0].toUpperCase()}</div>
-                                                <span className="font-black text-lg">{s.email}</span>
-                                            </td>
-                                            <td className="px-12 py-10 text-gray-500 font-bold">{new Date(s.created_at).toLocaleDateString()}</td>
-                                            <td className="px-12 py-10 text-right">
-                                                <span className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest ${s.status === 'active' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
-                                                    {s.status}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                <tbody className="divide-y divide-white/5">
+                                    {blogs.map(b => {
+                                        const wordCount = b.content?.split(/\s+/).length || 0;
+                                        const score = calculateSEOScore(b);
+                                        return (
+                                            <tr key={b.id} className="hover:bg-white/5 transition-colors group">
+                                                <td className="px-10 py-8">
+                                                    <p className="font-bold text-sm truncate max-w-[250px]">{b.title}</p>
+                                                    <p className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mt-1">/{b.slug}</p>
+                                                </td>
+                                                <td className="px-10 py-8">
+                                                    {b.meta_description ?
+                                                        <span className="flex items-center gap-2 text-emerald-500 text-[10px] font-black uppercase"><CheckCircle className="w-3 h-3" /> Optimized</span> :
+                                                        <span className="flex items-center gap-2 text-red-400 text-[10px] font-black uppercase"><AlertCircle className="w-3 h-3" /> Missing</span>
+                                                    }
+                                                </td>
+                                                <td className="px-10 py-8">
+                                                    <span className={`text-[10px] font-black uppercase ${wordCount < 500 ? 'text-amber-500' : 'text-gray-400'}`}>
+                                                        {wordCount} Words {wordCount < 500 && '(Short)'}
+                                                    </span>
+                                                </td>
+                                                <td className="px-10 py-8">
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="flex-1 h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
+                                                            <div className={`h-full ${score > 90 ? 'bg-emerald-500' : 'bg-accent'}`} style={{ width: `${score}%` }}></div>
+                                                        </div>
+                                                        <span className="text-[10px] font-black">{score}%</span>
+                                                    </div>
+                                                </td>
+                                                <td className="px-10 py-8 text-right">
+                                                    <button onClick={() => openEditor(b)} className="p-3 rounded-xl bg-white/5 text-gray-400 hover:text-accent hover:bg-accent/10 transition-all">
+                                                        <Edit3 className="w-4 h-4" />
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                )}
+                );
+            case 'duplicate-checker':
+                const duplicates = blogs.filter((b, index) => blogs.findIndex(t => t.title === b.title || t.slug === b.slug) !== index);
+                return (
+                    <div className="space-y-8 animate-in fade-in duration-500 pb-20">
+                        <div className="bg-red-500/10 border border-red-500/20 p-10 rounded-[3rem] flex items-center justify-between">
+                            <div className="flex items-center gap-6">
+                                <div className="w-16 h-16 bg-red-500/20 text-red-500 rounded-2xl flex items-center justify-center">
+                                    <FileWarning className="w-8 h-8" />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-black uppercase tracking-tight">Cannibalization Risk</h3>
+                                    <p className="text-gray-500 font-medium font-sans">Scanning for duplicate Titles and Slugs that may harm your search rankings.</p>
+                                </div>
+                            </div>
+                            <div className="text-right">
+                                <p className="text-4xl font-black text-red-500">{duplicates.length}</p>
+                                <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Conflicts Found</p>
+                            </div>
+                        </div>
+
+                        {duplicates.length > 0 ? (
+                            <div className="grid grid-cols-1 gap-6">
+                                {duplicates.map(b => (
+                                    <div key={b.id} className="p-8 rounded-[2.5rem] border border-white/5 bg-[#08201B] flex items-center justify-between group hover:border-red-500/30 transition-all">
+                                        <div className="flex items-center gap-6">
+                                            <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center font-black text-red-500">!</div>
+                                            <div>
+                                                <h4 className="font-black text-lg group-hover:text-red-400 transition-colors">{b.title}</h4>
+                                                <p className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mt-1">Conflicting Slug: /{b.slug}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-4">
+                                            <button onClick={() => openEditor(b)} className="px-6 py-3 rounded-xl bg-white/5 text-[10px] font-black uppercase tracking-widest hover:bg-white/10">Resolve Conflict</button>
+                                            <button onClick={() => deleteBlog(b.id)} className="p-3 rounded-xl bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-all"><Trash2 className="w-4 h-4" /></button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="h-[40vh] border-2 border-dashed border-white/5 rounded-[3rem] flex flex-col items-center justify-center text-center opacity-40">
+                                <CheckCircle className="w-12 h-12 text-emerald-500 mb-4" />
+                                <h3 className="text-xl font-black uppercase">Infrastructure Sync'd</h3>
+                                <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mt-2">No duplicate entities detected in current scan.</p>
+                            </div>
+                        )}
+                    </div>
+                );
+            case 'schema-manager':
+                return (
+                    <div className="space-y-8 animate-in fade-in duration-500 pb-20">
+                        <div className="flex items-center gap-4 bg-accent/10 border border-accent/20 p-8 rounded-[2.5rem]">
+                            <Network className="w-10 h-10 text-accent" />
+                            <div>
+                                <h3 className="text-xl font-black uppercase tracking-tight">Structured Data Controller</h3>
+                                <p className="text-xs font-medium text-gray-500">Automated Schema.org injection tracking across your article network.</p>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4">
+                            {blogs.map(b => (
+                                <div key={b.id} className="p-8 rounded-[2.5rem] border border-white/5 bg-[#08201B] flex flex-col md:flex-row md:items-center justify-between gap-6 group">
+                                    <div className="flex-1">
+                                        <h4 className="font-black text-lg group-hover:text-accent transition-colors">{b.title}</h4>
+                                        <div className="flex gap-4 mt-4">
+                                            <span className="flex items-center gap-2 text-[9px] font-black text-emerald-500 uppercase tracking-widest"><CheckSquare className="w-3 h-3" /> Article Schema</span>
+                                            <span className={`flex items-center gap-2 text-[9px] font-black uppercase tracking-widest ${faqs.length > 0 ? 'text-emerald-500' : 'text-gray-600 opacity-50'}`}><CheckSquare className="w-3 h-3" /> FAQ Schema</span>
+                                            <span className="flex items-center gap-2 text-[9px] font-black text-emerald-500 uppercase tracking-widest"><CheckSquare className="w-3 h-3" /> Breadcrumb</span>
+                                        </div>
+                                    </div>
+                                    <button onClick={() => openEditor(b)} className="px-8 py-4 rounded-2xl bg-white/5 border border-white/5 text-[10px] font-black uppercase tracking-widest hover:border-accent/40 transition-all text-gray-400 hover:text-white">Configure JSON-LD</button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                );
+            case 'internal-linking':
+                return (
+                    <div className="h-[60vh] flex flex-col items-center justify-center text-center space-y-6 animate-in zoom-in-95 duration-700">
+                        <div className="w-24 h-24 rounded-[2rem] bg-accent/10 flex items-center justify-center text-accent">
+                            <Zap className="w-12 h-12" />
+                        </div>
+                        <div>
+                            <h3 className="text-3xl font-black mb-2 uppercase tracking-tight">Link Infrastructure</h3>
+                            <p className="text-gray-500 font-medium max-w-sm font-sans leading-relaxed">Map your content ecosystem. The internal linking graph is currently indexing your article nodes.</p>
+                        </div>
+                    </div>
+                );
+            default:
+                return (
+                    <div className="p-12 text-center h-[50vh] flex flex-col items-center justify-center">
+                        <h3 className="text-2xl font-black mb-2">Module Under Calibration</h3>
+                        <p className="text-gray-500 font-medium">This professional control module is being configured for your environment.</p>
+                        <button onClick={() => setActiveTab('dashboard')} className="mt-8 text-accent font-black uppercase tracking-[0.2em] text-[10px] bg-accent/10 px-6 py-3 rounded-xl border border-accent/20">Return to Core Overview</button>
+                    </div>
+                );
+        }
+    };
+
+    return (
+        <div className={`min-h-screen flex ${isDarkMode ? 'bg-[#041612] text-white' : 'bg-[#F8FAFC] text-primary'} font-sans`}>
+            {/* --- Premium Sidebar --- */}
+            <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-80 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-all duration-700 ease-in-out border-r ${isDarkMode ? 'bg-[#08201B] border-white/5 shadow-[20px_0_60px_rgba(0,0,0,0.4)]' : 'bg-white border-gray-100 shadow-xl'}`}>
+                <div className="flex flex-col h-full">
+                    {/* Brand Header */}
+                    <div className="p-10 pb-6">
+                        <div className="flex items-center gap-5 mb-12 group cursor-pointer" onClick={() => setActiveTab('dashboard')}>
+                            <div className="w-14 h-14 rounded-[1.5rem] bg-gradient-to-br from-accent to-accent-hover flex items-center justify-center shadow-lg shadow-accent/30 group-hover:rotate-6 transition-all duration-500">
+                                <Leaf className="w-7 h-7 text-[#041612]" />
+                            </div>
+                            <div className="flex flex-col">
+                                <h1 className="text-sm font-black tracking-[0.3em] uppercase font-montserrat leading-none">Sustainability</h1>
+                                <p className="text-[11px] font-black text-accent uppercase tracking-[0.4em] mt-1.5 opacity-80">Highway</p>
+                            </div>
+                        </div>
+
+                        <nav className="space-y-2.5">
+                            <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.35em] mb-5 ml-4 opacity-50">Operational Core</p>
+                            {[
+                                { id: 'dashboard', label: 'Overview', icon: LayoutDashboard },
+                                { id: 'blogs', label: 'Article Control', icon: FileText },
+                                { id: 'media', label: 'Media Library', icon: ImageIcon },
+                            ].map((item) => (
+                                <button
+                                    key={item.id}
+                                    onClick={() => setActiveTab(item.id as any)}
+                                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-[1.25rem] font-black text-[12px] transition-all duration-500 relative group overflow-hidden ${activeTab === item.id ? (isDarkMode ? 'bg-white/5 text-accent shadow-inner' : 'bg-accent/10 text-accent') : (isDarkMode ? 'text-gray-500 hover:text-white hover:bg-white/5' : 'text-gray-400 hover:text-primary hover:bg-gray-50')}`}
+                                >
+                                    {activeTab === item.id && <div className="absolute left-0 w-1.5 h-6 bg-accent rounded-full -ml-0.5 shadow-[0_0_20px_rgba(197,160,89,0.8)]"></div>}
+                                    <item.icon className={`w-5 h-5 ${activeTab === item.id ? 'text-accent' : 'group-hover:scale-110 transition-transform duration-500'}`} />
+                                    <span className="tracking-widest uppercase">{item.label}</span>
+                                </button>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Intelligence Section */}
+                    <div className="p-10 pt-4 flex-1">
+                        <p className="text-[10px] font-black text-gray-500 uppercase tracking-[0.35em] mb-5 ml-4 opacity-50">Content Intelligence</p>
+                        <nav className="space-y-2.5">
+                            {[
+                                { id: 'seo-analyzer', label: 'SEO Analyzer', icon: Activity },
+                                { id: 'duplicate-checker', label: 'Duplicate Check', icon: FileSearch },
+                                { id: 'schema-manager', label: 'Schema Control', icon: FileCheck2 },
+                                { id: 'internal-linking', label: 'Link Structure', icon: Network },
+                            ].map((item) => (
+                                <button
+                                    key={item.id}
+                                    onClick={() => setActiveTab(item.id as any)}
+                                    className={`w-full flex items-center gap-4 px-6 py-4 rounded-[1.25rem] font-black text-[12px] transition-all duration-500 relative group overflow-hidden ${activeTab === item.id ? (isDarkMode ? 'bg-white/5 text-accent shadow-inner' : 'bg-accent/10 text-accent') : (isDarkMode ? 'text-gray-500 hover:text-white hover:bg-white/5' : 'text-gray-400 hover:text-primary hover:bg-gray-50')}`}
+                                >
+                                    {activeTab === item.id && <div className="absolute left-0 w-1.5 h-6 bg-accent rounded-full -ml-0.5 shadow-[0_0_20px_rgba(197,160,89,0.8)]"></div>}
+                                    <item.icon className={`w-5 h-5 ${activeTab === item.id ? 'text-accent' : 'group-hover:scale-110 transition-transform duration-500'}`} />
+                                    <span className="tracking-widest uppercase">{item.label}</span>
+                                </button>
+                            ))}
+                        </nav>
+                    </div>
+
+                    {/* Sidebar Footer */}
+                    <div className="p-10 border-t border-white/5">
+                        <button
+                            onClick={() => setActiveTab('settings')}
+                            className={`w-full flex items-center gap-4 px-6 py-4 rounded-[1.25rem] font-black text-[12px] transition-all mb-4 ${activeTab === 'settings' ? 'text-accent bg-white/5' : 'text-gray-500 hover:text-white'}`}
+                        >
+                            <Settings className="w-5 h-5" />
+                            <span className="uppercase tracking-[0.2em]">System Preferences</span>
+                        </button>
+                        <button
+                            onClick={() => { localStorage.clear(); router.push('/admin/login'); }}
+                            className="w-full flex items-center gap-4 px-6 py-4 rounded-[1.25rem] font-black text-[12px] text-red-500/50 hover:text-red-500 hover:bg-red-500/5 transition-all group shadow-sm hover:shadow-red-500/10"
+                        >
+                            <LogOut className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                            <span className="uppercase tracking-[0.2em]">Terminate Session</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            {/* --- Main Viewport --- */}
+            <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
+                {/* Modern Header */}
+                <header className={`h-24 px-10 lg:px-16 flex items-center justify-between border-b ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100 shadow-sm'} sticky top-0 z-40 transition-all duration-500`}>
+                    <div className="flex items-center gap-10">
+                        <button onClick={() => setSidebarOpen(!isSidebarOpen)} className="lg:hidden p-4 rounded-2xl bg-accent/10 text-accent transition-transform hover:scale-110 active:scale-95">
+                            {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
+                        <div className="hidden sm:flex items-center gap-5 p-3 px-6 rounded-[1.5rem] border border-white/5 bg-white/5 backdrop-blur-3xl shadow-2xl">
+                            <Activity className="w-5 h-5 text-green-500 animate-pulse" />
+                            <div className="flex flex-col">
+                                <span className="text-[10px] font-black text-gray-500 uppercase leading-none mb-1.5 tracking-widest">Website Integrity Health</span>
+                                <div className="flex items-center gap-3">
+                                    <span className="text-sm font-black text-white leading-none">94.2%</span>
+                                    <span className="text-green-500 text-[9px] font-black bg-green-500/10 px-2 py-0.5 rounded-full uppercase tracking-widest border border-green-500/20">Optimal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-8">
+                        <div className="hidden md:flex items-center gap-4 px-5 py-3 rounded-[1.5rem] bg-white/5 border border-white/5 shadow-inner">
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent-hover flex items-center justify-center text-primary font-black text-xs shadow-lg shadow-accent/20">AD</div>
+                            <div className="text-left">
+                                <p className="text-xs font-black uppercase text-white leading-none mb-1.5 tracking-tight">Main Administrator</p>
+                                <p className="text-[9px] font-black text-accent uppercase tracking-[0.2em] opacity-60 leading-none">Security Override Level 5</p>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-4">
+                            <button onClick={toggleTheme} className={`p-4 rounded-2xl transition-all shadow-sm ${isDarkMode ? 'bg-white/5 text-accent hover:bg-accent hover:text-primary' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+                                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                            </button>
+                            <button className="hidden sm:flex flex-col items-center justify-center h-14 w-14 rounded-2xl bg-white/5 border border-white/5 relative hover:bg-white/10 transition-all shadow-lg group">
+                                <Bell className="w-5 h-5 text-gray-400 group-hover:text-accent group-hover:animate-bounce" />
+                                <span className="absolute top-4 right-4 w-2.5 h-2.5 bg-red-500 rounded-full border-[3px] border-[#041612]"></span>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+
+                {/* --- Content Area --- */}
+                <div className="flex-1 overflow-y-auto p-10 lg:p-16 scrollbar-thin scrollbar-thumb-accent/20 scrollbar-track-transparent">
+                    {renderContent()}
+                </div>
             </main>
 
             {/* --- AI Import Modal --- */}
             {showImport && (
-                <div className="fixed inset-0 bg-primary/80 backdrop-blur-2xl z-50 flex items-center justify-center p-4">
-                    <div className={`${isDarkMode ? 'bg-primary-light border-white/10' : 'bg-white border-gray-100'} rounded-[4rem] p-16 max-w-2xl w-full shadow-2xl relative overflow-hidden border`}>
-                        <div className="absolute -top-20 -right-20 w-80 h-80 bg-accent/10 rounded-full blur-[100px]"></div>
+                <div className="fixed inset-0 bg-[#041612]/90 backdrop-blur-2xl z-[100] flex items-center justify-center p-4 animate-in fade-in duration-500">
+                    <div className={`${isDarkMode ? 'bg-[#08201B] border-white/10' : 'bg-white border-gray-100'} rounded-[3rem] p-12 lg:p-16 max-w-2xl w-full shadow-[0_0_100px_rgba(197,160,89,0.15)] relative overflow-hidden border`}>
                         <div className="relative z-10 flex flex-col items-center text-center">
-                            <div className="w-24 h-24 bg-accent/20 rounded-[2rem] flex items-center justify-center mb-10 animate-bounce">
-                                <Globe className="w-12 h-12 text-accent" />
+                            <div className="w-20 h-20 bg-accent/20 rounded-3xl flex items-center justify-center mb-8">
+                                <Activity className="w-10 h-10 text-accent animate-pulse" />
                             </div>
-                            <h2 className="text-4xl font-black mb-4 tracking-tighter">AI Content Engine</h2>
-                            <p className="text-gray-500 mb-12 font-medium">Harness the power of AI to synthesize premium articles based on latest sustainability trends.</p>
+                            <h2 className="text-3xl font-black mb-4 tracking-tight uppercase">Intelligence Synthesis</h2>
+                            <p className="text-gray-500 mb-10 font-medium">Harness AI to generate SEO-optimized content based on professional sustainability data-points.</p>
 
                             <div className="w-full space-y-6">
-                                <div className={`p-2 rounded-3xl border transition-all ${isDarkMode ? 'bg-navy border-white/5 focus-within:border-accent/50' : 'bg-gray-50 border-gray-200 focus-within:border-accent'}`}>
-                                    <input
-                                        value={importTopic}
-                                        onChange={e => setImportTopic(e.target.value)}
-                                        placeholder="e.g. Impact of LEED v4 on Middle East"
-                                        className="w-full p-6 bg-transparent outline-none font-bold placeholder-gray-600 text-center"
-                                    />
+                                <div className={`p-2 rounded-3xl border transition-all ${isDarkMode ? 'bg-[#041612] border-white/5 focus-within:border-accent/50' : 'bg-gray-50 border-gray-200 focus-within:border-accent'}`}>
+                                    <input value={importTopic} onChange={e => setImportTopic(e.target.value)} placeholder="Topic e.g. 'Green Hydrogen Economics 2026'" className="w-full p-6 bg-transparent outline-none font-bold placeholder-gray-700 text-center" />
                                 </div>
                                 <div className="flex gap-4">
-                                    <button
-                                        onClick={handleAIImport}
-                                        disabled={isGenerating || !importTopic}
-                                        className="flex-1 py-6 bg-accent text-primary rounded-[2rem] font-black uppercase tracking-[0.2em] hover:scale-[1.02] active:scale-95 transition-all shadow-2xl shadow-accent/20 disabled:opacity-50 disabled:scale-100"
-                                    >
-                                        {isGenerating ? <span className="flex items-center justify-center gap-3 animate-pulse">Synthesizing...</span> : 'Launch Synthesis'}
+                                    <button onClick={handleAIImport} disabled={isGenerating || !importTopic} className="flex-1 py-5 bg-accent text-primary rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-accent/20 disabled:opacity-50">
+                                        {isGenerating ? 'Synthesizing Content...' : 'Launch Intelligence Engine'}
                                     </button>
-                                    <button onClick={() => setShowImport(false)} className={`px-10 py-6 rounded-[2rem] font-bold transition-all ${isDarkMode ? 'bg-white/5 text-white hover:bg-white/10' : 'bg-gray-100 hover:bg-gray-200'}`}>
-                                        Cancel
-                                    </button>
+                                    <button onClick={() => setShowImport(false)} className={`px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest transition-all ${isDarkMode ? 'bg-white/5 text-gray-400 hover:text-white' : 'bg-gray-100 hover:bg-gray-200'}`}>Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -595,179 +750,102 @@ export default function AdminDashboard() {
                 </div>
             )}
 
-            {/* --- Content Studio (Editor) --- */}
+            {/* --- Content Studio (Full Screen Editor Overlay) --- */}
             {editingBlog && (
-                <div className={`fixed inset-0 z-[60] overflow-hidden flex flex-col ${isDarkMode ? 'bg-primary' : 'bg-[#F8FAFC]'}`}>
-                    <header className={`p-6 md:px-12 border-b flex justify-between items-center ${isDarkMode ? 'bg-navy border-white/5' : 'bg-white border-gray-100'}`}>
-                        <div className="flex items-center gap-8">
-                            <button onClick={() => setEditingBlog(null)} className={`p-4 rounded-2xl hover:bg-white/5 transition-all ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:bg-gray-50'}`}>
-                                <X className="w-7 h-7" />
+                <div className={`fixed inset-0 z-[150] overflow-hidden flex flex-col ${isDarkMode ? 'bg-[#041612]' : 'bg-[#F8FAFC]'} animate-in slide-in-from-bottom-10 duration-700`}>
+                    <header className={`h-24 px-10 border-b flex justify-between items-center ${isDarkMode ? 'bg-[#08201B] border-white/5' : 'bg-white border-gray-100'}`}>
+                        <div className="flex items-center gap-10">
+                            <button onClick={() => setEditingBlog(null)} className="p-4 rounded-2xl bg-white/5 hover:bg-accent hover:text-primary transition-all group">
+                                <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-500" />
                             </button>
                             <div className="hidden md:block">
-                                <h2 className="text-2xl font-black tracking-tight">{editingBlog.id ? 'Refining Content' : 'New Article'}</h2>
-                                <p className="text-[10px] text-accent font-black uppercase tracking-widest mt-1">Status: {editingBlog.status === 'PUBLISHED' ? 'Live' : 'Drafting Stage'}</p>
+                                <h2 className="text-xl font-black tracking-tight">{editingBlog.id ? 'Optimizing Architecture' : 'Synthesizing New Node'}</h2>
+                                <p className="text-[10px] text-accent font-black uppercase tracking-[0.3em] mt-1.5 opacity-80">Intelligence Active</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-6">
-                            <button onClick={handlePreview} className={`px-8 py-4 rounded-2xl font-black transition-all border ${isDarkMode ? 'border-white/10 text-gray-400 hover:text-white hover:bg-white/5' : 'border-gray-200'}`}>
-                                Preview <ExternalLink className="inline-block w-4 h-4 ml-2" />
-                            </button>
-                            <button onClick={saveContent} className="px-12 py-4 bg-accent text-primary rounded-2xl font-black shadow-2xl shadow-accent/30 hover:scale-[1.05] transition-all">
-                                Publish Changes
-                            </button>
+                            <button onClick={handlePreview} className="px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest border border-white/10 hover:bg-white/5 transition-all">Preview Analysis</button>
+                            <button onClick={saveContent} className="px-10 py-4 bg-accent text-primary rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-accent/30 hover:scale-105 active:scale-95 transition-all">Publish Content</button>
                         </div>
                     </header>
 
                     <div className="flex-1 flex overflow-hidden">
-                        <div className="flex-1 overflow-y-auto p-12 lg:px-24">
+                        <div className="flex-1 overflow-y-auto p-12 lg:p-20 scrollbar-none">
                             <div className="max-w-4xl mx-auto space-y-12">
-                                <textarea
-                                    value={editingBlog.title}
-                                    onChange={e => setEditingBlog({ ...editingBlog, title: e.target.value })}
-                                    className="w-full bg-transparent text-6xl font-black outline-none placeholder:text-gray-800 tracking-tighter resize-none overflow-hidden h-auto"
-                                    placeholder="Enter Headline..."
-                                    rows={2}
-                                />
-
-                                <div className="flex flex-wrap gap-4 pb-12 border-b border-white/5">
-                                    <div className={`px-6 py-3 rounded-2xl border flex items-center gap-3 ${isDarkMode ? 'bg-white/5 border-white/10 text-gray-400' : 'bg-white border-gray-100'}`}>
-                                        <Type className="w-4 h-4" />
-                                        <span className="text-xs font-black uppercase">Standard Layout</span>
-                                    </div>
-                                    <div className={`px-6 py-3 rounded-2xl border flex items-center gap-3 ${isDarkMode ? 'bg-white/5 border-white/10 text-gray-400' : 'bg-white border-gray-100'}`}>
-                                        <TrendingUp className="w-4 h-4" />
-                                        <span className="text-xs font-black uppercase">SEO Score: 85</span>
-                                    </div>
-                                    <button className="px-6 py-3 rounded-2xl bg-accent/20 text-accent font-black text-xs uppercase flex items-center gap-3">
-                                        <ImageIcon className="w-4 h-4" /> Set Featured Image
-                                    </button>
-                                </div>
-
+                                <textarea value={editingBlog.title || ''} onChange={e => setEditingBlog({ ...editingBlog, title: e.target.value })} className="w-full bg-transparent text-6xl font-black outline-none placeholder:text-gray-900 leading-tight tracking-tighter resize-none h-auto" placeholder="Insightful Headline..." rows={2} />
                                 <div className={`prose-editor ${isDarkMode ? 'dark-editor' : ''}`}>
-                                    <ReactQuill
-                                        value={editingBlog.content}
-                                        onChange={val => setEditingBlog({ ...editingBlog, content: val })}
-                                        theme="snow"
-                                    />
-                                </div>
-
-                                <div className="pt-24 space-y-12">
-                                    <div className="flex justify-between items-center"><h3 className="text-3xl font-black tracking-tight">Interactive FAQ Component</h3><button onClick={() => setFaqs([...faqs, { question: '', answer: '' }])} className="text-sm font-black text-accent p-2 hover:bg-accent/10 rounded-xl transition-all">+ Inject New FAQ</button></div>
-                                    <div className="space-y-6">
-                                        {faqs.map((f, i) => (
-                                            <div key={i} className={`p-10 rounded-[2.5rem] border relative group transition-all ${isDarkMode ? 'bg-primary-light border-white/5 hover:bg-white/10' : 'bg-white border-gray-100 hover:shadow-xl'}`}>
-                                                <input value={f.question} onChange={e => { const u = [...faqs]; u[i].question = e.target.value; setFaqs(u); }} className="w-full bg-transparent font-black text-xl outline-none mb-4 placeholder:text-gray-700" placeholder="Question Title..." />
-                                                <textarea value={f.answer} onChange={e => { const u = [...faqs]; u[i].answer = e.target.value; setFaqs(u); }} className="w-full bg-transparent text-gray-500 font-medium outline-none resize-none leading-relaxed" placeholder="Detailed answer content goes here..." rows={3} />
-                                                <button onClick={() => setFaqs(faqs.filter((_, idx) => idx !== i))} className="absolute top-10 right-10 text-red-100 group-hover:text-red-400 transition-colors opacity-0 group-hover:opacity-100"><Trash2 className="w-6 h-6" /></button>
-                                            </div>
-                                        ))}
-                                        {faqs.length === 0 && (
-                                            <div className="p-20 border-2 border-dashed border-white/10 rounded-[3rem] text-center text-gray-600 font-bold uppercase tracking-widest text-xs">
-                                                No FAQs configured for this article.
-                                            </div>
-                                        )}
-                                    </div>
+                                    <ReactQuill value={editingBlog.content || ''} onChange={val => setEditingBlog({ ...editingBlog, content: val })} theme="snow" />
                                 </div>
                             </div>
                         </div>
 
-                        <aside className={`w-[450px] border-l p-12 overflow-y-auto hidden xl:block ${isDarkMode ? 'bg-navy border-white/5 shadow-[-20px_0_50px_rgba(0,0,0,0.3)]' : 'bg-white border-gray-100'}`}>
-                            <div className="space-y-12 pb-24">
-                                <section>
-                                    <h4 className="text-[11px] font-black uppercase text-accent tracking-[0.3em] mb-8">System Identifiers</h4>
+                        <aside className={`w-[450px] border-l p-12 overflow-y-auto hidden xl:block ${isDarkMode ? 'bg-[#08201B] border-white/5' : 'bg-white border-gray-100'} shadow-[-10px_0_30px_rgba(0,0,0,0.2)]`}>
+                            <div className="space-y-12">
+                                <div>
+                                    <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-accent mb-8 opacity-60">Node Parameters</h4>
                                     <div className="space-y-6">
-                                        <div className="space-y-3">
-                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Universal Slug</label>
-                                            <div className={`p-4 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 focus-within:border-accent/40' : 'bg-gray-50 border-gray-200'}`}>
-                                                <input value={editingBlog.slug} onChange={e => setEditingBlog({ ...editingBlog, slug: e.target.value })} className="w-full bg-transparent outline-none font-bold text-sm" placeholder="url-slug-here" />
-                                            </div>
+                                        <div className="space-y-2.5">
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Canonical Slug</label>
+                                            <input value={editingBlog.slug || ''} onChange={e => setEditingBlog({ ...editingBlog, slug: e.target.value })} className={`w-full p-4 rounded-xl border outline-none font-bold text-sm ${isDarkMode ? 'bg-[#041612] border-white/5 focus:border-accent/40' : 'bg-gray-50'}`} />
+                                        </div>
+                                        <div className="space-y-2.5">
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-gray-500 ml-1">Meta Description</label>
+                                            <textarea value={editingBlog.meta_description || ''} onChange={e => setEditingBlog({ ...editingBlog, meta_description: e.target.value })} className={`w-full p-5 rounded-xl border outline-none font-medium text-sm leading-relaxed h-40 resize-none ${isDarkMode ? 'bg-[#041612] border-white/5 focus:border-accent/40' : 'bg-gray-50'}`} placeholder="SEO Optimization Data..." />
                                         </div>
                                     </div>
-                                </section>
+                                </div>
 
-                                <section>
-                                    <h4 className="text-[11px] font-black uppercase text-accent tracking-[0.3em] mb-8">SEO Metadata</h4>
-                                    <div className="space-y-8">
-                                        <div className="space-y-3">
-                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Meta Title</label>
-                                            <div className={`p-4 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 focus-within:border-accent/40' : 'bg-gray-50 border-gray-200'}`}>
-                                                <input value={editingBlog.meta_title} onChange={e => setEditingBlog({ ...editingBlog, meta_title: e.target.value })} className="w-full bg-transparent outline-none font-bold text-sm" placeholder="SEO Title Tags..." />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-3">
-                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Meta Description</label>
-                                            <textarea
-                                                value={editingBlog.meta_description}
-                                                onChange={e => setEditingBlog({ ...editingBlog, meta_description: e.target.value })}
-                                                className={`w-full p-6 rounded-2xl border transition-all resize-none font-medium text-sm leading-relaxed ${isDarkMode ? 'bg-primary-light border-white/5 focus:border-accent/40 outline-none' : 'bg-gray-50 border-gray-200 outline-none focus:border-accent'}`}
-                                                rows={5}
-                                                placeholder="Write a compelling summary for Google results..."
-                                            />
-                                        </div>
-                                        <div className="space-y-3">
-                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Canonical URL</label>
-                                            <div className={`p-4 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5 focus-within:border-accent/40' : 'bg-gray-50 border-gray-200'}`}>
-                                                <input value={editingBlog.canonical_url} onChange={e => setEditingBlog({ ...editingBlog, canonical_url: e.target.value })} className="w-full bg-transparent outline-none font-bold text-sm" placeholder="https://..." />
-                                            </div>
-                                        </div>
-                                        <div className="space-y-3">
-                                            <label className="text-xs font-black text-gray-500 uppercase tracking-widest ml-1">Primary Keywords</label>
-                                            <div className={`p-5 rounded-2xl border transition-all ${isDarkMode ? 'bg-primary-light border-white/5' : 'bg-white border-gray-100'}`}>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {['Sustainability', 'Vision 2030', 'KSA'].map(kw => (
-                                                        <span key={kw} className="px-3 py-1.5 bg-accent/10 border border-accent/20 rounded-lg text-[10px] font-black text-accent uppercase">{kw} <X className="inline w-3 h-3 ml-1 cursor-pointer" /></span>
-                                                    ))}
-                                                    <input className="bg-transparent outline-none text-xs font-bold p-1 flex-1" placeholder="Add custom tag..." />
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div className="p-8 rounded-[2rem] bg-accent/5 border border-accent/10 space-y-6">
+                                    <div className="flex items-center gap-3">
+                                        <Network className="w-5 h-5 text-accent" />
+                                        <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">Suggested Content Links</h4>
                                     </div>
-                                </section>
-
-                                <section>
-                                    <h4 className="text-[11px] font-black uppercase text-accent tracking-[0.3em] mb-8">Classification</h4>
-                                    <div className="grid grid-cols-1 gap-4">
-                                        <div className={`p-6 rounded-3xl border flex items-center justify-between group cursor-pointer transition-all ${isDarkMode ? 'bg-white/5 border-white/5 hover:bg-accent/10 hover:border-accent/30' : 'bg-gray-50 hover:bg-accent/5 hover:border-accent'}`}>
-                                            <div className="flex items-center gap-4">
-                                                <FolderTree className="w-5 h-5 text-gray-600 group-hover:text-accent" />
-                                                <span className="font-bold text-sm">Category: General</span>
+                                    <div className="space-y-4">
+                                        {[
+                                            { title: 'The Future of NEOM Energy', slug: 'neom-energy' },
+                                            { title: 'Vision 2030 Sustainability Goals', slug: 'vision-2030' },
+                                        ].map((link, i) => (
+                                            <div key={link.slug} className="flex items-center justify-between p-4 rounded-xl bg-[#041612]/40 border border-white/5 group hover:border-accent/30 transition-all cursor-pointer">
+                                                <span className="text-[11px] font-bold text-white/60 group-hover:text-white truncate">{link.title}</span>
+                                                <Plus className="w-3 h-3 text-accent" />
                                             </div>
-                                            <ChevronRight className="w-4 h-4 text-gray-700" />
-                                        </div>
-                                        <div className={`p-6 rounded-3xl border flex items-center justify-between group cursor-pointer transition-all ${isDarkMode ? 'bg-white/5 border-white/5 hover:bg-accent/10 hover:border-accent/30' : 'bg-gray-50 hover:bg-accent/5 hover:border-accent'}`}>
-                                            <div className="flex items-center gap-4">
-                                                <Tags className="w-5 h-5 text-gray-600 group-hover:text-accent" />
-                                                <span className="font-bold text-sm">Manage Tags (3)</span>
-                                            </div>
-                                            <ChevronRight className="w-4 h-4 text-gray-700" />
-                                        </div>
+                                        ))}
                                     </div>
-                                </section>
+                                    <p className="text-[9px] font-black text-gray-600 uppercase tracking-widest text-center">AI generated link suggestions</p>
+                                </div>
                             </div>
                         </aside>
                     </div>
                 </div>
             )}
 
-            {notification && (
-                <div className={`fixed bottom-12 right-12 px-10 py-6 rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.5)] z-[100] font-black text-sm flex items-center gap-5 border-l-8 transition-all animate-in slide-in-from-right-10 duration-500 ${isDarkMode ? 'bg-navy border-accent text-white' : 'bg-white border-accent text-primary'}`}>
-                    <div className="w-3 h-3 rounded-full bg-accent animate-ping"></div>
-                    {notification.message}
-                </div>
-            )}
-
+            {/* --- Global Styles & Interactions --- */}
             <style jsx global>{`
-                .prose-editor .ql-container { min-height: 600px; font-size: 1.25rem; border: none !important; font-family: 'Inter', sans-serif; line-height: 1.8; }
-                .prose-editor .ql-editor { padding: 4rem 0 !important; }
-                .prose-editor .ql-toolbar { border: none !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; position: sticky; top: 0; background: inherit; z-index: 10; padding: 1.5rem 0 !important; }
+                @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@400;500;700;900&display=swap');
+                
+                :root {
+                    --accent: #C5A059;
+                    --accent-hover: #D4B475;
+                }
+
+                * { font-family: 'Outfit', sans-serif; }
+
+                .scrollbar-none::-webkit-scrollbar { display: none; }
+                
+                .prose-editor .ql-container { min-height: 700px; font-size: 1.15rem; border: none !important; color: inherit; line-height: 1.8; }
+                .prose-editor .ql-editor { padding: 5rem 0 !important; }
+                .prose-editor .ql-toolbar { border: none !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; position: sticky; top: 0; background: inherit; z-index: 10; padding: 2rem 0 !important; backdrop-filter: blur(10px); }
                 .dark-editor .ql-toolbar .ql-stroke { stroke: rgba(255,255,255,0.6) !important; }
                 .dark-editor .ql-toolbar .ql-fill { fill: rgba(255,255,255,0.6) !important; }
-                .dark-editor .ql-editor { color: rgba(255,255,255,0.9); }
-                .dark-editor .ql-editor.ql-blank::before { color: rgba(255,255,255,0.2) !important; }
-                ::-webkit-scrollbar { width: 10px; height: 10px; }
-                ::-webkit-scrollbar-track { background: transparent; }
-                ::-webkit-scrollbar-thumb { background: rgba(197, 160, 89, 0.1); border-radius: 10px; }
-                ::-webkit-scrollbar-thumb:hover { background: rgba(197, 160, 89, 0.3); }
+                .dark-editor .ql-editor.ql-blank::before { color: rgba(255,255,255,0.1) !important; font-style: normal; }
+                
+                .animate-in { animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+
+                ::selection { background: var(--accent); color: #041612; }
             `}</style>
         </div>
     );

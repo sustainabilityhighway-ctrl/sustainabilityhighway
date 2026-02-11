@@ -19,27 +19,26 @@ export async function generateStaticParams() {
 async function getBlog(slug: string) {
     // 1. Try fetching from the NestJS Backend API (Local SQLite)
     try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1'; // Fallback for SSG/SSR
-        const res = await fetch(`${apiUrl}/blogs?search=${slug}`); // Using search since we don't have a direct slug endpoint yet or we can filter. 
-        // Ideally we should have a get by slug endpoint. But check if findAll supports filtering by slug? 
-        // The Controller has findAll(@Query('search') search?: string). 
-        // A better approach: If the backend supports retrieving by ID, we can't use it easily with a slug. 
-        // Let's assume we can fetch all and find, or update backend to support slug.
-        // For now, let's fetch list and find.
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+
+        // Use the specific by-slug endpoint for better reliability and performance
+        let res = await fetch(`${apiUrl}/blogs/slug/${slug}`, {
+            // Ensure fresh data on preview or post-publish visits
+            next: { revalidate: 60 }
+        });
+
+        // Fallback to ID-based fetch if slug fails and the slug looks like an ID
+        if (!res.ok && /^\d+$/.test(slug)) {
+            res = await fetch(`${apiUrl}/blogs/${slug}`, {
+                next: { revalidate: 60 }
+            });
+        }
 
         if (res.ok) {
-            const data = await res.json();
-            // The backend returns { items: Blog[], meta: ... } or Blog[] depending on implementation. 
-            // Looking at AdminDashboard: setBlogs(data.items || (Array.isArray(data) ? data : []));
-            // Let's assume data.items is the array.
-            const blogs = data.items || (Array.isArray(data) ? data : []);
-
-            // Find the specific blog
-            const found = blogs.find((b: any) => b.slug === slug || b.id.toString() === slug);
-            if (found) return found;
+            return await res.json();
         }
     } catch (e) {
-        console.warn('Backend API fetch failed:', e);
+        console.warn('Backend API fetch by slug failed:', e);
     }
 
     // 2. Fallback to Supabase (if needed, but likely data is in SQLite)

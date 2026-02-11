@@ -69,6 +69,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <Link href="/insights" className="text-white hover:text-[#4CAF50] transition-colors font-medium uppercase tracking-wide text-sm">Blog</Link>
+          <Link href="/admin/login" className="text-[#C5A059]/60 hover:text-[#C5A059] transition-colors font-bold uppercase tracking-widest text-[10px] border border-[#C5A059]/20 px-3 py-1 rounded-full">Admin</Link>
           <Link href="/contact" className="px-6 py-2 border-2 border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-[#041612] transition-colors font-bold uppercase tracking-widest text-xs">Contact Us</Link>
         </div>
 
@@ -96,6 +97,7 @@ const Navbar: React.FC = () => {
           </div>
           <Link href="/insights" className="text-white hover:text-[#4CAF50] text-lg font-bold">Blog</Link>
           <Link href="/contact" className="text-[#C5A059] font-bold">Contact Us</Link>
+          <Link href="/admin/login" className="text-white/30 text-xs uppercase tracking-widest mt-4">Admin Login</Link>
         </div>
       )}
     </nav>

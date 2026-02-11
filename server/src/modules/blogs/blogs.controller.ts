@@ -49,6 +49,12 @@ export class BlogsController {
         return this.blogsService.findOne(+id);
     }
 
+    @Get('slug/:slug')
+    @ApiOperation({ summary: 'Get a single blog by slug' })
+    findOneBySlug(@Param('slug') slug: string) {
+        return this.blogsService.findOneBySlug(slug);
+    }
+
     @Patch(':id')
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles('ADMIN', 'EDITOR')
