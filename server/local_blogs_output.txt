@@ -1,0 +1,5 @@
+--- LOCAL BLOGS ---
+ID: 1 | Slug: unsdg-2030-guide | Status: DRAFT | Title: Comprehensive UNSDG 2030 Guide: The Global Roadmap for Sustainability
+ID: 2 | Slug: leed-saudi-arabia-guide | Status: DRAFT | Title: LEED Certification: The Technical Roadmap for Saudi Arabia
+ID: 7 | Slug: mostadam-rating-system-guide | Status: DRAFT | Title: The Mostadam Rating System: Saudi Arabia’s Definitve Technical Guide
+ID: 8 | Slug: wind-load-analysis | Status: DRAFT | Title: Wind Load Analysis: Engineering Structural Resilience for Modern Buildings

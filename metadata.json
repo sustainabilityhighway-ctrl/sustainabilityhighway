@@ -1,0 +1,7 @@
+{
+  "name": "Sustainability Highway",
+  "description": "A premium knowledge hub for Saudi Arabia's Vision 2030 construction and sustainability standards, powered by Gemini AI.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

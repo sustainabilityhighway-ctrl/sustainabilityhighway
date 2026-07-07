@@ -1,0 +1,907 @@
+[
+    {
+        "source_url": "https://salimus.com/blog/",
+        "articles": [
+            {
+                "title": "InfraRius & the Rising Demand for Certified Thermographers in Building Envelope Testing",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Propetus by Salimus | Sustainable Property Inspections for a Greener Real Estate Future",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Airtightness for Zaha Hadid-Designed Bee’ah Headquarters - Sharjah, United Arab Emirates",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Khazna Data Center: A Milestone in Sustainable Infrastructure",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Salimus Consultancy: Paving the Way for a Greener Future with South View School",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Emirates NBD first bank in the Middle East to receive Parksmart Gold certification",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "We are ATTMA Training Courses Approved Provider",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Integrity Testing for Offshore Temporary Refuges",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "Systems & Envelope Performance Verification",
+                "link": "https://salimus.com/blog/"
+            },
+            {
+                "title": "We are Certified in Thermal Imaging",
+                "link": "https://salimus.com/blog/"
+            }
+        ]
+    },
+    {
+        "source_url": "https://www.aesg.com/insights/",
+        "articles": [
+            {
+                "title": "Environmental Product Declarations (EPDs)",
+                "link": "https://aesg.com/environment-sustainability/environmental-product-declarations-epds/"
+            },
+            {
+                "title": "Green Building Certification &Sustainability Rating Systems",
+                "link": "https://aesg.com/green-building-certification-services/"
+            },
+            {
+                "title": "Health Product Declaration (HPD) Consultancy Services",
+                "link": "https://aesg.com/environment-sustainability/health-product-declaration/"
+            },
+            {
+                "title": "Whole Life Carbon Assessments",
+                "link": "https://aesg.com/environment-sustainability/whole-life-carbon-strategy-services/"
+            },
+            {
+                "title": "ENVIRONMENT & WASTE MANAGEMENT",
+                "link": "https://www.aesg.com/insights/"
+            },
+            {
+                "title": "Air Quality Assessment",
+                "link": "https://aesg.com/environment-sustainability/air-quality-assessment/"
+            },
+            {
+                "title": "Climate Risk Assessment",
+                "link": "https://aesg.com/environment-sustainability/climate-risk-assessment/"
+            },
+            {
+                "title": "Construction & Demolition Waste Management Plans",
+                "link": "https://aesg.com/environment-sustainability/construction-demolition-waste-management-plans/"
+            },
+            {
+                "title": "Environmental Compliance and Assurance",
+                "link": "https://aesg.com/environment-sustainability/environmental-compliance-assurance/"
+            },
+            {
+                "title": "Environmental & Social Impact Assessment (EIA)",
+                "link": "https://aesg.com/environment-sustainability/environmental-social-impact-assessment-eia/"
+            },
+            {
+                "title": "Flood Risk Assessment",
+                "link": "https://aesg.com/environment-sustainability/flood-risk-assessment/"
+            },
+            {
+                "title": "Management & Mitigation",
+                "link": "https://aesg.com/environment-sustainability/management-mitigation/"
+            },
+            {
+                "title": "Marine and Coastal Sciences",
+                "link": "https://aesg.com/environment-sustainability/marine-and-coastal-sciences/"
+            },
+            {
+                "title": "Operational Waste Management Plans",
+                "link": "https://aesg.com/environment-sustainability/operational-waste-management-plans/"
+            },
+            {
+                "title": "Terrestrial Ecology",
+                "link": "https://aesg.com/environment-sustainability/terrestrial-ecology/"
+            },
+            {
+                "title": "Waste Audits & Reporting",
+                "link": "https://aesg.com/environment-sustainability/waste-audits-reporting/"
+            },
+            {
+                "title": "Waste Strategy & Planning",
+                "link": "https://aesg.com/environment-sustainability/waste-strategy-planning/"
+            },
+            {
+                "title": "Carbon Accounting and Reporting",
+                "link": "https://aesg.com/environment-sustainability/carbon-accounting-and-reporting/"
+            },
+            {
+                "title": "Corporate Carbon Management",
+                "link": "https://aesg.com/environment-sustainability/corporate-carbon-management/"
+            },
+            {
+                "title": "Decarbonisation Strategies",
+                "link": "https://aesg.com/environment-sustainability/decarbonisation-strategies/"
+            },
+            {
+                "title": "Designing for Net Zero",
+                "link": "https://aesg.com/environment-sustainability/designing-for-net-zero/"
+            },
+            {
+                "title": "Strategy and Advisory",
+                "link": "https://www.aesg.com/insights/"
+            },
+            {
+                "title": "Circular Economy Consulting",
+                "link": "https://aesg.com/environment-sustainability/circular-economy-consulting/"
+            },
+            {
+                "title": "ESG Strategy & Reporting",
+                "link": "https://aesg.com/environment-sustainability/esg-strategy-reporting/"
+            },
+            {
+                "title": "Net Zero Advisory",
+                "link": "https://aesg.com/environment-sustainability/net-zero-advisory/"
+            },
+            {
+                "title": "Sustainable Procurement",
+                "link": "https://aesg.com/environment-sustainability/sustainable-procurement/"
+            },
+            {
+                "title": "BUILDING SERVICES ENGINEERING",
+                "link": "https://www.aesg.com/insights/"
+            },
+            {
+                "title": "MEPF Engineering",
+                "link": "https://aesg.com/specialist-engineering/mepf-engineering/"
+            },
+            {
+                "title": "Energy Modelling",
+                "link": "https://aesg.com/specialist-engineering/mepf-engineering/#energy-modelling"
+            },
+            {
+                "title": "Digital Project Delivery",
+                "link": "https://aesg.com/specialist-engineering/mepf-engineering/#digital-project-delivery"
+            },
+            {
+                "title": "Authorised AHJ in Saudi Arabia",
+                "link": "https://aesg.com/specialist-engineering/authorised-ahj-in-saudi-arabia/"
+            },
+            {
+                "title": "Computational Fluid Dynamics (CFD)",
+                "link": "https://aesg.com/specialist-engineering/computational-fluid-dynamics-cfd/"
+            },
+            {
+                "title": "Fire Life Safety Engineering",
+                "link": "https://aesg.com/specialist-engineering/fire-life-safety-engineering/"
+            },
+            {
+                "title": "Fire Life Safety Strategy",
+                "link": "https://aesg.com/specialist-engineering/fire-life-safety-strategy/"
+            },
+            {
+                "title": "Third Party Certifications",
+                "link": "https://aesg.com/specialist-engineering/third-party-certifications/"
+            },
+            {
+                "title": "Building Acoustics Design & Engineering",
+                "link": "https://aesg.com/specialist-engineering/building-acoustics-design-engineering/"
+            },
+            {
+                "title": "Construction Supervision",
+                "link": "https://aesg.com/specialist-engineering/construction-supervision/"
+            },
+            {
+                "title": "Environmental Acoustic Assessments (EIA)",
+                "link": "https://aesg.com/specialist-engineering/environmental-acoustic-assessments-eia/"
+            },
+            {
+                "title": "Noise Modelling & Analysis",
+                "link": "https://aesg.com/specialist-engineering/noise-modelling-analysis/"
+            },
+            {
+                "title": "Overheating (Approved Document O) Assessment",
+                "link": "https://aesg.com/specialist-engineering/overheating-approved-document-o-assessment/"
+            },
+            {
+                "title": "Site Noise & Vibration Measurement Surveys",
+                "link": "https://aesg.com/specialist-engineering/site-noise-vibration-measurement-surveys/"
+            },
+            {
+                "title": "Security Consulting",
+                "link": "https://aesg.com/specialist-engineering/security-consulting/"
+            },
+            {
+                "title": "Counter Terrorism Planning",
+                "link": "https://aesg.com/specialist-engineering/counter-terrorism-planning/"
+            },
+            {
+                "title": "Security Assessment and Compliance",
+                "link": "https://aesg.com/specialist-engineering/security-assessment-and-compliance/"
+            },
+            {
+                "title": "Security Master Planning",
+                "link": "https://aesg.com/specialist-engineering/security-master-planning/"
+            },
+            {
+                "title": "Threat and Risk Assessments",
+                "link": "https://aesg.com/specialist-engineering/threat-and-risk-assessments/"
+            },
+            {
+                "title": "Video Surveillance System (VSS) Consulting",
+                "link": "https://aesg.com/specialist-engineering/video-surveillance-system-vss-consulting-services/"
+            },
+            {
+                "title": "Building Envelope Performance",
+                "link": "https://aesg.com/specialist-engineering/building-envelope-commissioning/"
+            },
+            {
+                "title": "Expert Construction Oversight",
+                "link": "https://aesg.com/specialist-engineering/expert-construction-oversight/"
+            },
+            {
+                "title": "Façade Access & Maintenance Strategies",
+                "link": "https://aesg.com/specialist-engineering/facade-access-maintenance-strategies/"
+            },
+            {
+                "title": "Fire & Safety Compliance",
+                "link": "https://aesg.com/specialist-engineering/fire-safety-compliance/"
+            },
+            {
+                "title": "Geometric Modelling & Analysis",
+                "link": "https://aesg.com/specialist-engineering/geometric-modelling-analysis/"
+            },
+            {
+                "title": "Innovative Façade Design Solutions",
+                "link": "https://aesg.com/specialist-engineering/innovative-facade-design-solutions/"
+            },
+            {
+                "title": "Optimised Value Engineering",
+                "link": "https://aesg.com/specialist-engineering/optimised-value-engineering/"
+            },
+            {
+                "title": "Sustainable Façade Innovation",
+                "link": "https://aesg.com/specialist-engineering/sustainable-facade-innovation/"
+            },
+            {
+                "title": "Tender Review & Evaluation",
+                "link": "https://aesg.com/specialist-engineering/tender-review-evaluation/"
+            },
+            {
+                "title": "Technology & ICT / Audio Visual Design",
+                "link": "https://www.aesg.com/insights/"
+            },
+            {
+                "title": "Digital Masterplans",
+                "link": "https://aesg.com/specialist-engineering#tech"
+            },
+            {
+                "title": "Pre-Contract Cost Management",
+                "link": "https://aesg.com/project-delivery-management/cost-management/#Pre-Contract-Cost-Management"
+            },
+            {
+                "title": "Post-Contract Cost Management",
+                "link": "https://aesg.com/project-delivery-management/cost-management/#Post-Contract-Cost-Management"
+            },
+            {
+                "title": "Specialist Services",
+                "link": "https://aesg.com/project-delivery-management/cost-management/#Specialist-Services"
+            },
+            {
+                "title": "Certified Building Commissioning (CxA)",
+                "link": "https://aesg.com/project-delivery-management/certified-building-commissioning/"
+            },
+            {
+                "title": "Certified Building Envelope Commissioning (BECx)",
+                "link": "https://aesg.com/project-delivery-management/certified-building-envelope-commissioning/"
+            },
+            {
+                "title": "Commissioning Management (CxM)",
+                "link": "https://aesg.com/project-delivery-management/commissioning-management/"
+            },
+            {
+                "title": "Employers / Owners Independent Verification (CxV)",
+                "link": "https://aesg.com/project-delivery-management/employers-owners-independent-verification/"
+            },
+            {
+                "title": "Existing Building (Retro) Commissioning (EBCx)",
+                "link": "https://aesg.com/project-delivery-management/existing-building-commissioning/"
+            },
+            {
+                "title": "LEED, BREEAM, Estidama & Mostadam Commissioning",
+                "link": "https://aesg.com/project-delivery-management/leed-breeam-estidama-mostadam-commissioning/"
+            },
+            {
+                "title": "Ongoing Building Commissioning (OCx)",
+                "link": "https://aesg.com/project-delivery-management/ongoing-building-commissioning/"
+            },
+            {
+                "title": "Digital Handover Management",
+                "link": "https://aesg.com/project-delivery-management/digital-handover-management/"
+            },
+            {
+                "title": "COBie Management",
+                "link": "https://aesg.com/project-delivery-management/cobie-management/"
+            },
+            {
+                "title": "Technology Strategy",
+                "link": "https://aesg.com/technology-digital/#tech_strategy"
+            },
+            {
+                "title": "Technological Foundations & Digital Infrastructure",
+                "link": "https://aesg.com/technology-digital/#tech_foundation"
+            },
+            {
+                "title": "Technology & ICT / Audio Visual Design",
+                "link": "https://www.aesg.com/insights/"
+            },
+            {
+                "title": "Digital Masterplans",
+                "link": "https://aesg.com/technology-digital/#smart_masterplan"
+            },
+            {
+                "title": "DIGITAL AUDITS & CERTIFICATIONS",
+                "link": "https://www.aesg.com/insights/"
+            },
+            {
+                "title": "WiredScore Certification Consultancy",
+                "link": "https://aesg.com/technology-digital/#wired"
+            },
+            {
+                "title": "SmartScore Certification Consultancy",
+                "link": "https://aesg.com/technology-digital/#smartscore"
+            },
+            {
+                "title": "Digital Readiness & Maturity Audits",
+                "link": "https://aesg.com/technology-digital/#readiness"
+            },
+            {
+                "title": "From Afterthought to Cornerstone: Security, Sustainability, and Smarter Cities – Simon Whitehouse, AESG",
+                "link": "https://aesg.com/perspective/from-afterthought-to-cornerstone-security-sustainability-and-smarter-cities-simon-whitehouse-aesg/"
+            },
+            {
+                "title": "Beyond the Buzzwords: What Truly Makes a Building Smart?",
+                "link": "https://aesg.com/perspective/what-truly-makes-a-building-smart/"
+            },
+            {
+                "title": "Forging the Future of Facades: Key Insights from ZAK World of Facades",
+                "link": "https://aesg.com/perspective/forging-the-future-of-facades-key-insights-from-zak-world-of-facades/"
+            },
+            {
+                "title": "AESG Brings Sustainable Engineering and Consultancy Expertise to Cape Town, South Africa",
+                "link": "https://aesg.com/perspective/a-new-chapter-for-sustainable-development-aesg-arrives-in-south-africa-with-cape-town-office-launch/"
+            },
+            {
+                "title": "Message From The CEO: A Defining Moment in AESG’s Growth Journey",
+                "link": "https://aesg.com/perspective/a-defining-moment-in-aesgs-growth-journey/"
+            },
+            {
+                "title": "Regenerative Retrofit-Transforming London’s Commercial Buildings into Thriving Communities",
+                "link": "https://aesg.com/perspective/regenerative-retrofit-transforming-londons-commercial-buildings-into-thriving-communities/"
+            },
+            {
+                "title": "Beyond the Checkbox: Why Fire and Life Safety is the Foundation of High-Performance Buildings",
+                "link": "https://aesg.com/perspective/beyond-the-checkbox-why-fire-and-life-safety-is-the-foundation-of-high-performance-buildings/"
+            },
+            {
+                "title": "Fixing Metal Stiffeners in Aluminum Cladding Panels: Structural Performance Over Shortcuts",
+                "link": "https://aesg.com/perspective/fixing-metal-stiffeners-in-aluminum-cladding-panels-structural-performance-over-shortcuts/"
+            },
+            {
+                "title": "Designing Steel Stiffeners for Aluminum Façade Profiles: Getting the Details Right",
+                "link": "https://aesg.com/perspective/designing-steel-stiffeners-for-aluminum-facade-profiles-getting-the-details-right/"
+            },
+            {
+                "title": "Sustainability in Conflict: The Paradox of Building a Greener Future",
+                "link": "https://aesg.com/perspective/sustainability-in-conflict-the-paradox-of-building-a-greener-future/"
+            },
+            {
+                "title": "The Overlooked Impact of Tolerances in Façade Cladding and Glazing Systems",
+                "link": "https://aesg.com/perspective/the-overlooked-impact-of-tolerances-in-facade-cladding-and-glazing-systems/"
+            },
+            {
+                "title": "Why Every Client Should Demand Final As-Built Drawings and O&M Manuals from Their Façade Subcontractor",
+                "link": "https://aesg.com/perspective/why-every-client-should-demand-final-as-built-drawings-and-om-manuals-from-their-facade-subcontractor/"
+            },
+            {
+                "title": "The ecological choice: Conservation-conscious construction is shaping KSA’s eco-tourism",
+                "link": "https://aesg.com/perspective/the-ecological-choice-conservation-conscious-construction-is-shaping-ksas-eco-tourism/"
+            },
+            {
+                "title": "Waste Management in Giga Projects: Turning Challenges into Opportunities",
+                "link": "https://aesg.com/perspective/waste-management-in-giga-projects-turning-challenges-into-opportunities/"
+            },
+            {
+                "title": "Sustainable Developments Start with a Solid Budget: Here’s Why",
+                "link": "https://aesg.com/perspective/capital-budgeting-and-sustainability-go-hand-in-hand/"
+            },
+            {
+                "title": "Leveraging Environmental Opportunities to Secure International Finance in the Middle East",
+                "link": "https://aesg.com/perspective/leveraging-environmental-opportunities-to-secure-international-finance-in-the-middle-east/"
+            },
+            {
+                "title": "Bricks, Bytes, and Beyond",
+                "link": "https://aesg.com/perspective/unifying-physical-and-digital-security-in-banking/"
+            },
+            {
+                "title": "How the Middle East’s mega projects are leading a sustainable construction revolution",
+                "link": "https://aesg.com/perspective/how-the-middle-easts-mega-projects-are-leading-a-sustainable-construction-revolution/"
+            },
+            {
+                "title": "Unpacking the 2024 GRESB Results",
+                "link": "https://aesg.com/perspective/australia-unpacking-the-2024-gresb-results/"
+            },
+            {
+                "title": "Regulatory Requirements for Existing Buildings in KSA",
+                "link": "https://aesg.com/perspective/regulatory-requirements-for-existing-buildings-in-ksa/"
+            },
+            {
+                "title": "Critical Insights into UAE’s Residential Market",
+                "link": "https://aesg.com/perspective/critical-insights-into-uaes-residential-market/"
+            },
+            {
+                "title": "Data Centers: Essential Infrastructure or Environmental Challenge?",
+                "link": "https://aesg.com/perspective/data-centers-essential-infrastructure-or-environmental-challenge/"
+            },
+            {
+                "title": "Is the Building Envelope the Most Important Building System?",
+                "link": "https://aesg.com/perspective/is-the-building-envelope-the-most-important-building-system/"
+            },
+            {
+                "title": "Exploring the modifications made in the NFPA Life Safety Code – 2024 Edition",
+                "link": "https://aesg.com/perspective/exploring-the-modifications-made-in-the-nfpa-life-safety-code-2024-edition/"
+            },
+            {
+                "title": "The Future of Sustainable Construction: Enhancing Decision-Making with Environmental Product Declarations",
+                "link": "https://aesg.com/perspective/the-future-of-sustainable-construction-enhancing-decision-making-with-environmental-product-declarations/"
+            },
+            {
+                "title": "What is that Odour? The Overlooked Problems of Soil, Waste & Vent Systems in High Rise Buildings",
+                "link": "https://aesg.com/perspective/what-is-that-odour-the-overlooked-problems-of-soil-waste-vent-systems-in-high-rise-buildings/"
+            },
+            {
+                "title": "2024 Building Commissioning Market Insights",
+                "link": "https://aesg.com/perspective/2024-building-commissioning-market-insights/"
+            },
+            {
+                "title": "Leveraging Specialised Tools and BIM models for Crafting Complex Geometries in Energy Modelling",
+                "link": "https://aesg.com/perspective/specialised-tools-and-bim-models-for-crafting-complex-geometries-in-energy-modelling/"
+            },
+            {
+                "title": "Zero Waste Goals and TRUE Challenges",
+                "link": "https://aesg.com/perspective/zero-waste-goals-and-true-challenges/"
+            },
+            {
+                "title": "UAE Zero Carbon Readiness Series 4: Enabling Mechanisms to Support Sustainability Integration",
+                "link": "https://aesg.com/perspective/uae-zero-carbon-readiness-series-4-enabling-mechanisms-to-support-sustainability-integration/"
+            },
+            {
+                "title": "Net Zero Neighbourhoods: Redesigning Neighbourhoods for a Low Carbon Future",
+                "link": "https://aesg.com/perspective/net-zero-neighbourhoods/"
+            },
+            {
+                "title": "Environmental Product Declarations",
+                "link": "https://aesg.com/perspective/environmental-product-declarations/"
+            },
+            {
+                "title": "Elevating Sustainability: A conceptual strategy for façade design with the Givoni Bioclimatic Graph",
+                "link": "https://aesg.com/perspective/elevating-sustainability-a-conceptual-strategy-for-facade-design-with-givonis-bioclimatic-graph/"
+            },
+            {
+                "title": "UAE Zero Carbon Readiness Series 3: Decarbonising through Sustainable Design",
+                "link": "https://aesg.com/perspective/uae-zero-carbon-readiness-series-3-decarbonising-through-sustainable-design/"
+            },
+            {
+                "title": "UAE Zero Carbon Readiness Series 2: Private Sector Commitments towards Sustainability",
+                "link": "https://aesg.com/perspective/uae-zero-carbon-readiness-series-2-private-sector-commitments-towards-sustainability/"
+            },
+            {
+                "title": "UAE Zero Carbon Readiness Series 1: Governmental Actions in Support of the Net Zero Agenda",
+                "link": "https://aesg.com/perspective/uae-zero-carbon-readiness-series-1-governmental-actions-in-support-of-the-net-zero-agenda/"
+            },
+            {
+                "title": "Navigating the Future: Artificial Intelligence as an Enabler for Smart Design in the Built Environment",
+                "link": "https://aesg.com/perspective/navigating-the-future-artificial-intelligence-as-an-enabler-for-smart-design-in-the-built-environment/"
+            },
+            {
+                "title": "How to manage a sustainability scope?",
+                "link": "https://aesg.com/perspective/how-to-manage-a-sustainability-project/"
+            },
+            {
+                "title": "Digital Handovers for the Built Environment",
+                "link": "https://aesg.com/perspective/digital-handovers-for-the-built-environment/"
+            },
+            {
+                "title": "The Energy Savings Opportunity Scheme (ESOS)",
+                "link": "https://aesg.com/perspective/the-energy-savings-opportunity-scheme-esos/"
+            },
+            {
+                "title": "Get results for your sustainability strategy implementation",
+                "link": "https://aesg.com/perspective/get-results-for-your-sustainability-strategy-implementation/"
+            },
+            {
+                "title": "Control of Particulates and Indoor Air Quality",
+                "link": "https://aesg.com/perspective/control-of-particulates-and-indoor-air-quality/"
+            },
+            {
+                "title": "Evacuation of mobility impaired occupants: Review of international code requirements",
+                "link": "https://aesg.com/perspective/evacuation-of-mobility-impaired-occupants-review-of-international-code-requirements/"
+            },
+            {
+                "title": "Identify and Remediate Buildings and make them Safer for Occupants",
+                "link": "https://aesg.com/perspective/identify-and-remediate-buildings-and-make-them-safer-for-occupants/"
+            },
+            {
+                "title": "Carbon Emissions Reporting",
+                "link": "https://aesg.com/perspective/carbon-emissions-reporting/"
+            },
+            {
+                "title": "Optimising Controls of Fresh Air Handling Units for Net Zero Buildings in the Middle East",
+                "link": "https://aesg.com/perspective/optimising-controls-of-fresh-air-handling-units-for-net-zero-buildings-in-the-middle-east/"
+            },
+            {
+                "title": "Sustainability drives your business forward",
+                "link": "https://aesg.com/perspective/sustainability-drives-your-business-forward/"
+            },
+            {
+                "title": "How innovation in sustainability and smart cities in the Middle East can pull us back from the brink",
+                "link": "https://aesg.com/perspective/how-innovation-in-sustainability-and-smart-cities-in-the-middle-east-can-pull-us-back-from-the-brink/"
+            },
+            {
+                "title": "Facades – Defining a Building’s Personality",
+                "link": "https://aesg.com/perspective/facades-defining-a-buildings-personality/"
+            },
+            {
+                "title": "Approved Document O Consultant in UK",
+                "link": "https://aesg.com/perspective/approved-document-o-consultant-in-uk/"
+            },
+            {
+                "title": "Sustainable Tourism in the Middle East",
+                "link": "https://aesg.com/perspective/sustainable-tourism-in-the-middle-east/"
+            },
+            {
+                "title": "NABERS – Use and Applicability in the UK",
+                "link": "https://aesg.com/perspective/nabers-use-and-applicability-in-the-uk/"
+            },
+            {
+                "title": "A Practical Approach to Implementing Net Zero in the MENA Real Estate Sector",
+                "link": "https://aesg.com/perspective/a-practical-approach-to-implementing-net-zero-in-the-mena-real-estate-sector/"
+            },
+            {
+                "title": "Public Sector: How to Model Buildings to Net Zero",
+                "link": "https://aesg.com/perspective/public-sector-how-to-model-buildings-to-net-zero/"
+            },
+            {
+                "title": "Saudi Net Zero 2060: Action plan for innovation and growth opportunity",
+                "link": "https://aesg.com/perspective/saudi-net-zero-2060-action-plan-for-innovation-growth-opportunity/"
+            },
+            {
+                "title": "The New London Plan 2021:                          A summary of requirements set out in the Policies of the New London Plan",
+                "link": "https://aesg.com/perspective/the-new-london-plan-2021-a-summary-of-requirements-set-out-in-the-policies-of-the-new-london-plan/"
+            },
+            {
+                "title": "UAE Net Zero 2050",
+                "link": "https://aesg.com/perspective/uae-net-zero-2050-netzero-esg-consultants/"
+            },
+            {
+                "title": "Future Homes and the New Part L – One Step Closer to Net Zero?",
+                "link": "https://aesg.com/perspective/future-homes-and-the-new-part-l-one-step-closer-to-net-zero/"
+            },
+            {
+                "title": "What Lies Beneath?",
+                "link": "https://aesg.com/perspective/what-lies-beneath/"
+            },
+            {
+                "title": "Fire Statements & The London Plan 2021",
+                "link": "https://aesg.com/perspective/fire-statements-the-london-plan-2021/"
+            },
+            {
+                "title": "The Unequivocal Impact of Human Influence",
+                "link": "https://aesg.com/perspective/the-unequivocal-impact-of-human-influence/"
+            },
+            {
+                "title": "Acoustic Considerations that Promote Office Collaboration",
+                "link": "https://aesg.com/perspective/acoustic-considerations-that-promote-office-collaboration/"
+            },
+            {
+                "title": "Nature Based Solutions in the cities: Designing urban spaces in the Middle East",
+                "link": "https://aesg.com/perspective/nature-based-solutions-in-the-cities-designing-urban-spaces-in-the-middle-east/"
+            },
+            {
+                "title": "Urban resilience: A look into global climate change impacts and possible design mitigation",
+                "link": "https://aesg.com/perspective/urban-resilience-a-look-into-global-climate-change-impacts-and-possible-design-mitigation/"
+            },
+            {
+                "title": "What is External Wall Fire Review (EWS1) and What does it mean to You?",
+                "link": "https://aesg.com/perspective/what-is-external-wall-fire-review-ews1-and-what-does-it-mean-to-you/"
+            },
+            {
+                "title": "Facades and Sustainable Architecture",
+                "link": "https://aesg.com/perspective/facades-and-sustainable-architecture/"
+            },
+            {
+                "title": "The Benefits of a Commissioning Specialist and BIM for Data Centres",
+                "link": "https://aesg.com/perspective/the-benefits-of-a-commissioning-specialist-and-bim-for-data-centres/"
+            },
+            {
+                "title": "Climate Impact of Solid Waste",
+                "link": "https://aesg.com/perspective/climate-impact-of-solid-waste/"
+            },
+            {
+                "title": "Oil Spills in the Arabian Gulf: A Case Study and Environmental Review",
+                "link": "https://aesg.com/perspective/oil-spills-in-the-arabian-gulf-a-case-study-and-environmental-review/"
+            },
+            {
+                "title": "Commissioning Insights",
+                "link": "https://aesg.com/perspective/commissioning-insights-mark-rawlings/"
+            },
+            {
+                "title": "Ambient Outdoor Air Quality",
+                "link": "https://aesg.com/perspective/ambient-outdoor-air-quality/"
+            },
+            {
+                "title": "Environmental surveying with drones: Vast potential in the Middle East",
+                "link": "https://aesg.com/perspective/environmental-surveying-with-drones-vast-potential-in-the-middle-east/"
+            },
+            {
+                "title": "CSR in the Construction Industry",
+                "link": "https://aesg.com/perspective/csr-in-the-construction-industry/"
+            },
+            {
+                "title": "Climate Change and Mitigation Efforts in the UAE",
+                "link": "https://aesg.com/perspective/climate-change-and-mitigation-efforts-in-the-uae/"
+            },
+            {
+                "title": "The Impact of External Shading, Windows Glazing and Frame on Thermal Performance of Residential House in Abu-Dhabi",
+                "link": "https://aesg.com/perspective/the-impact-of-external-shading-windows-glazing-and-frame-on-thermal-performance-of-residential-house-in-abu-dhabi/"
+            },
+            {
+                "title": "Facades as the ‘backdrop for zero-energy buildings’",
+                "link": "https://aesg.com/perspective/facades-as-the-backdrop-for-zero-energy-buildings/"
+            },
+            {
+                "title": "Smart Housing Millennial Expectations",
+                "link": "https://aesg.com/perspective/smart-housing/"
+            },
+            {
+                "title": "Sustainability in the Middle East: Achievements and Challenges",
+                "link": "https://aesg.com/perspective/sustainability-in-the-middle-east-achievements-and-challenges/"
+            },
+            {
+                "title": "Acoustic Considerations for Prayer Rooms",
+                "link": "https://aesg.com/perspective/acoustic-considerations-for-prayer-rooms/"
+            },
+            {
+                "title": "The WELL Building Standard: Opportunities and Challenges for the UAE",
+                "link": "https://aesg.com/perspective/the-well-building-standard-opportunities-and-challenges-for-the-uae/"
+            },
+            {
+                "title": "Climate Change and Green Policy in UAE",
+                "link": "https://aesg.com/perspective/climate-change-and-green-policy-in-uae/"
+            },
+            {
+                "title": "Blind Spots of Sustainability: Architecture",
+                "link": "https://aesg.com/perspective/blind-spots-of-sustainability-architecture/"
+            },
+            {
+                "title": "Movement towards Designing for Health and wellbeing in the MENA Region",
+                "link": "https://aesg.com/perspective/movement-towards-designing-for-health-and-wellbeing-in-the-mena-region/"
+            }
+        ]
+    },
+    {
+        "source_url": "https://leedksa.com/",
+        "articles": [
+            {
+                "title": "What is LEED Certificate?",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "Why is LEED Certificate Important?",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "What are the different levels of LEED certification, and how are they achieved?",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "How does LEED certification benefit building owners and occupants?",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "How does LEED address water efficiency in certified buildings?",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "What are the most common challenges in achieving LEED certification?",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "Completed LEED Projects",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "Basakşehir Cam and Sakura City Hospital",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "Istanbul Airport Turkish Airlines Business Lounge",
+                "link": "https://leedksa.com/"
+            },
+            {
+                "title": "LEED Consultancy",
+                "link": "https://leedksa.com/leed-consultancy/"
+            },
+            {
+                "title": "Natural Ventilation Analysis",
+                "link": "https://leedksa.com/natural-ventilation-analysis/"
+            },
+            {
+                "title": "Wind Load Analysis",
+                "link": "https://leedksa.com/wind-load-analysis/"
+            },
+            {
+                "title": "Thermal Comfort Analysis",
+                "link": "https://leedksa.com/thermal-comfort-analysis/"
+            },
+            {
+                "title": "Pedestrian Comfort Analysis",
+                "link": "https://leedksa.com/pedestrian-comfort-analysis/"
+            },
+            {
+                "title": "Daylight Analysis Service",
+                "link": "https://leedksa.com/daylight-analysis-service/"
+            }
+        ]
+    },
+    {
+        "source_url": "https://www.conservesolution.com/blog/",
+        "articles": [
+            {
+                "title": "Box-in-Box Acoustic Design: A Proven Method for High-Noise Equipment Isolation",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "CBox Connect: Automate Revit Batch Exports & Link Control",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Storm Water Design Verification Using SewerGEMS",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "4D BIM in Construction: Turning Schedules into Smart Simulations",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Automation Unboxed – The Rise of Conserve Box",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "UAE ESG (Environmental, Social & Governance) Compliance – Local & Mandatory Perspectives",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Nature’s carbon cycle: human impact and the path to carbon neutrality",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "MOSTADAM Certification",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Riyadh Expo 2030 | The Era of Change: Together For a Foresighted Tomorrow",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Pursuing future factory programs through energy efficiency",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Transforming LPD Analysis in Revit with Dynamo",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Automated Pipe support for MEP System",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "ASHRAE Energy Auditing",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Conserve Engineering Solutions UK: Launching at UK Construction Week 2024",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Micro-Climate Analysis (PET, UTCI & Shading Analysis) using CFD Simulation",
+                "link": "https://www.conservesolution.com/blog/"
+            },
+            {
+                "title": "Box-in-Box Acoustic Design: A Proven Method for High-Noise Equipment Isolation",
+                "link": "https://www.conservesolution.com/blog/box-in-box-acoustic-design-a-proven-method-for-high-noise-equipment-isolation/"
+            },
+            {
+                "title": "CBox Connect: Automate Revit Batch Exports & Link Control",
+                "link": "https://www.conservesolution.com/blog/conserve-box-automate-revit-batch-exports-link-control/"
+            },
+            {
+                "title": "Storm Water Design Verification Using SewerGEMS",
+                "link": "https://www.conservesolution.com/blog/storm-water-design-verification-using-sewergems/"
+            }
+        ]
+    },
+    {
+        "source_url": "https://www.erkeconsultancy.com/",
+        "articles": [
+            {
+                "title": "Electrical Design & Consultancy",
+                "link": "https://erkeconsultancy.com/electrical-design-and-consultancy/"
+            },
+            {
+                "title": "Blower Door Test",
+                "link": "https://erkeconsultancy.com/blower-door-test/"
+            },
+            {
+                "title": "Test And Commissioning",
+                "link": "https://erkeconsultancy.com/testing-and-commissioning/"
+            },
+            {
+                "title": "Green Building Consultancy",
+                "link": "https://erkeconsultancy.com/green-building-consultancy/"
+            },
+            {
+                "title": "Sustainable Material Consultancy",
+                "link": "https://erkeconsultancy.com/sustainable-material-analysis/"
+            },
+            {
+                "title": "Lighting Consultancy",
+                "link": "https://erkeconsultancy.com/lighting-consultancy/"
+            },
+            {
+                "title": "Building Energy Audit",
+                "link": "https://erkeconsultancy.com/building-energy-audit/"
+            },
+            {
+                "title": "Corporate Sustainability Consultancy",
+                "link": "https://erkeconsultancy.com/corporate-sustainability-consultancy/"
+            },
+            {
+                "title": "Sustainable Building Analyses & CFD",
+                "link": "https://erkeconsultancy.com/sustainable-building-analysis-cfd/"
+            },
+            {
+                "title": "Million Sqm Floor Area",
+                "link": "https://www.erkeconsultancy.com/"
+            },
+            {
+                "title": "Green Building Certification",
+                "link": "https://www.erkeconsultancy.com/"
+            },
+            {
+                "title": "Sustainable Material Certification",
+                "link": "https://www.erkeconsultancy.com/"
+            },
+            {
+                "title": "What Does LEED Certification Offer Businesses?",
+                "link": "https://erkeconsultancy.com/what-does-leed-certification-offer-businesses/"
+            },
+            {
+                "title": "EDGE and Green Building Transformation",
+                "link": "https://erkeconsultancy.com/edge-and-green-building-transformation/"
+            },
+            {
+                "title": "What is EPD and Why is It Important?",
+                "link": "https://erkeconsultancy.com/what-is-epd-and-why-is-it-important/"
+            },
+            {
+                "title": "Healthy Spaces with WELL Certification",
+                "link": "https://erkeconsultancy.com/healthy-spaces-with-well-certification/"
+            }
+        ]
+    }
+]

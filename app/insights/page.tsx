@@ -1,0 +1,93 @@
+import Link from 'next/link';
+import { supabase } from '../../services/supabaseClient';
+import { STATIC_BLOGS } from '../../staticBlogs';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Sustainability Insights | Vision 2030 News',
+    description: 'Expert knowledge on Vision 2030, LEED, Mostadam, and sustainable construction in Saudi Arabia.',
+    openGraph: {
+        url: 'https://sustainabilityhighway.com/insights',
+    }
+}
+
+async function getBlogs() {
+    try {
+        const { data, error } = await supabase
+            .from('Blog')
+            .select('*')
+            .eq('status', 'PUBLISHED')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            // console.error('Error fetching blogs:', error);
+            return STATIC_BLOGS.filter(b => b.is_published);
+        }
+
+        if (!data || data.length === 0) {
+            return STATIC_BLOGS.filter(b => b.is_published);
+        }
+
+        return data;
+    } catch (e) {
+        // console.error('Exception fetching blogs:', e);
+        return STATIC_BLOGS.filter(b => b.is_published);
+    }
+}
+
+export default async function InsightsPage() {
+    const blogs = await getBlogs();
+
+    return (
+        <div className="min-h-screen bg-gradient-to-b from-[#041612] to-[#0B2B24] py-24 px-6 pt-32">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-16">
+                    <h1 className="text-5xl font-black text-white mb-4 uppercase tracking-tight font-heading">
+                        Sustainability <span className="text-[#C5A059]">Insights</span>
+                    </h1>
+                    <p className="text-white/60 text-lg max-w-2xl mx-auto">
+                        Expert knowledge on Vision 2030, LEED, Mostadam, and sustainable construction in Saudi Arabia
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {blogs.map((blog: any) => (
+                        <Link
+                            key={blog.id}
+                            href={`/blogs/${blog.slug || blog.id}`}
+                            className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-[#4CAF50] transition-all duration-300 hover:transform hover:scale-105 flex flex-col"
+                        >
+                            {blog.image_url ? (
+                                <div className="h-48 overflow-hidden bg-gray-800">
+                                    <img
+                                        src={blog.image_url}
+                                        alt={blog.title}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                    />
+                                </div>
+                            ) : (
+                                <div className="h-48 overflow-hidden bg-gray-800 flex items-center justify-center">
+                                    <span className="text-white/20 text-4xl font-bold font-heading">SH</span>
+                                </div>
+                            )}
+                            <div className="p-6 flex flex-col flex-grow">
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#4CAF50] transition-colors line-clamp-2 font-heading">
+                                    {blog.title}
+                                </h3>
+                                {blog.meta_description && (
+                                    <p className="text-white/60 text-sm line-clamp-3 mb-6 leading-relaxed">
+                                        {blog.meta_description}
+                                    </p>
+                                )}
+                                <div className="mt-auto flex items-center text-[#C5A059] text-xs font-black uppercase tracking-[0.2em] group-hover:text-[#4CAF50] transition-colors">
+                                    <span>Read More</span>
+                                    <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300 text-lg">→</span>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
