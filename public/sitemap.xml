@@ -196,4 +196,32 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://sustainabilityhighway.com/blogs/leed-vs-mostadam-comprehensive-comparison</loc>
+    
+    <lastmod>2026-07-09T09:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sustainabilityhighway.com/blogs/understanding-mostadam-categories-certification-levels-benefits</loc>
+    
+    <lastmod>2026-07-09T09:15:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sustainabilityhighway.com/blogs/envision-sustainability-framework-infrastructure-guide</loc>
+    
+    <lastmod>2026-07-09T09:30:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sustainabilityhighway.com/blogs/which-sustainability-rating-system-is-right-for-your-project</loc>
+    
+    <lastmod>2026-07-09T09:45:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
