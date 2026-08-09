@@ -3,7 +3,7 @@ export const PREMIUM_ARTICLE = {
     title: "LEED Certification in Saudi Arabia: The Complete 2027 Guide for Developers and Architects",
     slug: "leed-certification-saudi-arabia-complete-guide",
     is_published: true,
-    image_url: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=2000",
+    image_url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000",
     meta_title: "LEED Certification Saudi Arabia 2027: Complete Guide | Costs, Process & Benefits",
     meta_description: "Master LEED certification in Saudi Arabia. Learn the 4 rating levels, step-by-step process, costs, Vision 2030 alignment, and how to achieve Platinum status for your project.",
     created_at: "2026-01-31T15:00:00Z",
@@ -12,7 +12,7 @@ export const PREMIUM_ARTICLE = {
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "LEED Certification in Saudi Arabia: The Complete 2027 Guide",
-        "image": "/artifacts/leed_certification_hero_1769872101229.png",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000",
         "author": {
             "@type": "Organization",
             "name": "Sustainability Highway"
@@ -37,7 +37,7 @@ export const PREMIUM_ARTICLE = {
             </ul>
         </div>
 
-        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=2000" alt="Modern LEED certified green building in Riyadh with Islamic architecture and sustainable design" class="w-full rounded-2xl shadow-2xl mb-10" />
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=2000" alt="Modern LEED certified green building in Riyadh with Islamic architecture and sustainable design" class="w-full rounded-2xl shadow-2xl mb-10" />
 
         <h2 id="introduction" class="text-3xl font-bold text-white mt-12 mb-6">1. Introduction: Why LEED Matters in Saudi Arabia</h2>
         
@@ -64,7 +64,7 @@ export const PREMIUM_ARTICLE = {
 
         <h2 id="rating-levels" class="text-3xl font-bold text-white mt-12 mb-6">3. The Four LEED Rating Levels Explained</h2>
 
-        <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=2000" alt="LEED certification levels infographic showing Certified, Silver, Gold, and Platinum tiers" class="w-full max-w-3xl mx-auto rounded-xl shadow-lg my-8" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&q=80&w=2000" alt="LEED certification levels infographic showing Certified, Silver, Gold, and Platinum tiers" class="w-full max-w-3xl mx-auto rounded-xl shadow-lg my-8" />
 
         <p class="text-lg leading-relaxed mb-6">LEED projects are awarded one of four certification levels based on the number of points earned (out of a possible 110 points):</p>
 
@@ -122,7 +122,7 @@ export const PREMIUM_ARTICLE = {
             </li>
         </ul>
 
-        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" alt="Futuristic sustainable office tower in Riyadh with vertical gardens and solar panels" class="w-full rounded-2xl shadow-2xl my-10" />
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=2000" alt="Futuristic sustainable office tower in Riyadh with vertical gardens and solar panels" class="w-full rounded-2xl shadow-2xl my-10" />
 
         <h2 id="certification-process" class="text-3xl font-bold text-white mt-12 mb-6">5. Step-by-Step Certification Process</h2>
 
